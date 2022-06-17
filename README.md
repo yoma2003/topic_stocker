@@ -1,24 +1,77 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| name               | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :characters
 
-* Configuration
+## characters テーブル
 
-* Database creation
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| name     | string     | null: false                    |
+| url      | string     |                                |
+| describe | text       |                                |
+| user_id  | references | null: false, foreign_key: true |
 
-* Database initialization
+- image保存はActiveStorageを使用
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_many :past_topics, dependent: destroy
+- has_many :future_topics, dependent: destroy
+- has_many :categories, through: character_categories, dependent: destroy
 
-* Deployment instructions
+## past_topics テーブル
 
-* ...
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| topic        | text       |                                |
+| created_date | date       | null: false                    |
+| character_id | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :character
+
+## future_topics テーブル
+
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| topic        | text       |                                |
+| character_id | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :character
+
+## character_categories テーブル
+
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| character_id | references | null: false, foreign_key: true |
+| category_id  | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :character
+- belongs_to :category
+
+## categories テーブル
+
+| Column   | Type   | Options      |
+| -------- | ------ | ------------ |
+| name     | string | null: false  |
+| describe | text   | null: false, |
+
+### Association
+
+- has_many: characters, through :character_categories
