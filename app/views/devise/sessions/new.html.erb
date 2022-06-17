@@ -1,0 +1,26 @@
+<h2>Log in</h2>
+
+<%= form_with model: resource, as: resource_name, url: session_path(resource_name), local: true do |f|%>
+  <div class='field'>
+    <div class='field-label'>
+      <%= f.label :email%>
+    </div>
+    <div class='field-input'>
+      <%= f.email_field :email, autofocus: true%>
+    </div>
+    <div class='field'>
+      <div class='field-label'>
+        <%= f.label :password%>
+        <i>(英数字6文字以上)</i>
+      </div>
+      <div class='field-input'>
+        <%= f.password_field :password, autocomplete: "off"%>
+      </div>
+    </div>
+    <div class='actions'>
+      <%= f.submit "Log in", class: 'btn'%>
+    </div>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
