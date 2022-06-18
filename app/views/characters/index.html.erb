@@ -1,4 +1,8 @@
-<%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
-<%= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
-
-こんにちは、<%= "#{current_user.name}さん！"%>
+<div class="wrapper">
+  <div class="side_bar">
+    <%= render partial: "side_bar" %>
+  </div>
+  <div class="main_view">
+    <%= render partial: "main_view" %>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+
+}
+.main_view {
+  width: calc(100vw - 300px);
+  height: 100vh;
+  background-color: #fff;
+}
+
+.side_bar {
+  width: 300px;
+  height: 100vh;
+  background-color: #4A154B;
+  color: #fff;
+}
+
+/* サイドバー */
+/* サイドバートップ */
+
+.side_bar_top {
+  height: 100px;
+}
+
+/* サイドバーコンテンツ */
+
+.side_bar_category {
+
+}
+
+
+/* メインビュー */
+/* メイントップ */
+.main_top {
+  height: 100px;
+  background-color: #4A154B;
+  padding: 0 40px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* メインコンテンツ */
+

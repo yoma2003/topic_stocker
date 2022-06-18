@@ -1,0 +1,19 @@
+<div class="main_top">
+  <div class="main_top_left">
+    <div class="category_title">
+      <%= "会社" %>
+    </div>
+    <div class="category_describe">
+      〇〇会社の同僚。２０２０年４月より〜　URL：・・・
+    </div>
+  </div>
+  <div class="main_top_right">
+    <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
+    <%= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
+    <%= current_user.name %>
+  </div>
+</div>
+
+<div class="characters">
+  人データ
+</div>
