@@ -1,0 +1,42 @@
+<div class="main_top">
+  <div class="main_top_left">
+    <div class="category_title">
+      新規登録
+    </div>
+    <div class="category_describe">
+      人のデータを登録してください。人のデータを登録してください。人のデータを登録してください。
+    </div>
+  </div>
+  <div class="main_top_right">
+    <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
+    <%= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
+    <%= current_user.name %>
+  </div>
+</div>
+
+<div class="new_character">
+  <%= form_with model: @character, local: true do |f|%>
+    <%= render "error_messages", model: f.object %>
+    <div class='field'>
+      名前<br>
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+    <div class='image'>
+      画像選択
+    </div>
+    <div class='category'>
+      カテゴリー選択
+    </div>
+    <div class='field'>
+      URL<br>
+      <%= f.text_field :url %>
+    </div>
+    <div class='field'>
+      特徴、プロフィール<br>
+      <%= f.text_area :describe %>
+    </div>
+    <div class='actions'>
+      <%= f.submit "登録", class: 'btn'%>
+    </div>
+  <% end %>
+</div>
