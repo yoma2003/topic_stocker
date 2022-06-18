@@ -22,7 +22,8 @@
       <%= f.text_field :name, autofocus: true %>
     </div>
     <div class='image'>
-      画像選択
+      画像
+      <%= f.file_field :image, id:"message_image" %>
     </div>
     <div class='category'>
       カテゴリー選択

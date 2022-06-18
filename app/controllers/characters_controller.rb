@@ -8,7 +8,8 @@ class CharactersController < ApplicationController
   end
 
   def create
-    if Character.create(character_params)
+    @character = Character.new(character_params)
+    if @character.save
       redirect_to root_path
     else
       render :new
@@ -17,6 +18,6 @@ class CharactersController < ApplicationController
 
   private
   def character_params
-    params.require(:character).permit(:name, :url, :describe).merge(user_id: current_user.id)
+    params.require(:character).permit(:name, :image, :url, :describe).merge(user_id: current_user.id)
   end
 end
