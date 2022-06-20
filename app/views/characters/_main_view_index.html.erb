@@ -15,5 +15,32 @@
 </div>
 
 <div class="characters">
-  人データ
+  <div class="characters_wrapper">
+    <% @characters.each do |character| %>
+      <div class="character">
+        <div class="character_info">
+          <div class="character_image">
+            <% if character.image.attached? %>
+              <%= image_tag character.image %>
+            <% else %>
+              <%= image_tag "no_image.png" %>
+            <% end %>
+          </div>
+          <div class="character_name"><%= character.name %></div>
+        </div>
+        <div class="character_topic">
+          <div class="past_topic">
+            ・ガンバ大阪の観戦<br>
+            ・ラグビーについて<br>
+            <div class="create_date">6/18(日)</div>
+          </div>
+          <div class="future_topic">
+            ・マンデルチーゲル<br>
+            ・朝日あげ<br>
+            ・ワクチンについて<br>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
