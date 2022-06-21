@@ -1,0 +1,2 @@
+class FutureTopic < ApplicationRecord
+end

@@ -5,12 +5,13 @@ class CharactersController < ApplicationController
   end
 
   def new
-    @character = Character.new
+    @character_topic = CharacterTopic.new
   end
 
   def create
-    @character = Character.new(character_params)
-    if @character.save
+    @character_topic = CharacterTopic.new(character_topic_params)
+    if @character_topic.valid?
+      @character_topic.save
       redirect_to root_path
     else
       render :new
@@ -38,7 +39,7 @@ class CharactersController < ApplicationController
 
   private
 
-  def character_params
-    params.require(:character).permit(:name, :image, :url, :describe).merge(user_id: current_user.id)
+  def character_topic_params
+    params.require(:character_topic).permit(:name, :image, :url, :describe, :past_topic, :created_date, :future_topic).merge(user_id: current_user.id)
   end
 end
