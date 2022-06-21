@@ -43,6 +43,8 @@
 /* メインコンテンツ */
 .characters {
   padding: 50px 0;
+  height: calc(100vh - 100px);
+  overflow: auto;
 }
 
 .characters_wrapper {
@@ -60,7 +62,16 @@
   border: 2px solid #4A154B;
   border-radius: 10px;
   margin: 0 20px 20px 0;
-  box-shadow: 0px 0px 5px #888;
+  transition: .1s;
+}
+
+.character:hover {
+  box-shadow: 0px 0px 7px #888;
+}
+
+.edit {
+  height: 380px;
+  transition: .1s;
 }
 
 .character_info {
@@ -68,6 +79,7 @@
   padding-top: 20px;
   text-align: center;
   border-right: 2px solid #4A154B;
+  overflow: hidden;
 }
 
 .character_name {
@@ -82,7 +94,7 @@
 
 .character_topic {
   width: 380px;
-  height: 176px;
+  height: calc(100% - 2px);
   font-size: 14px;
 }
 
@@ -108,4 +120,7 @@
   border-top: 1px solid #4A154B;
 }
 
-
+.detail {
+  /* display: none; */
+  margin-top: 30px;
+}
