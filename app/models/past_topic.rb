@@ -1,0 +1,2 @@
+class PastTopic < ApplicationRecord
+end
