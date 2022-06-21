@@ -34,7 +34,7 @@
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| topic        | text       |                                |
+| past_topic   | text       |                                |
 | created_date | date       | null: false                    |
 | character_id | references | null: false, foreign_key: true |
 
@@ -46,7 +46,7 @@
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| topic        | text       |                                |
+| future_topic | text       |                                |
 | character_id | references | null: false, foreign_key: true |
 
 ### Association
