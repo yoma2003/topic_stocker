@@ -40,6 +40,10 @@
   justify-content: space-between;
 }
 
+.main_top a {
+  color: #fff;
+}
+
 /* メインコンテンツ */
 .characters {
   padding: 50px 0;
