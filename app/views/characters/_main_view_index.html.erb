@@ -29,7 +29,7 @@
           <div class="character_name"><%= character.name %></div>
           <div class="detail">
             <%= link_to("詳細編集", edit_character_path(character)) %><br>
-            <%= "削除" %>
+            <%= link_to("データ削除", character_path(character), method: :delete) %>
           </div>
         </div>
         <div class="character_topic">
