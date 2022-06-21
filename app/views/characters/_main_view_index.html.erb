@@ -28,7 +28,7 @@
           </div>
           <div class="character_name"><%= character.name %></div>
           <div class="detail">
-            <%= "詳細編集" %><br>
+            <%= link_to("詳細編集", edit_character_path(character)) %><br>
             <%= "削除" %>
           </div>
         </div>
