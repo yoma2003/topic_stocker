@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_21_044321) do
+ActiveRecord::Schema.define(version: 2022_06_21_053019) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 2022_06_21_044321) do
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
+  create_table "future_topics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "future_topic"
+    t.bigint "character_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["character_id"], name: "index_future_topics_on_character_id"
+  end
+
   create_table "past_topics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "past_topic"
     t.date "created_date", null: false
@@ -67,5 +75,6 @@ ActiveRecord::Schema.define(version: 2022_06_21_044321) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "characters", "users"
+  add_foreign_key "future_topics", "characters"
   add_foreign_key "past_topics", "characters"
 end
