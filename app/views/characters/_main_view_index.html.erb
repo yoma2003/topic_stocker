@@ -38,7 +38,6 @@
               <%= form_with model:character.past_topics[0], url: past_topic_path(character.past_topics[0]), class: "topic_form", data: character.past_topics[0].id, local: true do |f| %>
                 <%= f.hidden_field :character_id, value: character.id %>
                 <%= f.text_area :past_topic, class: "topic_input past_topic_input", disabled: true %>
-                <%= f.text_field :action_at, class: "flatpickr", type: "text", readonly: "" %>
               <% end %>
             <% end %>
             <div class="create_date">6/18(日)</div>
@@ -54,6 +53,5 @@
         </div>
       </div>
     <% end %>
-    <input type="text" id="flatp">
   </div>
 </div>

@@ -94,7 +94,6 @@ GEM
     faker (2.21.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
-    flatpickr (4.6.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -280,7 +279,6 @@ DEPENDENCIES
   devise
   factory_bot_rails
   faker
-  flatpickr
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
