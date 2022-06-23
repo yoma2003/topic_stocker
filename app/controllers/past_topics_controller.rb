@@ -2,7 +2,6 @@ class PastTopicsController < ApplicationController
   def update
     latest_past_topic = PastTopic.find(params[:id])
     latest_past_topic.update(past_topic_params)
-    redirect_to root_path
   end
 
   private
