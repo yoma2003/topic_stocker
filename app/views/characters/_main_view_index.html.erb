@@ -35,20 +35,18 @@
         <div class="character_topic">
           <div class="past_topic">
             <% if character.past_topics[0] %>
-              <%= form_with model:character.past_topics[0], url: past_topic_path(character.past_topics[0]), class: "topic_form", local: true do |f| %>
+              <%= form_with model:character.past_topics[0], url: past_topic_path(character.past_topics[0]), class: "topic_form", data: character.past_topics[0].id, local: true do |f| %>
                 <%= f.hidden_field :character_id, value: character.id %>
-                <%= f.text_area :past_topic, class: "topic_input", disabled: true %>
-                <%= f.submit "更新" %>
+                <%= f.text_area :past_topic, class: "topic_input past_topic_input", disabled: true %>
               <% end %>
             <% end %>
             <div class="create_date">6/18(日)</div>
           </div>
           <div class="future_topic">
             <% if character.future_topics[0] %>
-              <%= form_with model:character.future_topics[0], url: future_topic_path(character.future_topics[0]), class: "topic_form", local: true do |f| %>
+              <%= form_with model:character.future_topics[0], url: future_topic_path(character.future_topics[0]), class: "topic_form", data: character.future_topics[0].id, local: true do |f| %>
                 <%= f.hidden_field :character_id, value: character.id %>
-                <%= f.text_area :future_topic, class: "topic_input" , disabled: true %>
-                <%= f.submit "更新" %>
+                <%= f.text_area :future_topic, class: "topic_input future_topic_input" , disabled: true %>
               <% end %>
             <% end %>
           </div>
