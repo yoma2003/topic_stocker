@@ -105,26 +105,42 @@
 .past_topic {
   width: 100%;
   height: 50%;
-  padding: 5px;
+  padding: 7px;
   border-bottom: 1px solid #4A154B;
-  position: relative;
-}
-
-.create_date {
-  font-size: 13px;
-  position: absolute;
-  top: 5px;
-  right: 7px;
 }
 
 .future_topic {
   width: 100%;
   height: 50%;
-  padding: 5px;
+  padding: 7px;
   border-top: 1px solid #4A154B;
 }
 
 .detail {
-  /* display: none; */
   margin-top: 30px;
+}
+
+.topic_form {
+  height: 100%;
+  position: relative;
+}
+
+.created_date {
+  width: 95px;
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.topic_input {
+  resize: none;
+  width: 81%;
+  height: 100%;
+  padding: 3px 5px;
+  font-size: 14px;
+}
+
+.topic_submit {
+  display: block;
 }

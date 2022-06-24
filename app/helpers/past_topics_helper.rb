@@ -1,0 +1,2 @@
+module PastTopicsHelper
+end
