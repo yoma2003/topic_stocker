@@ -107,14 +107,6 @@
   height: 50%;
   padding: 7px;
   border-bottom: 1px solid #4A154B;
-  position: relative;
-}
-
-.create_date {
-  font-size: 13px;
-  position: absolute;
-  top: 5px;
-  right: 10px;
 }
 
 .future_topic {
@@ -130,6 +122,15 @@
 
 .topic_form {
   height: 100%;
+  position: relative;
+}
+
+.created_date {
+  width: 95px;
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .topic_input {
