@@ -20,7 +20,9 @@ class CharactersController < ApplicationController
 
   def edit
     @character = Character.find(params[:id])
-    end
+    @latest_future_topic = @character.future_topics[0]
+    @past_topics = @character.past_topics.order(created_date: :DESC).order(id: :DESC)
+  end
 
   def update
     @character = Character.find(params[:id])
@@ -38,6 +40,9 @@ class CharactersController < ApplicationController
   end
 
   private
+  def character_params
+    params.require(:character).permit(:name, :image, :url, :describe).merge(user_id: current_user.id)
+  end
 
   def character_topic_params
     params.require(:character_topic).permit(:name, :image, :url, :describe, :past_topic, :created_date, :future_topic).merge(user_id: current_user.id)

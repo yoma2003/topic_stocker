@@ -33,3 +33,5 @@ const updateData = (topicInput, controller) => {
 };
 
 window.addEventListener("load", updateTopic);
+
+export { updateData };
