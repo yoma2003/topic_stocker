@@ -10,6 +10,8 @@ require("channels")
 require("edit-data")
 require("update-topic")
 require("editpage-new-topic")
+require("delete-topic")
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
