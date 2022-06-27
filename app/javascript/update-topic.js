@@ -1,6 +1,6 @@
 const updateTopic = () => {
   const pastTopicInputs = document.querySelectorAll(".past_topic_input");
-  const futureTopicInputs = document.querySelectorAll(".future_topic_input");
+  const futureTopicInputs = document.querySelectorAll(".future_topic_input"); //getElementByIdで取得したい
   pastTopicInputs.forEach(function(pastTopicInput){
     pastTopicInput.addEventListener("blur", function(e){
       updateData(pastTopicInput, "past_topics");

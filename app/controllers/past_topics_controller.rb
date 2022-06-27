@@ -9,6 +9,11 @@ class PastTopicsController < ApplicationController
     render json: { new_past_topic: new_past_topic }
   end
 
+  def destroy
+    delete_past_topic = PastTopic.find(params[:id])
+    delete_past_topic.destroy
+  end
+
   private
   
   def past_topic_params
