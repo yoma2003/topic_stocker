@@ -36,24 +36,24 @@ const newData = (csrfToken, characterId) => {
     `; // newTopic.id同じモノを繰り返しすぎ・・・
   const pastTopics = document.getElementById("past_topics");
   pastTopics.insertAdjacentHTML("afterbegin", html); // 新規フォームをHTMLに挿入
-  updateNewTopic(); //処理を外に出したい・・・（async/awaitあたり？）
+  updateNewTopic(newTopic.id); //処理を外に出したい・・・（async/awaitあたり？）
   deleteNewTopic(newTopic.id);
   };
 };
 
-const updateNewTopic = () => {
-  const newPastTopicInputs = document.querySelectorAll(".new_past_topic_input");
-
-  newPastTopicInputs.forEach(function(newPastTopicInput){
-    newPastTopicInput.addEventListener("blur", function(e){
+const updateNewTopic = (newTopicId) => {
+  const newPastTopicInput = document.getElementById(`new_past_topic_input_${newTopicId}`);
+  newPastTopicInput.addEventListener("blur", function(e){
+    updateData(newPastTopicInput, "past_topics");
+  });
+  newPastTopicInput.addEventListener("focus", function(){
+    console.log("OK");
+    window.addEventListener("beforeunload", function(e){
       updateData(newPastTopicInput, "past_topics");
     });
-    newPastTopicInput.addEventListener("focus", function(){
-      console.log("OK");
-      window.addEventListener("beforeunload", function(e){
-        updateData(newPastTopicInput, "past_topics");
-      });
-    });
+  });
+};
+
 const deleteNewTopic = (newTopicId) => {
   const csrfToken = document.querySelector("meta[name='csrf-token']").content;
   const delete_new_topic_btn = document.getElementById(`delete_new_topic_btn_${newTopicId}`);
