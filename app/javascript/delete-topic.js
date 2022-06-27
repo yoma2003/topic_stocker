@@ -4,7 +4,11 @@ const deleteTopic = () => {
   delete_topic_btns.forEach((delete_topic_btn) => {
     delete_topic_btn.addEventListener("click", function(){
       const topicId = this.getAttribute("data");
-      deleteData(csrfToken, topicId);
+      if (window.confirm(`話した事データ${topicId}（1件）を削除しますか？`)) {
+        deleteData(csrfToken, topicId);
+      } else {
+        return;
+      }
     });
   });
 };

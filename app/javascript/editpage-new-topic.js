@@ -59,7 +59,11 @@ const deleteNewTopic = (newTopicId) => {
   const delete_new_topic_btn = document.getElementById(`delete_new_topic_btn_${newTopicId}`);
   delete_new_topic_btn.addEventListener("click", function(){
     const topicId = this.getAttribute("data");
-    deleteData(csrfToken, topicId);
+    if (window.confirm(`話した事データ${topicId}（1件）を削除しますか？`)) {
+      deleteData(csrfToken, topicId);
+    } else {
+      return;
+    }
   });
 };
 
