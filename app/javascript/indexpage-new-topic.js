@@ -1,3 +1,5 @@
+import { updateData } from "./update-topic";
+
 const newTopic = () => {
   const csrfToken = document.querySelector("meta[name='csrf-token']").content;
   const newTopicButtons = document.querySelectorAll(".index_new_topic_btn");
@@ -34,7 +36,21 @@ const newData = (csrfToken, characterId) => {
       </form>            
     `; // newTopic.id同じモノを繰り返しすぎ・・・
     pastTopic.insertAdjacentHTML("afterbegin", html); // 新規フォームをHTMLに挿入
+    updateNewTopic(newTopic.id); //処理を外に出したい・・・（async/awaitあたり？）
   };
+};
+
+const updateNewTopic = (newTopicId) => {
+  const newPastTopicInput = document.getElementById(`new_past_topic_input_${newTopicId}`);
+  newPastTopicInput.addEventListener("blur", function(e){
+    updateData(newPastTopicInput, "past_topics");
+  });
+  newPastTopicInput.addEventListener("focus", function(){
+    console.log("OK");
+    window.addEventListener("beforeunload", function(e){ // 削除やnewの後に更新するとエラーが出やすい。恐らくnullになるから。
+      updateData(newPastTopicInput, "past_topics");
+    });
+  });
 };
 
 window.addEventListener("load", newTopic)
