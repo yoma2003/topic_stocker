@@ -1,7 +1,7 @@
 class CharactersController < ApplicationController
   before_action :authenticate_user!
   def index
-    @characters = Character.includes(:user)
+    @characters = Character.includes(:past_topics)
   end
 
   def new
