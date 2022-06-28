@@ -53,4 +53,4 @@ const updateNewTopic = (newTopicId) => {
   });
 };
 
-window.addEventListener("load", newTopic)
+window.addEventListener("load", newTopic);
