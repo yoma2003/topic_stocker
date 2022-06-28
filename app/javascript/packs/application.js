@@ -12,6 +12,7 @@ require("update-topic")
 require("editpage-new-topic")
 require("delete-topic")
 require("indexpage-new-topic")
+require("indexpage-delete-topic")
 
 
 
