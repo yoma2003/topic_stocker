@@ -35,8 +35,8 @@
         <div class="character_topic">
           <div class="future_topic">
             <% if character.future_topics %>
-              <% future_topic = character.future_topics[0] %>
-              <%= form_with model:future_topic, url: future_topic_path(future_topic), class: "topic_form", data: future_topic.id, local: true do |f| %>
+              <%# <% future_topic = character.future_topics[0] %>
+              <%= form_with model:character.future_topics[0], url: future_topic_path(character.future_topics[0]), class: "topic_form", data: character.future_topics[0].id, local: true do |f| %>
                 <%= f.hidden_field :character_id, value: character.id %>
                 <%= f.text_area :future_topic, class: "topic_input future_topic_input" , disabled: true %>
               <% end %>
@@ -44,8 +44,8 @@
           </div>
           <div class="past_topic" id="past_topic_<%= character.id %>">
             <% if character.past_topics %>
-              <% latest_past_topic = character.past_topics.order(created_date: :DESC).order(id: :DESC)[0] %>
-              <%= form_with model:latest_past_topic, url: past_topic_path(latest_past_topic), class: "topic_form", data: latest_past_topic.id, local: true do |f| %>
+              <%# <% latest_past_topic = character.past_topics.order(created_date: :DESC).order(id: :DESC)[0] %>
+              <%= form_with model:character.past_topics.order(created_date: :DESC).order(id: :DESC)[0], url: past_topic_path(character.past_topics.order(created_date: :DESC).order(id: :DESC)[0]), class: "topic_form", data: character.past_topics.order(created_date: :DESC).order(id: :DESC)[0].id, local: true do |f| %>
                 <%= f.hidden_field :character_id, value: character.id %>
                 <%= f.date_field :created_date, class: "created_date" %>
                 <%= f.text_area :past_topic, class: "topic_input past_topic_input", disabled: true %>
