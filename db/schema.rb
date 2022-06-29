@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 2022_06_29_031954) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "character_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "character_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_character_categories_on_category_id"
+    t.index ["character_id"], name: "index_character_categories_on_character_id"
+  end
+
   create_table "characters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "url"
@@ -81,6 +90,8 @@ ActiveRecord::Schema.define(version: 2022_06_29_031954) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "character_categories", "categories"
+  add_foreign_key "character_categories", "characters"
   add_foreign_key "characters", "users"
   add_foreign_key "future_topics", "characters"
   add_foreign_key "past_topics", "characters"
