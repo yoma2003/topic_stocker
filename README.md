@@ -15,11 +15,12 @@
 
 ## characters テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name     | string | null: false |
-| url      | string |             |
-| describe | text   |             |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| name     | string     | null: false                    |
+| url      | string     |                                |
+| describe | text       |                                |
+| user_id  | references | null: false, foreign_key: true |
 
 - image保存はActiveStorageを使用
 
