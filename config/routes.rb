@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :characters
   resources :past_topics, only: [:update, :create, :destroy]
   resources :future_topics, only: :update
-  resources :categories only: [:create, :update, :destroy]
+  resources :categories, only: [:create, :update, :destroy]
 end
