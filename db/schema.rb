@@ -55,8 +55,10 @@ ActiveRecord::Schema.define(version: 2022_06_29_031954) do
     t.string "name", null: false
     t.string "url"
     t.text "describe"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
   create_table "future_topics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -93,6 +95,7 @@ ActiveRecord::Schema.define(version: 2022_06_29_031954) do
   add_foreign_key "categories", "users"
   add_foreign_key "character_categories", "categories"
   add_foreign_key "character_categories", "characters"
+  add_foreign_key "characters", "users"
   add_foreign_key "future_topics", "characters"
   add_foreign_key "past_topics", "characters"
 end
