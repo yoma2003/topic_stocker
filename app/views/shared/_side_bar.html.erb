@@ -14,13 +14,13 @@
   </div>
   <div id="categories">
   </div>
-  <%# <% current_user.categories.each do |category| %>
-    <%# <div class="category"> %>
-      <%# <div class="category_name">
-        <%# <%= category.name %>
-      <%# </div> %>
-    <%# </div> %>
-  <%# <% end %>
+  <% @categories.each do |category| %>
+    <div class="category">
+      <div class="category_name">
+        <%= link_to category.name, category_path(category) %>
+      </div>
+    </div>
+  <% end %>
   <div id="new_category_form">
     <button type="button" id="new_category_btn">追加</button>
   </div>
