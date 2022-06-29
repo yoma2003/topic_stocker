@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "characters#index"
+  root to: "categories#index"
   resources :users, only: [:edit, :update]
+  resources :categories, only: [:show, :create, :update, :destroy]
   resources :characters
-  resources :past_topics, only: [:update, :create, :destroy]
   resources :future_topics, only: :update
-  resources :categories, only: [:create, :update, :destroy]
+  resources :past_topics, only: [:update, :create, :destroy]
 end
