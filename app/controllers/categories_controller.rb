@@ -1,6 +1,11 @@
 class CategoriesController < ApplicationController
   def create
-    @category = Category.new(category_params)
+    if @category = Category.create(category_params)
+      redirect_to root_path
+    else
+      @characters = Character.includes(:past_topics)
+      render template: characters/index
+    end
   end
 
   private
