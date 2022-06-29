@@ -10,8 +10,8 @@
 
 ### Association
 
-- has_many :categories, dependent: :destroy
 - has_many :characters, dependent: :destroy
+- has_many :categories, dependent: :destroy
 
 ## characters テーブル
 
