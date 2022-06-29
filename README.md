@@ -28,6 +28,7 @@
 - belongs_to :user 
 - has_many :past_topics, dependent: :destroy
 - has_many :future_topics, dependent: :destroy
+- has_many :character_categories
 - has_many :categories, through: :character_categories
 
 ## past_topics テーブル
@@ -76,4 +77,5 @@
 ### Association
 
 - belongs_to: user
+- has_many :character_categories
 - has_many: characters, through: :character_categories
