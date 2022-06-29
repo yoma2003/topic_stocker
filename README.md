@@ -11,6 +11,7 @@
 ### Association
 
 - has_many :categories, dependent: :destroy
+- has_many :characters, dependent: :destroy
 
 ## characters テーブル
 
@@ -24,6 +25,7 @@
 
 ### Association
 
+- belongs_to :user 
 - has_many :past_topics, dependent: :destroy
 - has_many :future_topics, dependent: :destroy
 - has_many :categories, through: :character_categories
