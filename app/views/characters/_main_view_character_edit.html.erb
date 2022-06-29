@@ -17,7 +17,7 @@
   <div class="main_contents_wrapper">
     <div class="edit_data">
       <%= form_with model: @character, local: true, class: "edit_profile_form" do |f|%>
-        <%= render "error_messages", model: f.object %>
+        <%= render "shared/error_messages", model: f.object %>
         <div class='field'>
           名前<br>
           <%= f.text_field :name, autofocus: true %>
