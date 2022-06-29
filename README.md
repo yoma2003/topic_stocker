@@ -67,10 +67,10 @@
 
 ## categories テーブル
 
-| Column   | Type   | Options      |
-| -------- | ------ | ------------ |
-| name     | string | null: false  |
-| describe | text   | null: false, |
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| name     | string | null: false |
+| describe | text   |             |
 
 ### Association
 
