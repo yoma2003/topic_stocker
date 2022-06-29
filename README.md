@@ -10,22 +10,26 @@
 
 ### Association
 
+- has_many :characters, dependent: :destroy
 - has_many :categories, dependent: :destroy
 
 ## characters テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name     | string | null: false |
-| url      | string |             |
-| describe | text   |             |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| name     | string     | null: false                    |
+| url      | string     |                                |
+| describe | text       |                                |
+| user_id  | references | null: false, foreign_key: true |
 
 - image保存はActiveStorageを使用
 
 ### Association
 
+- belongs_to :user 
 - has_many :past_topics, dependent: :destroy
 - has_many :future_topics, dependent: :destroy
+- has_many :character_categories
 - has_many :categories, through: :character_categories
 
 ## past_topics テーブル
@@ -74,4 +78,5 @@
 ### Association
 
 - belongs_to: user
+- has_many :character_categories
 - has_many: characters, through: :character_categories
