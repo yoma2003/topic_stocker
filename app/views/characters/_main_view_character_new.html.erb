@@ -26,7 +26,12 @@
       <%= f.file_field :image, id:"character_image" %>
     </div>
     <div class='category'>
-      カテゴリー選択
+      カテゴリー選択<br>
+        <% @categories.each do |category| %>
+          <input type="checkbox" name="character_topic[category_ids][]"  id="<%= category.id %>" value="<%= category.id %>" multiple>
+          <label for="<%= category.id %>"><%= category.name %></label>
+        <% end %>
+      </select>
     </div>
     <div class='field'>
       URL<br>
