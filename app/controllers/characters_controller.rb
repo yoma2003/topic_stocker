@@ -38,7 +38,7 @@ class CharactersController < ApplicationController
   private
   
   def character_params
-    params.require(:character).permit(:name, :image, :url, :describe).merge(user_id: current_user.id)
+    params.require(:character).permit(:name, :image, :url, :describe, category_ids: []).merge(user_id: current_user.id)
   end
 
   def character_topic_params
