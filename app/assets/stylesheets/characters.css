@@ -15,6 +15,10 @@
   color: #fff;
 }
 
+.side_bar a {
+  color: #fff;
+}
+
 /* サイドバー */
 /* サイドバートップ */
 
@@ -146,8 +150,27 @@
   display: block;
 }
 
+/* キャラクター登録ページ */
+.category_select_box {
+  width: 300px;
+  border: 1px solid #4A154B;
+  padding: 15px;
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+  background-color: #fff;
+}
 
-/* データ編集ページ */
+.visible {
+  display: block;
+}
+
+.check_btn {
+  display: inline-block;
+}
+
+
+/* キャラクター編集ページ */
 
 .edit_data {
   width: 1100px;
