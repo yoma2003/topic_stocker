@@ -28,6 +28,21 @@
         </div>
         <div class='category'>
           カテゴリー選択
+          <div class="affiliation_category">
+            カテゴリ：
+            <% @character.categories.each do |category| %>
+              <%= link_to category.name, category_path(category) %>
+            <% end %>
+          </div>
+          <button type="button" id="category_open_btn">カテゴリ選択</button>
+          <div class="category_select_box">
+            <% @categories.each do |category| %>
+              <div class="check_btn">
+                <input type="checkbox" name="character[category_ids][]" class="category_checkbox"id="<%= category.id %>" value="<%= category.id %>" multiple <%= "checked" if @character.category_ids.include?(category.id) %>>
+                <label for="<%= category.id %>"><%= category.name %></label>
+              </div>
+            <% end %>
+          </div>
         </div>
         <div class='field'>
           URL<br>
