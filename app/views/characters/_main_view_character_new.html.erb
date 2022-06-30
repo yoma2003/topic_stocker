@@ -26,16 +26,18 @@
       <%= f.file_field :image, id:"character_image" %>
     </div>
     <div class='category'>
-      <button type="button" id="category_open_btn">カテゴリー選択</button>
-        <div class="category_select_box">
-          <% @categories.each do |category| %>
-            <div class="check_btn">
-              <input type="checkbox" name="character_topic[category_ids][]"  id="<%= category.id %>" value="<%= category.id %>" multiple>
-              <label for="<%= category.id %>"><%= category.name %></label>
-            </div>
-          <% end %>
-        </div>
-      </select>
+      <div class="affiliation_category">
+        カテゴリ：
+      </div>
+      <button type="button" id="category_open_btn">カテゴリ選択</button>
+      <div class="category_select_box">
+        <% @categories.each do |category| %>
+          <div class="check_btn">
+            <input type="checkbox" name="character_topic[category_ids][]" class="category_checkbox" id="<%= category.id %>" value="<%= category.id %>" multiple>
+            <label for="<%= category.id %>"><%= category.name %></label>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class='field'>
       URL<br>
