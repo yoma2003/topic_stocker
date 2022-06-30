@@ -26,11 +26,15 @@
       <%= f.file_field :image, id:"character_image" %>
     </div>
     <div class='category'>
-      カテゴリー選択<br>
-        <% @categories.each do |category| %>
-          <input type="checkbox" name="character_topic[category_ids][]"  id="<%= category.id %>" value="<%= category.id %>" multiple>
-          <label for="<%= category.id %>"><%= category.name %></label>
-        <% end %>
+      <button type="button" id="category_open_btn">カテゴリー選択</button>
+        <div class="category_select_box">
+          <% @categories.each do |category| %>
+            <div class="check_btn">
+              <input type="checkbox" name="character_topic[category_ids][]"  id="<%= category.id %>" value="<%= category.id %>" multiple>
+              <label for="<%= category.id %>"><%= category.name %></label>
+            </div>
+          <% end %>
+        </div>
       </select>
     </div>
     <div class='field'>
@@ -47,7 +51,7 @@
     </div>
     <div class='field'>
       話した日<br>
-      <%= f.datetime_field :created_date %>
+      <%= f.date_field :created_date %>
     </div>
     <div class='field'>
       話したい事<br>
