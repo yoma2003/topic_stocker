@@ -38,7 +38,7 @@
           <div class="category_select_box">
             <% @categories.each do |category| %>
               <div class="check_btn">
-                <input type="checkbox" name="character[category_ids][]" class="category_checkbox"id="<%= category.id %>" value="<%= category.id %>" multiple <%= "checked" if @character.category_ids.include?(category.id) %>>
+                <input type="checkbox" name="character[category_ids][]" class="category_checkbox" id="<%= category.id %>" value="<%= category.id %>" multiple <%= "checked" if @character.category_ids.include?(category.id) %>>
                 <label for="<%= category.id %>"><%= category.name %></label>
               </div>
             <% end %>
