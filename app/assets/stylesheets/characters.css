@@ -199,3 +199,14 @@
 }
 
 
+/* カテゴリ編集ページ */
+
+.character_checkbox {
+  line-height: 50px;
+}
+
+.character_checkbox img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}

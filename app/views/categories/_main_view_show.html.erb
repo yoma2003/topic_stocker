@@ -1,11 +1,12 @@
 <div class="main_top">
   <div class="main_top_left">
     <div class="category_title">
-      <%= "会社" %>
+      <%= @category.name %>
     </div>
     <div class="category_describe">
-      〇〇会社の同僚。２０２０年４月より〜　URL：・・・
+      <%= @category.describe %>
     </div>
+    <%= link_to "カテゴリ編集", edit_category_path(@category) %>
   </div>
   <div class="main_top_right">
     <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
