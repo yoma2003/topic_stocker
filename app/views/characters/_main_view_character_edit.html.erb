@@ -55,7 +55,7 @@
         <div class='actions'>
           <%= f.submit "更新", class: 'btn'%>
         </div>
-        <%= link_to("データ削除", character_path(@character), method: :delete) %>
+        <%= link_to("データ削除", character_path(@character), method: :delete, data: {confirm: "「#{@character.name}」のデータを削除してもよろしいですか？"}) %>
       <% end %>
 
       <div class="edit_topic_form">
