@@ -8,6 +8,7 @@
         <%= f.text_field :describe %>
       </div>
       <%= f.submit "更新" %>
+      <%= link_to 'カテゴリ削除', category_path(@category), method: :delete, data: {confirm: "#{@category.name} カテゴリを削除してもよろしいですか？"} %>
     </div>
     <div class="main_top_right">
       <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
