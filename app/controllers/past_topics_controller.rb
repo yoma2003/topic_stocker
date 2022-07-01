@@ -13,9 +13,11 @@ class PastTopicsController < ApplicationController
     delete_past_topic = PastTopic.find(params[:id])
     delete_past_topic.destroy
 
-    character = Character.find(character_id_params)
-    latest_past_topic = character.past_topics.order(created_date: :DESC).order(id: :DESC)[0]
-    render json: { latest_past_topic: latest_past_topic }
+    if params[:character_id] #indexpage-delete-topic.jsから来たリクエストの処理
+      character = Character.find(character_id_params)
+      latest_past_topic = character.past_topics.order(created_date: :DESC).order(id: :DESC)[0]
+      render json: { latest_past_topic: latest_past_topic }
+    end
   end
 
   private
