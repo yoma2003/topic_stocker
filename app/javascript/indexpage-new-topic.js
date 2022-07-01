@@ -1,4 +1,5 @@
 import { updateData } from "./update-topic";
+import { today } from "./today";
 
 const newTopic = () => {
   const csrfToken = document.querySelector("meta[name='csrf-token']").content;
@@ -14,7 +15,7 @@ const newTopic = () => {
 const newData = (csrfToken, characterId) => {
   const formData = new FormData();
   formData.set("authenticity_token", `${csrfToken}`);
-  formData.set("past_topic[created_date]", "2022-06-24");
+  formData.set("past_topic[created_date]", `${today()}`);
   formData.set("past_topic[past_topic]","");
   formData.set("past_topic[character_id]",`${characterId}`);
   const XHR = new XMLHttpRequest();
