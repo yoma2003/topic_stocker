@@ -4,6 +4,11 @@ class CategoriesController < ApplicationController
     @characters = current_user.characters
   end
 
+  def new
+    @characters = current_user.characters
+    @category = Category.new
+  end
+
   def create
     @characters = current_user.characters
     if @category = Category.create(category_params)
