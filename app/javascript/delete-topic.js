@@ -21,7 +21,6 @@ const deleteData = (csrfToken, topicId) => {
   XHR.open("DELETE", `/past_topics/${topicId}`, true);
   XHR.send(formData); // 削除リクエストの送信
   XHR.onload = () => {
-    console.log(deleteTopicElement);
     deleteTopicElement.remove();
   };
 };
