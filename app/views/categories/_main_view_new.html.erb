@@ -1,0 +1,39 @@
+<%= form_with model: @category, local: true do |f| %>
+  <div class="main_top">
+    <div class="main_top_left">
+      <div class="category_title">
+        <%= f.text_field :name %>
+      </div>
+      <div class="category_describe">
+        <%= f.text_field :describe %>
+      </div>
+      <%= f.submit "登録" %>
+    </div>
+    <div class="main_top_right">
+      <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
+      <%= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
+      <%= current_user.name %>
+    </div>
+  </div>
+
+  <div class="main_contents">
+    <div class="main_contents_wrapper">
+      <div class="character_list">
+        <% @characters.each do |character| %>
+          <div class="character_checkbox">
+            <input type="checkbox" name="category[character_ids][]" id="<%= character.id %>" value="<%= character.id %>" multiple>
+            <% if character.image.attached? %>
+              <%= image_tag character.image %>
+            <% else %>
+              <%= image_tag "no_image.png" %>
+            <% end %>
+            <label for="<%= character.id %>">
+              <%= character.name %>
+            </label>
+          </div>
+        <% end %>
+        <%= f.submit "登録" %>
+      </div>
+    </div>
+  </div>
+<% end %>
