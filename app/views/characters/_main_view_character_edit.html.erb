@@ -19,7 +19,11 @@
       <%= form_with model: @character, local: true, class: "edit_profile_form" do |f|%>
         <%= render "shared/error_messages", model: f.object %>
         <div class='image'>
-          <%= image_tag @character.image, id: "selected_character_image" %>
+          <% if @character.image.attached? %>
+            <%= image_tag @character.image, id: "selected_character_image" %>
+          <% else %>
+            <%= image_tag "no_image.png", id: "selected_character_image" %>
+          <% end %>
           <%= f.file_field :image, id:"character_image" %>
         </div>
         <div class='field'>

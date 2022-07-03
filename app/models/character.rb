@@ -6,4 +6,6 @@ class Character < ApplicationRecord
   has_many :future_topics, dependent: :destroy
   has_many :character_categories, dependent: :destroy
   has_many :categories, through: :character_categories
+
+  validates :name, presence: true
 end
