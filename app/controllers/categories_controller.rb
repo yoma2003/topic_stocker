@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :set_categories
 
   def index
     @characters = current_user.characters
@@ -48,5 +49,9 @@ class CategoriesController < ApplicationController
   
   def category_params
     params.require(:category).permit(:name, :describe, character_ids: []).merge(user_id: current_user.id)
+  end
+
+  def set_categories
+    @categories = current_user.categories
   end
 end

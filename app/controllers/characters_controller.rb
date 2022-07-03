@@ -1,5 +1,6 @@
 class CharactersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_categories
+
   def new
     @character_topic = CharacterTopic.new
   end
@@ -45,5 +46,9 @@ class CharactersController < ApplicationController
 
   def character_topic_params
     params.require(:character_topic).permit(:name, :image, :url, :describe, :past_topic, :created_date, :future_topic, category_ids: []).merge(user_id: current_user.id)
+  end
+
+  def set_categories
+    @categories = current_user.categories
   end
 end
