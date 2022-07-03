@@ -2,10 +2,7 @@ class CharacterTopic
   include ActiveModel::Model
   attr_accessor :name, :image, :url, :describe, :past_topic, :created_date, :future_topic, :user_id, :category_ids
 
-  with_options presence: true do
-    validates :name
-    validates :created_date
-  end
+  validates :name, presence: true
 
   def save
     character = Character.create(name: name, url: url, describe: describe, image: image, user_id: user_id, category_ids: category_ids)
