@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+10.times do |n| 
+  character = Character.new(
+    name: "テスト太郎#{n + 1}",
+    describe: "テスト用のキャラクターデータです",
+    user_id: 2,
+  )
+  character.image.attach(io: File.open("./app/assets/images/test_image#{n + 1}.jpeg"), filename: "test_image#{n + 1}.jpeg")  
+  character.future_topics.build(
+    future_topic: "テスト用のフューチャートピックです"
+  )
+  character.past_topics.build(
+    past_topic: "テスト用のパストトピックです",
+    created_date: "2022-07-01"
+  )
+  character.save
+end
