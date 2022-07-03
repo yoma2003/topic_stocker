@@ -25,6 +25,8 @@ class CharactersController < ApplicationController
     if @character.update(character_params)
       redirect_to root_path
     else
+      @latest_future_topic = @character.future_topics[0]
+      @past_topics = @character.past_topics.order(created_date: :DESC).order(id: :DESC)
       render :edit
     end
   end
