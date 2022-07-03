@@ -172,11 +172,18 @@
 
 /* キャラクター編集ページ */
 
-.edit_data {
+.edit_character {
   width: 1100px;
   border: 2px solid #4A154B;
   border-radius: 10px;
   display: flex;
+}
+
+#selected_character_image {
+  width: 160px;
+  height: 160px;
+  object-fit:cover;
+  border-radius: 50%;
 }
 
 .edit_profile_form {

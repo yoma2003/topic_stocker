@@ -1,7 +1,7 @@
 <div class="main_top">
   <div class="main_top_left">
     <div class="category_title">
-      新規登録
+      データ登録
     </div>
     <div class="category_describe">
       人のデータを登録してください。人のデータを登録してください。人のデータを登録してください。
@@ -13,54 +13,59 @@
     <%= current_user.name %>
   </div>
 </div>
-
-<div class="new_character">
-  <%= form_with model: @character_topic, url: characters_path,local: true do |f|%>
-    <%= render "shared/error_messages", model: f.object %>
-    <div class='field'>
-      名前<br>
-      <%= f.text_field :name, autofocus: true %>
-    </div>
-    <div class='image'>
-      画像
-      <%= f.file_field :image, id:"character_image" %>
-    </div>
-    <div class='category'>
-      <div class="affiliation_category">
-        カテゴリ：
-      </div>
-      <button type="button" id="category_open_btn">カテゴリ選択</button>
-      <div class="category_select_box">
-        <% @categories.each do |category| %>
-          <div class="check_btn">
-            <input type="checkbox" name="character_topic[category_ids][]" class="category_checkbox" id="<%= category.id %>" value="<%= category.id %>" multiple>
-            <label for="<%= category.id %>"><%= category.name %></label>
+<div class="main_contents">
+  <div class="main_contents_wrapper">
+    <%= form_with model: @character_topic, url: characters_path, class: "edit_character", local: true do |f| %>
+      <div class="edit_profile_form">
+        <%= render "shared/error_messages", model: f.object %>
+        <div class='image'>
+          <%= image_tag "no_image.png", id: "selected_character_image" %>
+          <%= f.file_field :image, id:"character_image" %>
+        </div>
+        <div class='field'>
+          名前<br>
+          <%= f.text_field :name, autofocus: true %>
+        </div>
+        <div class='category'>
+          <div class="affiliation_category">
+            カテゴリ：
           </div>
-        <% end %>
+          <button type="button" id="category_open_btn">カテゴリ選択</button>
+          <div class="category_select_box">
+            <% @categories.each do |category| %>
+              <div class="check_btn">
+                <input type="checkbox" name="character_topic[category_ids][]" class="category_checkbox" id="<%= category.id %>" value="<%= category.id %>" multiple>
+                <label for="<%= category.id %>"><%= category.name %></label>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class='field'>
+          URL<br>
+          <%= f.url_field :url %>
+        </div>
+        <div class='field'>
+          特徴、プロフィール<br>
+          <%= f.text_area :describe %>
+        </div>
+        <div class='actions'>
+          <%= f.submit "登録", class: 'btn'%>
+        </div>
       </div>
-    </div>
-    <div class='field'>
-      URL<br>
-      <%= f.url_field :url %>
-    </div>
-    <div class='field'>
-      特徴、プロフィール<br>
-      <%= f.text_area :describe %>
-    </div>
-    <div class='field'>
-      話した事<br>
-      <%= f.text_area :past_topic %>
-    </div>
-    <div class='field'>
-      話した日<br>
-      <%= f.date_field :created_date %>
-    </div>
-    <div class='field'>
-      話したい事<br>
-      <%= f.text_area :future_topic %>
-    </div>
-    <div class='actions'>
-      <%= f.submit "登録", class: 'btn'%>
-    </div>
-  <% end %>
+
+      <div class="edit_topic_form">
+        <div class="edit_future_topic">
+          話したい事<br>
+          <%= f.text_area :future_topic, class: "topic_input future_topic_input" %>
+        </div>
+        <div class="edit_past_topic">
+          話した事<br>
+          <div id="past_topics">
+            <%= f.date_field :created_date %>              
+            <%= f.text_area :past_topic, class: "past_topic_input" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
