@@ -14,6 +14,7 @@ require("delete-topic")
 require("indexpage-new-topic")
 require("indexpage-delete-topic")
 require("category-select")
+require("view-selected-image.js")
 
 
 
