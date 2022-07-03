@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2022_06_29_031954) do
 
   create_table "past_topics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "past_topic"
-    t.date "created_date", null: false
+    t.date "created_date"
     t.bigint "character_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
