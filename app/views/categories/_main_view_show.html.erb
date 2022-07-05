@@ -50,11 +50,11 @@
               <% latest_past_topic = character.past_topics.order(created_date: :DESC).order(id: :DESC)[0] %>
               <%= form_with model:latest_past_topic, url: past_topic_path(latest_past_topic), class: "topic_form", data: latest_past_topic.id, local: true do |f| %>
                 <%= f.hidden_field :character_id, value: character.id %>
-                <%= f.date_field :created_date, class: "created_date" %>
-                <%= f.text_area :past_topic, class: "topic_input past_topic_input", disabled: true %>
+                <%= f.date_field :created_date, class: "created_date past_topic_input past_topic_create_date", disabled: true %>
+                <%= f.text_area :past_topic, class: "topic_input past_topic_input past_topic_text", disabled: true %>
               <% end %>
             <% end %>
-            <button type="button" class="index_new_topic_btn" data-character_id="<%= character.id %>">new</button>
+            <button type="button" class="index_new_topic_btn" data-character_id="<%= character.id %>">新規</button>
             <button type="button" class="index_delete_topic_btn" data-character_id="<%= character.id %>">削除</button>
           </div>
         </div>
