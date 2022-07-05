@@ -36,8 +36,8 @@ const deleteData = (csrfToken, characterId, topicId) => {
       <form class="topic_form" data="${latestTopic.id}" action="/past_topics/${latestTopic.id}" accept-charset="UTF-8" method="post">
         <input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="${csrfToken}">
         <input value="${characterId}" type="hidden" name="past_topic[character_id]" id="past_topic_character_id">
-        <input class="created_date" value="${latestTopic.created_date}" type="date" name="past_topic[created_date]" id="past_topic_created_date">
-        <textarea class="topic_input past_topic_input" name="past_topic[past_topic]" id="latest_past_topic_input_${latestTopic.id}">${latestTopic.past_topic}</textarea>
+        <input class="created_date past_topic_input past_topic_create_date" value="${latestTopic.created_date}" type="date" name="past_topic[created_date]" id="past_topic_created_date">
+        <textarea class="topic_input past_topic_input past_topic_text" name="past_topic[past_topic]" id="latest_past_topic_input_${latestTopic.id}">${latestTopic.past_topic}</textarea>
       </form>            
     `; // newTopic.id同じモノを繰り返しすぎ・・・
     pastTopic.insertAdjacentHTML("afterbegin", html); // 新規フォームをHTMLに挿入
