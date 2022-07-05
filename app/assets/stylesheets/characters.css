@@ -119,6 +119,7 @@
   height: 50%;
   padding: 7px;
   border-top: 1px solid #4A154B;
+  position: relative;
 }
 
 .detail {
@@ -146,8 +147,16 @@
   font-size: 14px;
 }
 
-.topic_submit {
-  display: block;
+.index_new_topic_btn {
+  position: absolute;
+  top: 33px;
+  right: 7px;
+}
+
+.index_delete_topic_btn {
+  position: absolute;
+  top: 56px;
+  right: 7px;
 }
 
 /* キャラクター登録ページ */
@@ -204,7 +213,6 @@
 .edit_past_topic {
   padding: 30px;
 }
-
 
 /* カテゴリ編集ページ */
 

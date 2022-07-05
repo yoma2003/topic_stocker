@@ -1,12 +1,9 @@
 const selectCharacter = () => {
   let isSelect = false;
   window.addEventListener("click", function(e) {
-    const selectedCharacter = document.querySelector(".select")
-
     if (isSelect == true && e.target.closest('.character') == null) { // キャラクター以外をクリックしてselectが無い
-      selectedCharacter.classList.remove("select");
-      selectedCharacter.querySelector(".past_topic_input").setAttribute("disabled", true);
-      selectedCharacter.querySelector(".future_topic_input").setAttribute("disabled", true);
+      const selectedCharacter = document.querySelector(".select");
+      closeCharacterBox(selectedCharacter);
       isSelect = false;
     }
   });
@@ -14,27 +11,36 @@ const selectCharacter = () => {
   const characters = document.querySelectorAll(".character");
   characters.forEach(function(character) {    
     character.addEventListener("click", function(e) {
-      const pastTopicInput = this.querySelector(".past_topic_input");
-      const futureTopicInput = this.querySelector(".future_topic_input");
-      const selectedCharacter = document.querySelector(".select")
-
       if (this.classList.contains("select") == true) { // selectされているキャラクター
         return;
       } else if (isSelect == true) { // selectされていないキャラクター
-        selectedCharacter.classList.remove("select");
-        selectedCharacter.querySelector(".past_topic_input").setAttribute("disabled", true);
-        selectedCharacter.querySelector(".future_topic_input").setAttribute("disabled", true);
-        this.classList.add("select");
-        pastTopicInput.removeAttribute("disabled");
-        futureTopicInput.removeAttribute("disabled");
+        const selectedCharacter = document.querySelector(".select");
+        closeCharacterBox(selectedCharacter);
+        openCharacterBox(this);
       } else { // selectがついていない
-        this.classList.add("select");
-        pastTopicInput.removeAttribute("disabled");
-        futureTopicInput.removeAttribute("disabled");
+        openCharacterBox(this);
       }
       isSelect = true;
     });
   });
 };
+
+const closeCharacterBox = (character) => {
+  character.classList.remove("select");
+  character.querySelector(".past_topic_text").setAttribute("disabled", true);
+  character.querySelector(".past_topic_create_date").setAttribute("disabled", true);
+  character.querySelector(".index_new_topic_btn").setAttribute("disabled", true);
+  character.querySelector(".index_delete_topic_btn").setAttribute("disabled", true);
+  character.querySelector(".future_topic_input").setAttribute("disabled", true);
+}
+
+const openCharacterBox = (character) => {
+  character.classList.add("select");
+  character.querySelector(".past_topic_text").removeAttribute("disabled");
+  character.querySelector(".past_topic_create_date").removeAttribute("disabled");
+  character.querySelector(".index_new_topic_btn").removeAttribute("disabled");
+  character.querySelector(".index_delete_topic_btn").removeAttribute("disabled");
+  character.querySelector(".future_topic_input").removeAttribute("disabled");
+}
 
 window.addEventListener("load", selectCharacter);

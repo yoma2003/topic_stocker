@@ -1,4 +1,4 @@
-import { updateData } from "./update-topic";
+import { updateData } from "./update-data";
 import { today } from "./today";
 
 const newTopic = () => {
@@ -32,8 +32,8 @@ const newData = (csrfToken, characterId) => {
       <form class="topic_form" data="${newTopic.id}" action="/past_topics/${newTopic.id}" accept-charset="UTF-8" method="post">
         <input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="${csrfToken}">
         <input value="${characterId}" type="hidden" name="past_topic[character_id]" id="past_topic_character_id">
-        <input class="created_date" value="${newTopic.created_date}" type="date" name="past_topic[created_date]" id="past_topic_created_date">
-        <textarea class="topic_input past_topic_input" name="past_topic[past_topic]" id="new_past_topic_input_${newTopic.id}"></textarea>
+        <input class="created_date past_topic_input past_topic_create_date" value="${newTopic.created_date}" type="date" name="past_topic[created_date]" id="past_topic_created_date">
+        <textarea class="topic_input past_topic_input past_topic_text" name="past_topic[past_topic]" id="new_past_topic_input_${newTopic.id}"></textarea>
       </form>            
     `; // newTopic.id同じモノを繰り返しすぎ・・・
     pastTopic.insertAdjacentHTML("afterbegin", html); // 新規フォームをHTMLに挿入
