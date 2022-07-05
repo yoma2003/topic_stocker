@@ -1,4 +1,4 @@
-import { updateData } from "./update-topic";
+import { updateData } from "./update-data";
 import { today } from "./today";
 
 const newTopic = () => {

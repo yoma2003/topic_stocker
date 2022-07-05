@@ -1,5 +1,5 @@
-import { updateData } from "./update-topic";
-import { deleteData } from "./delete-topic";
+import { updateData } from "./update-data";
+import { deleteData } from "./delete-data";
 import { today } from "./today";
 
 const newTopic = () => {

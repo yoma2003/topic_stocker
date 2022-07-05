@@ -1,4 +1,4 @@
-import { updateData } from "./update-topic";
+import { updateData } from "./update-data";
 
 const deleteTopic = () => {
   const csrfToken = document.querySelector("meta[name='csrf-token']").content;
