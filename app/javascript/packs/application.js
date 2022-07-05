@@ -7,16 +7,6 @@ require("@rails/ujs").start()
 // require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("select-character")
-require("update-topic")
-require("editpage-new-topic")
-require("delete-topic")
-require("indexpage-new-topic")
-require("indexpage-delete-topic")
-require("select-category")
-require("view-selected-image")
-
-
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
