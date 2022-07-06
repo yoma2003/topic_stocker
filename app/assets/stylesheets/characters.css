@@ -24,6 +24,13 @@
 
 .side_bar_top {
   height: 100px;
+  width: 100%;
+}
+
+.main_logo {
+  margin: 20px auto;
+  width: 80%;
+  font-size: 36px;
 }
 
 /* サイドバーコンテンツ */
@@ -44,16 +51,36 @@
   justify-content: space-between;
 }
 
+.sort_menu {
+  padding: 8px 20px;
+  background-color: rgb(243, 243, 243);
+}
+
+.sort_btn {
+  display: inline-block;
+  background-color: #c898c9;
+  padding: 3px 10px;
+  color: #fff;
+}
+
+.active {
+  background-color: #4A154B;
+}
+
 .main_top a {
   color: #fff;
 }
 
+
+
 /* メインコンテンツ */
 .main_contents {
-  padding: 50px 0;
-  height: calc(100vh - 100px);
+  padding: 20px 0 50px;
+  height: calc(100vh - 146px);
   overflow: auto;
+  position: relative;
 }
+
 
 .main_contents_wrapper {
   margin: 0 auto;
