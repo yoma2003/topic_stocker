@@ -2,11 +2,17 @@ class CategoriesController < ApplicationController
   before_action :set_categories
 
   def index
-    @characters = current_user.characters
+    # @characters = current_user.characters
+    
+    if params[:sort] == "updated_at"
+      @characters = Character.order_updated_at(current_user.id) #updated_at順
+    else
+      @characters = Character.order_past_topic(current_user.id) #past_topic順（デフォルト）
+    end
   end
 
   def new
-    @characters = current_user.characters
+    @characters = Character.where(user_id: current_user.id).order(name: :asc)
     @category = Category.new
   end
 
@@ -22,12 +28,18 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @characters = @category.characters
+    # @characters = @category.characters
+
+    if params[:sort] == "updated_at"
+      @characters = Character.category_order_updated_at(@category.id) #updated_at順
+    else
+      @characters = Character.category_order_past_topic(@category.id) #past_topic順（デフォルト）
+    end
   end
 
   def edit
     @category = Category.find(params[:id])
-    @characters = current_user.characters
+    @characters = Character.where(user_id: current_user.id).order(name: :asc)
   end
 
   def update
