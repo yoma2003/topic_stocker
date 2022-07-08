@@ -5,4 +5,10 @@ FactoryBot.define do
     password              { Faker::Internet.password(min_length: 6) }
     password_confirmation { password }
   end
+
+  trait :categories do
+    after(:create) do |user|
+      user.categories = create_list(:category, 5, user: user)
+    end
+  end
 end
