@@ -10,21 +10,12 @@ class Character < ApplicationRecord
   validates :name, presence: true
 
   scope :order_updated_at, -> (current_user_id) {where(user_id: current_user_id).order(updated_at: :desc)}
-  scope :order_past_topic, -> (current_user_id) {find_by_sql(
-    ["SELECT ch.*, MAX(p.created_date) FROM characters ch
-    INNER JOIN past_topics p ON p.character_id = ch.id
-    WHERE user_id = ?
-    GROUP BY p.character_id
-    ORDER BY max(p.created_date) DESC", current_user_id]
-  )}
+  scope :order_past_topic, -> (current_user_id) {
+    left_joins(:past_topics).group(:id).order("MAX(past_topics.created_date) DESC").where(user_id: current_user_id)
+  }
 
   scope :category_order_updated_at, -> (category_id) {joins(:character_categories).where(character_categories: { category_id: category_id }).order(updated_at: :desc)}
-  scope :category_order_past_topic, -> (category_id) {find_by_sql(
-    ["SELECT ch.*, MAX(p.created_date) FROM characters ch
-    INNER JOIN past_topics p ON p.character_id = ch.id
-    INNER JOIN character_categories ca ON ca.character_id = ch.id
-    WHERE ca.category_id = ?
-    GROUP BY p.character_id
-    ORDER BY max(p.created_date) DESC", category_id]
-  )}
+  scope :category_order_past_topic, -> (category_id) {
+    left_joins(:past_topics, :character_categories).group(:id).order("MAX(past_topics.created_date) DESC").where(character_categories: { category_id: category_id })
+  }
 end
