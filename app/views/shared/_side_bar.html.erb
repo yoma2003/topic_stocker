@@ -1,27 +1,28 @@
 <div class="side_bar_top">
-  <div class="main_logo">
-    Topic Stocker
+  <div class="main_logo_wrapper">
+    <%= image_tag "main_logo.png" %>
   </div>
 </div>
 
-<div class="side_bar_categories">
-  <div>
-    <%= link_to("新規登録", new_character_path) %>
+<div class="side_bar_contents">
+
+  <div class="categories">
+    <div class="new_character_btn_wrapper">
+      <%= link_to "新規データ登録", new_character_path, id: "new_character_btn" %>
+    </div>
+    <%= link_to "全てのデータ", root_path, id: "category_all" %>
+    <% @categories.each do |category| %>
+      <div class="category">
+        <%= link_to category.name, category_path(category), class: "category_btn" %>
+      </div>
+    <% end %>
+    <%= link_to "カテゴリ追加", new_category_path, id: "new_category_btn", class: "category_btn" %>
   </div>
 
-  <div>
-  <%= link_to "全てのデータ", root_path %>
-  </div>
-  <div id="categories">
-  </div>
-  <% @categories.each do |category| %>
-    <div class="category">
-      <div class="category_name">
-        <%= link_to category.name, category_path(category) %>
-      </div>
+  <div class="footer">
+    <%= link_to "フィードバックを送信", "#", class: "feedback_link" %>
+    <div class="copy_right">
+      ©YM Works 2022
     </div>
-  <% end %>
-  <div id="new_category_form">
-    <%= link_to "カテゴリ追加", new_category_path %>
   </div>
 </div>
