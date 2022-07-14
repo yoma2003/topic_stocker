@@ -32,6 +32,8 @@ const closeCharacterBox = (character) => {
   character.querySelector(".index_new_topic_btn").setAttribute("disabled", true);
   character.querySelector(".index_delete_topic_btn").setAttribute("disabled", true);
   character.querySelector(".future_topic_input").setAttribute("disabled", true);
+  character.querySelector(".index_new_topic_btn").classList.remove("visible");
+  character.querySelector(".index_delete_topic_btn").classList.remove("visible");
 }
 
 const openCharacterBox = (character) => {
@@ -41,6 +43,8 @@ const openCharacterBox = (character) => {
   character.querySelector(".index_new_topic_btn").removeAttribute("disabled");
   character.querySelector(".index_delete_topic_btn").removeAttribute("disabled");
   character.querySelector(".future_topic_input").removeAttribute("disabled");
+  character.querySelector(".index_new_topic_btn").classList.add("visible");
+  character.querySelector(".index_delete_topic_btn").classList.add("visible");
 }
 
 window.addEventListener("load", selectCharacter);

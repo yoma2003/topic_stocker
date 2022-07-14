@@ -319,8 +319,9 @@
   font-weight: bold;
   color: #770099;
   position: absolute;
-  top: 3px;
-  right: 12px;
+  top: 15px;
+  right: 31px;
+  z-index: 1;
 }
 
 .past_topic {
@@ -386,23 +387,31 @@
   font-weight: bold;
   color: #770099;
   position: absolute;
-  bottom: 3px;
-  right: 12px;
-}
-
-.topic_btns {
-  display: none;
-  position: absolute;
-  bottom: 42px;
-  right: 35px;
+  bottom: 15px;
+  right: 31px;
+  z-index: 1;
 }
 
 .topic_btn {
-  display: block;
+  display: none;
+}
+
+.topic_btn_image {
+  width: 30px;
+  height: 30px;
+}
+
+.index_new_topic_btn {
+  position: absolute;
+  bottom: 70px;
+  right: 28px;
 }
 
 .index_delete_topic_btn {
-  margin-top: 10px;
+  position: absolute;
+  bottom: 33px;
+  right: 28px;
+  /* margin-top: 10px; */
 }
 
 /* カテゴリページ */
@@ -710,15 +719,16 @@
 
 #new_topic_btn {
   position: absolute;
-  top: -20px;
-  left: 0;
+  top: 75px;
+  right: 8px;
+  z-index: 1;
 }
 
 .delete_topic_btn,
 .delete_new_topic_btn {
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: 3px;
+  right: 8px;
 }
 
 .edit_character_topic_past_topic {
