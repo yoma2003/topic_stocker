@@ -8,15 +8,23 @@
 
   <div class="categories">
     <div class="new_character_btn_wrapper">
-      <%= link_to "新規データ登録", new_character_path, id: "new_character_btn" %>
+      <%= link_to new_character_path, id: "new_character_btn" do %>
+        <i class="fa-solid fa-user-plus fa-lg"></i>新規データ登録
+      <% end %>
     </div>
-    <%= link_to "全てのデータ", root_path, id: "category_all" %>
+    <%= link_to root_path, id: "category_all" do %>
+      <i class="fa-solid fa-house fa-lg"></i>全てのデータ
+    <% end %>
     <% @categories.each do |category| %>
       <div class="category">
-        <%= link_to category.name, category_path(category), class: "category_btn" %>
+        <%= link_to category_path(category), class: "category_btn" do %>
+          <i class="fa-solid fa-user-group"></i><%= category.name %>
+        <% end %>
       </div>
     <% end %>
-    <%= link_to "カテゴリ追加", new_category_path, id: "new_category_btn", class: "category_btn" %>
+    <%= link_to new_category_path, id: "new_category_btn", class: "category_btn" do %>
+      <i class="fa-solid fa-plus fa-lg"></i>カテゴリ追加
+    <% end %>
   </div>
 
   <div class="footer">
