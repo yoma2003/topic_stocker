@@ -1,89 +1,113 @@
-<%= javascript_pack_tag "delete-topic", "editpage-new-topic", "select-category", "view-selected-image" %>
-
 <div class="main_top">
-  <div class="main_top_left">
-    <div class="category_title">
-      データ編集
+  <div class="main_top_data">
+    <div class="top_title">
+      詳細データ編集
     </div>
-    <div class="category_describe">
-      人のデータを編集してください。人のデータを編集してください。人のデータを編集してください。人のデータを編集してください。
+    <div class="top_subtitle">
+      詳細データの編集が行えます。
     </div>
   </div>
-  <div class="main_top_right">
-    <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
-    <%= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
-    <%= current_user.name %>
+  <div class="main_top_user_data">
+    <%#= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
+    <%#= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
+    <div class="current_user_name">
+      <%= current_user.name %>
+    </div>
+    <%= image_tag "no_image.png", class: "current_user_image" %>
   </div>
 </div>
+
+<div class="main_top_sub">
+  <div class="main_top_sub_left">
+    <%= link_to "入力ヘルプ", "#", class: "sort_btn" %>
+  </div>
+  <div class="main_top_sub_right">
+  </div>
+</div>
+
 <div class="main_contents">
   <div class="main_contents_wrapper">
-    <div class="edit_character">
+    
+    <div class="edit_character_form">
       <%= form_with model: @character, local: true, class: "edit_profile_form" do |f|%>
-        <%= render "shared/error_messages", model: f.object %>
-        <div class='image'>
-          <% if @character.image.attached? %>
-            <%= image_tag @character.image, id: "selected_character_image" %>
-          <% else %>
-            <%= image_tag "no_image.png", id: "selected_character_image" %>
-          <% end %>
-          <%= f.file_field :image, id:"character_image" %>
-        </div>
-        <div class='field'>
-          名前<br>
-          <%= f.text_field :name, autofocus: true %>
-        </div>
-        <div class='category'>
-          カテゴリー選択
-          <div class="affiliation_category">
-            カテゴリ：
-            <% @character.categories.each do |category| %>
-              <%= link_to category.name, category_path(category) %>
+        <div class="edit_profile_form_left">
+          <%= render "shared/error_messages", model: f.object %>
+          <div class='character_image_field'>
+            <% if @character.image.attached? %>
+              <%= image_tag @character.image, id: "selected_character_image" %>
+            <% else %>
+              <%= image_tag "no_image.png", id: "selected_character_image" %>
             <% end %>
+            <%= f.file_field :image, id:"edit_character_image" %>
           </div>
-          <button type="button" id="category_open_btn">カテゴリ選択</button>
-          <div class="category_select_box">
-            <% @categories.each do |category| %>
-              <div class="check_btn">
-                <input type="checkbox" name="character[category_ids][]" class="category_checkbox" id="<%= category.id %>" value="<%= category.id %>" multiple <%= "checked" if @character.category_ids.include?(category.id) %>>
-                <label for="<%= category.id %>"><%= category.name %></label>
-              </div>
-            <% end %>
+          <div class='character_name_field'>
+            <p>Name<span>※</span></p>
+            <%= f.text_field :name, autofocus: true, class: "edit_character_name" %>
+          </div>
+          <div class='character_submit_field'>
+            <%= f.submit "更新", class: 'character_submit_btn character_update_btn' %>
+            <%= link_to("削除", character_path(@character), method: :delete, data: {confirm: "「#{@character.name}」のデータを削除してもよろしいですか？"}, class: "character_submit_btn character_delete_btn") %>
           </div>
         </div>
-        <div class='field'>
-          URL<br>
-          <%= f.text_field :url %>
+
+        <div class="edit_profile_form_right">
+          <div class='character_category_field'>
+            <p>Category</p>
+            <div class="affiliation_category">
+              <% @character.categories.each do |category| %>
+                <%= link_to category.name, category_path(category) %>
+              <% end %>
+            </div>
+            <button type="button" id="category_list_open_btn">カテゴリ選択</button>
+            <div class="category_select_box">
+              <% @categories.each do |category| %>
+                <div class="check_btn">
+                  <input type="checkbox" name="character[category_ids][]" class="category_checkbox" id="<%= category.id %>" value="<%= category.id %>" multiple <%= "checked" if @character.category_ids.include?(category.id) %>>
+                  <label for="<%= category.id %>"><%= category.name %></label>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class='character_sns_field'>
+            <p>SNS / URL</p>
+            <p>■　■　■</p>
+            <%= f.url_field :url, class: "edit_character_sns" %>
+          </div>
+          <div class='character_description_field'>
+            <p>Description</p>
+            <%= f.text_area :describe, class: "edit_character_description" %>
+          </div>
         </div>
-        <div class='field'>
-          特徴、プロフィール<br>
-          <%= f.text_area :describe %>
-        </div>
-        <div class='actions'>
-          <%= f.submit "更新", class: 'btn'%>
-        </div>
-        <%= link_to("データ削除", character_path(@character), method: :delete, data: {confirm: "「#{@character.name}」のデータを削除してもよろしいですか？"}) %>
+
       <% end %>
 
-      <div class="edit_topic_form">
-        <%= form_with model: @latest_future_topic, class: "edit_future_topic", data: @latest_future_topic.id, local: true do |f| %><%# class指定が適当になっている %>
-          話したい事<br>
-          <%= f.text_area :future_topic, class: "topic_input future_topic_input" %>
-        <% end %>
-
-        <div class="edit_past_topic">
-          <button type="button" id="new_topic_btn" data-character_id="<%= @character.id %>">新規</button>
-            話した事<br>
-          <div id="past_topics">
-            <% @past_topics.each do |past_topic| %>
-              <div id="past_topic_<%= past_topic.id %>">
-                <%= form_with model: past_topic, class: "topic_form", data: past_topic.id, local: true do |f| %>
-                    <%= f.date_field :created_date, class: "past_topic_input past_topic_create_date" %>              
-                    <%= f.text_area :past_topic, class: "topic_input past_topic_input past_topic_text" %>
-                <% end %>
-                <button type="button" class="delete_topic_btn" data="<%= past_topic.id %>">削除</button>
-              </div>
-            <% end %>
+      <div class="edit_character_topic_form">
+        <p>Topic</p>
+        <div class="edit_character_future_topic">
+          <div class="edit_character_topic_type">
+              Future
           </div>
+          <%= form_with model: @latest_future_topic, class: "edit_character_topic", data: @latest_future_topic.id, local: true do |f| %>
+            <%= f.text_area :future_topic, class: "topic_input future_topic_input" %>
+          <% end %>
+        </div>
+
+        <div id="past_topics">
+          <div class="edit_character_topic_type">
+            Past
+          </div>
+
+          <button type="button" id="new_topic_btn" data-character_id="<%= @character.id %>">新規</button>
+
+          <% @past_topics.each do |past_topic| %>
+            <div id="past_topic_<%= past_topic.id %>">
+              <%= form_with model: past_topic, class: "edit_character_topic_past_topic", data: past_topic.id, local: true do |f| %>
+                <%= f.date_field :created_date, class: "created_date past_topic_input past_topic_create_date" %>              
+                <%= f.text_area :past_topic, class: "topic_input past_topic_input past_topic_text" %>
+                <button type="button" class="delete_topic_btn" data="<%= past_topic.id %>">削除</button>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
