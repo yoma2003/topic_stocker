@@ -174,14 +174,18 @@
 
 /* メインコンテンツ */
 .main_contents {
-  padding: 30px 0 50px;
-  height: calc(100vh - 146px);
+  padding: 30px 0;
+  height: calc(100vh - 131px);
   background-color: #f5f5f5;
   overflow: auto;
 }
 
 .main_contents_wrapper {
   margin-left: 35px;
+  height: 100%;
+}
+
+.characters {
   display: flex;
   flex-wrap: wrap;
 }
@@ -369,6 +373,7 @@
 /* 新規データ登録ページ */
 
 .edit_character_form {
+  max-height: 100%;
   display: flex;
 }
 
@@ -565,9 +570,6 @@
   position: relative;
 }
 
-
-
-
 /* カテゴリボックス */
 .category_select_box {
   width: 300px;
@@ -587,7 +589,46 @@
   display: inline-block;
 }
 
-/* キャラクター編集ページ */
+/* 詳細データ編集ページ */
+
+.edit_character_topic_form {
+  width: 355px;
+  max-height: 100%;
+  margin-left: 15px;
+  padding: 15px 15px;
+  flex-shrink: 0;
+  border: 1px solid #770099;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #770099;
+  font-size: 22px;
+  font-weight: bold;
+  overflow: auto;
+}
+
+.character_delete_btn {
+  margin-left: 10px;
+}
+
+#new_topic_btn {
+  position: absolute;
+  top: -20px;
+  left: 0;
+}
+
+.delete_topic_btn,
+.delete_new_topic_btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.edit_character_topic_past_topic {
+  height: 153.5px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
 
 /* .edit_character {
   width: 1100px;
