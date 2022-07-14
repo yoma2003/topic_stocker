@@ -1,3 +1,5 @@
+/* ログインページ */
+
 .user_contents_wrapper {
   height: 100vh;
   width: 100vw;
@@ -37,7 +39,6 @@
 }
 
 .login_input {
-  margin-bottom: 15px;
   padding: 10px 20px;
   width: 100%;
   border: 1px solid #770099;
@@ -46,7 +47,12 @@
   display: block;
 }
 
+.login_input + .login_input {
+  margin-top: 15px;
+}
+
 .login_btn {
+  margin-top: 20px;
   padding: 10px 20px;
   width: 100%;
   background-color: #770099;
@@ -59,7 +65,8 @@
   cursor: pointer;
 }
 
-.login_btn:active {
+.login_btn:active,
+.signin_btn:active {
   background-color: #5a0073;
 }
 
@@ -72,12 +79,64 @@
 .other_link a {
   font-size: 20px;
   color: #770099;
-  /* text-decoration: underline; */
 }
 
 .other_link a:hover {
   text-decoration: underline;
 }
 
+/* サインインページ */
 
+.signin_logo {
+  width: 360px;
+  height: 68px;
+}
+
+.signin_logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.user_page_title {
+  margin: 22px 0;
+  font-size: 26px;
+  color: #770099;
+  font-weight: bold;
+}
+
+.signin_field {
+  margin-top: 30px;
+  width: 360px;
+  margin: 0 auto;
+}
+
+.signin_btn {
+  margin-top: 35px;
+  padding: 10px 20px;
+  width: 100%;
+  background-color: #770099;
+  border: none;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  font-size: 20px;
+  display: block;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login_link {
+  margin-top: 30px;
+}
+
+.login_link a {
+  font-size: 20px;
+  color: #770099;
+}
+
+.login_link a:hover {
+  text-decoration: underline;
+}
+
+/* ユーザー編集ページ */
 
