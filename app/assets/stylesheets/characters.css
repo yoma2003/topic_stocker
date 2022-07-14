@@ -592,7 +592,7 @@
   border: 1px solid #4A154B;
   background-color: #fff;
   border-radius: 3px;
-  box-shadow: 2px 2px 7px rgb(125, 125, 125);
+  box-shadow: 0px 0px 7px #888;
   display: none;
   position: absolute;
   top: 120px;
