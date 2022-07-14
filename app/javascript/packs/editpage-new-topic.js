@@ -26,13 +26,13 @@ const newData = (csrfToken, characterId) => {
     const newTopic = XHR.response.new_past_topic; // 新規フォームデータの取得
     const html = `
     <div id="past_topic_${newTopic.id}">
-      <form class="topic_form" data="${newTopic.id}" action="/past_topics/${newTopic.id}" accept-charset="UTF-8" method="post">
+      <form class="edit_character_topic_past_topic" data="${newTopic.id}" action="/past_topics/${newTopic.id}" accept-charset="UTF-8" method="post">
         <input type="hidden" name="_method" value="patch">
         <input type="hidden" name="authenticity_token" value="${csrfToken}">
-        <input value="${newTopic.created_date}" type="date" name="past_topic[created_date]" class="new_past_topic_input past_topic_create_date" id="past_topic_created_date">              
+        <input value="${newTopic.created_date}" type="date" name="past_topic[created_date]" class="created_date new_past_topic_input past_topic_create_date" id="past_topic_created_date">              
         <textarea name="past_topic[past_topic]" class="topic_input new_past_topic_input past_topic_text"></textarea>
+        <button type="button" class="delete_new_topic_btn" data="${newTopic.id}">削除</button>
       </form>
-      <button type="button" class="delete_new_topic_btn" data="${newTopic.id}">削除</button>
     </div>
     `; // newTopic.id同じモノを繰り返しすぎ・・・
   const pastTopics = document.getElementById("past_topics");
