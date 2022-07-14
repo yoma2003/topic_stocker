@@ -57,33 +57,33 @@
           </div>
           <div class="character_topic">
             <div class="future_topic">
+              <div class="topic_type_future">
+                Future
+              </div>
               <% if character.future_topics[0] %><%# 何故かheroku上では[0]をつけないとエラーが出る・・・ %>
                 <% future_topic = character.future_topics[0] %>
                 <%= form_with model:future_topic, url: future_topic_path(future_topic), class: "topic_form", data: future_topic.id, local: true do |f| %>
                   <%= f.hidden_field :character_id, value: character.id %>
                   <%= f.text_area :future_topic, class: "topic_input future_topic_input" , disabled: true %>
-                  <div class="topic_type_future">
-                    Future
-                  </div>
                 <% end %>
               <% end %>
             </div>
             <div class="past_topic" id="past_topic_<%= character.id %>">
+              <div class="topic_type_past">
+                Past
+              </div>
               <% if character.past_topics[0] %><%# 上記同様・・・ %>
                 <% latest_past_topic = character.past_topics.order(created_date: :DESC).order(id: :DESC)[0] %>
                 <%= form_with model:latest_past_topic, url: past_topic_path(latest_past_topic), class: "topic_form", data: latest_past_topic.id, local: true do |f| %>
                   <%= f.hidden_field :character_id, value: character.id %>
                   <%= f.date_field :created_date, class: "created_date past_topic_input past_topic_create_date", disabled: true %>
                   <%= f.text_area :past_topic, class: "topic_input past_topic_input past_topic_text", disabled: true %>
-                  <div class="topic_type_past">
-                    Past
-                  </div>
                 <% end %>
               <% end %>
-              <div class="topic_btns">
-                <button type="button" class="index_new_topic_btn topic_btn" data-character_id="<%= character.id %>" disabled="disabled">新規</button>
-                <button type="button" class="index_delete_topic_btn topic_btn" data-character_id="<%= character.id %>" disabled="disabled">削除</button>
-              </div>
+              <%# <div class="topic_btns"> %>
+                <a class="index_new_topic_btn topic_btn" data-character_id="<%= character.id %>" disabled="disabled"><%= image_tag "/images/add_btn.png", class: "topic_btn_image" %></a>
+                <a class="index_delete_topic_btn topic_btn" data-character_id="<%= character.id %>" disabled="disabled"><%= image_tag "/images/delete_btn.png", class: "topic_btn_image" %></a>
+              <%# </div> %>
             </div>
           </div>
         </div>
