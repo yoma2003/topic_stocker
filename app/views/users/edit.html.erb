@@ -1,33 +1,23 @@
-<div class='account-page' id='account-page'>
-  <div class='account-page__inner clearfix'>
-    <div class='account-page__inner--left account-page__header'>
-      <h2>Edit Account</h2>
-      <h5>アカウントの編集</h5>
-      <%= link_to "退会する", user_registration_path, method: :delete %>
-      <%= link_to "トップページに戻る", :back, class: 'btn'%>
+<div class="user_contents_wrapper">
+  <div class="user_contents">
+    <div class="user_edit_logo">
+      <%= image_tag "main_logo.png" %><%# 大きいロゴを用意 %>
     </div>
-    <div class='account-page__inner--right user-form'>
-      <%= form_with model: current_user, local: true do |f|%>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :name%>
-          </div>
-          <div class='field-input'>
-            <%= f.text_field :name, autofocus: true%>
-          </div>
+    <h2 class="user_page_title">ユーザー編集</h2>
+    <%= form_with model: current_user, local: true do |f|%>
+      <div class="user_edit_field">
+        <div class="user_edit_field_left">
+          <%= image_tag "no_image.png", class: "edit_current_user_image" %>
         </div>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :email%>
-          </div>
-          <div class='field-input'>
-            <%= f.email_field :email%>
-          </div>
+        <div class="user_edit_field_right">
+            <%= f.text_field :name, autofocus: true, class: "login_input", placeholder: "Name" %>
+            <%= f.email_field :email, class: "login_input", placeholder: "Email" %>
         </div>
-        <div class='actions'>
-          <%= f.submit "Update", class: 'btn'%>
-        </div>
-      <% end %>
+      </div>
+      <%= f.submit "更新", class: 'user_update_btn'%>
+    <% end %>
+    <div class="user_delete_link">
+      <%= link_to "ユーザー削除", user_registration_path(current_user), method: :delete, data: {confirm: "ユーザーを削除してもよろしいですか？"} %>
     </div>
   </div>
 </div>
