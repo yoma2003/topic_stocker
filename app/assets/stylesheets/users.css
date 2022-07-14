@@ -66,7 +66,8 @@
 }
 
 .login_btn:active,
-.signin_btn:active {
+.signin_btn:active,
+.user_update_btn:active {
   background-color: #5a0073;
 }
 
@@ -101,6 +102,7 @@
 .user_page_title {
   margin: 22px 0;
   font-size: 26px;
+  letter-spacing: 1px;
   color: #770099;
   font-weight: bold;
 }
@@ -111,7 +113,8 @@
   margin: 0 auto;
 }
 
-.signin_btn {
+.signin_btn,
+.user_update_btn {
   margin-top: 35px;
   padding: 10px 20px;
   width: 100%;
@@ -140,3 +143,52 @@
 
 /* ユーザー編集ページ */
 
+.user_edit_logo {
+  width: 600px;
+  height: 68px;
+  border-radius: 5px;
+  background-color: #770099;
+}
+
+.user_edit_logo img{
+  height: 100%;
+}
+
+.user_edit_field {
+  width: 600px;
+  margin-top: 30px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user_edit_field_left {
+  width: 240px;
+}
+
+.edit_current_user_image {
+  width: 145px;
+  height: 145px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #770099;
+}
+
+.user_edit_field_right {
+  width: 360px;
+  padding-top: 20px;
+}
+
+.user_delete_link {
+  margin-top: 30px;
+}
+
+.user_delete_link a {
+  font-size: 20px;
+  color: #770099;
+}
+
+.user_delete_link a:hover {
+  text-decoration: underline;
+}
