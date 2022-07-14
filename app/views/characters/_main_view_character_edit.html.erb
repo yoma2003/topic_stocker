@@ -47,8 +47,8 @@
             <%= f.text_field :name, autofocus: true, class: "edit_character_name" %>
           </div>
           <div class='character_submit_field'>
-            <%= f.submit "更新", class: 'character_submit_btn character_update_btn' %>
-            <%= link_to("削除", character_path(@character), method: :delete, data: {confirm: "「#{@character.name}」のデータを削除してもよろしいですか？"}, class: "character_submit_btn character_delete_btn") %>
+            <%= f.submit "更新", class: 'character_submit_btn character_update_btn click_btn' %>
+            <%= link_to("削除", character_path(@character), method: :delete, data: {confirm: "「#{@character.name}」のデータを削除してもよろしいですか？"}, class: "character_submit_btn character_delete_btn click_btn") %>
           </div>
         </div>
 
@@ -60,7 +60,7 @@
                 <%= link_to category.name, category_path(category), class: "selected_category" %>
               <% end %>
             </div>
-            <button type="button" id="category_list_open_btn">カテゴリ選択</button>
+            <button type="button" class="category_list_open_btn click_btn">カテゴリ選択</button>
               <div class="category_select_box">
                 <% @categories.each do |category| %>
                   <div class="check_btn">

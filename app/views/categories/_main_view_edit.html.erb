@@ -36,8 +36,8 @@
             <p class="character_list_title">Member</p>
           </div>
           <div class="character_list_top_right">
-            <%= f.submit "カテゴリ更新", class: "category_operation_btn" %>
-            <%= link_to 'カテゴリ削除', category_path(@category), method: :delete, data: {confirm: "#{@category.name} カテゴリを削除してもよろしいですか？"}, class: "category_operation_btn" %>
+            <%= f.submit "カテゴリ更新", class: "category_operation_btn click_btn" %>
+            <%= link_to 'カテゴリ削除', category_path(@category), method: :delete, data: {confirm: "#{@category.name} カテゴリを削除してもよろしいですか？"}, class: "category_operation_btn click_btn" %>
           </div>
         </div>
         <div class="character_checkboxies">
