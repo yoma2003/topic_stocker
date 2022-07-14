@@ -1,25 +1,37 @@
-<%= javascript_pack_tag "indexpage-delete-topic", "indexpage-new-topic", "select-character", "update-topic" %>
-
 <div class="main_top">
-  <div class="main_top_left">
-    <div class="category_title">
-      <%= @category.name %>
+  <div class="main_top_data category_data">
+    <div class="category_data_left">
+      <div class="top_title">
+        <%= @category.name %>
+      </div>
+      <div class="top_subtitle">
+        <%= @category.describe %>
+      </div>
     </div>
-    <div class="category_describe">
-      <%= @category.describe %>
+    <div class="category_data_right">
+      <%= link_to "カテゴリ編集", edit_category_path(@category), class: "edit_category_btn" %>
     </div>
-    <%= link_to "カテゴリ編集", edit_category_path(@category) %>
   </div>
-  <div class="main_top_right">
-    <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
-    <%= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
-    <%= current_user.name %>
+  <div class="main_top_user_data">
+    <%#= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
+    <%#= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
+    <div class="current_user_name">
+      <%= current_user.name %>
+    </div>
+    <%= image_tag "no_image.png", class: "current_user_image" %>
   </div>
 </div>
 
-<div class="sort_menu">
-  <%= link_to "会話日付順", category_path, class: "sort_btn #{'active' unless params[:sort]}" %>
-  <%= link_to "入力更新順", category_path(sort: "updated_at"), class: "sort_btn #{'active' if params[:sort] == "updated_at"}" %>
+<div class="main_top_sub">
+  <div class="main_top_sub_left">
+    <%= link_to "会話日付順", category_path, class: "sort_btn #{'active' unless params[:sort]}" %>
+    <%= link_to "入力更新順", category_path(sort: "updated_at"), class: "sort_btn #{'active' if params[:sort] == "updated_at"}" %>
+  </div>
+  <div class="main_top_sub_right">
+    <div class="update_time">
+      自動更新
+    </div>
+  </div>
 </div>
 
 <div class="main_contents">
@@ -36,8 +48,8 @@
           </div>
           <div class="character_name"><%= character.name %></div>
           <div class="detail">
-            <%= link_to("詳細編集", edit_character_path(character)) %><br>
-            <%= link_to("データ削除", character_path(character), method: :delete, data: {confirm: "「#{character.name}」のデータを削除してもよろしいですか？"}) %>
+            <%= link_to("詳細編集", edit_character_path(character), class: "edit_character_btn character_btn") %><br>
+            <%= link_to("データ削除", character_path(character), method: :delete, data: {confirm: "「#{character.name}」のデータを削除してもよろしいですか？"}, class: "delete_character_btn character_btn") %>
           </div>
         </div>
         <div class="character_topic">
@@ -47,6 +59,9 @@
               <%= form_with model:future_topic, url: future_topic_path(future_topic), class: "topic_form", data: future_topic.id, local: true do |f| %>
                 <%= f.hidden_field :character_id, value: character.id %>
                 <%= f.text_area :future_topic, class: "topic_input future_topic_input" , disabled: true %>
+                <div class="topic_type_future">
+                  Future
+                </div>
               <% end %>
             <% end %>
           </div>
@@ -57,10 +72,15 @@
                 <%= f.hidden_field :character_id, value: character.id %>
                 <%= f.date_field :created_date, class: "created_date past_topic_input past_topic_create_date", disabled: true %>
                 <%= f.text_area :past_topic, class: "topic_input past_topic_input past_topic_text", disabled: true %>
+                <div class="topic_type_past">
+                  Past
+                </div>
               <% end %>
             <% end %>
-            <button type="button" class="index_new_topic_btn" data-character_id="<%= character.id %>">新規</button>
-            <button type="button" class="index_delete_topic_btn" data-character_id="<%= character.id %>">削除</button>
+            <div class="topic_btns">
+              <button type="button" class="index_new_topic_btn topic_btn" data-character_id="<%= character.id %>" disabled="disabled">新規</button>
+              <button type="button" class="index_delete_topic_btn topic_btn" data-character_id="<%= character.id %>" disabled="disabled">削除</button>
+            </div>
           </div>
         </div>
       </div>
