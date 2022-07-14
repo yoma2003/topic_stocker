@@ -36,54 +36,56 @@
 
 <div class="main_contents">
   <div class="main_contents_wrapper">
-    <% @characters.each do |character| %>
-      <div class="character">
-        <div class="character_info">
-          <div class="character_image">
-            <% if character.image.attached? %>
-              <%= image_tag character.image %>
-            <% else %>
-              <%= image_tag "no_image.png" %>
-            <% end %>
-          </div>
-          <div class="character_name"><%= character.name %></div>
-          <div class="detail">
-            <%= link_to("詳細編集", edit_character_path(character), class: "edit_character_btn character_btn") %><br>
-            <%= link_to("データ削除", character_path(character), method: :delete, data: {confirm: "「#{character.name}」のデータを削除してもよろしいですか？"}, class: "delete_character_btn character_btn") %>
-          </div>
-        </div>
-        <div class="character_topic">
-          <div class="future_topic">
-            <% if character.future_topics[0] %><%# 何故かheroku上では[0]をつけないとエラーが出る・・・ %>
-              <% future_topic = character.future_topics[0] %>
-              <%= form_with model:future_topic, url: future_topic_path(future_topic), class: "topic_form", data: future_topic.id, local: true do |f| %>
-                <%= f.hidden_field :character_id, value: character.id %>
-                <%= f.text_area :future_topic, class: "topic_input future_topic_input" , disabled: true %>
-                <div class="topic_type_future">
-                  Future
-                </div>
+    <div class="characters">
+      <% @characters.each do |character| %>
+        <div class="character">
+          <div class="character_info">
+            <div class="character_image">
+              <% if character.image.attached? %>
+                <%= image_tag character.image %>
+              <% else %>
+                <%= image_tag "no_image.png" %>
               <% end %>
-            <% end %>
+            </div>
+            <div class="character_name"><%= character.name %></div>
+            <div class="detail">
+              <%= link_to("詳細編集", edit_character_path(character), class: "edit_character_btn character_btn") %><br>
+              <%= link_to("データ削除", character_path(character), method: :delete, data: {confirm: "「#{character.name}」のデータを削除してもよろしいですか？"}, class: "delete_character_btn character_btn") %>
+            </div>
           </div>
-          <div class="past_topic" id="past_topic_<%= character.id %>">
-            <% if character.past_topics[0] %><%# 上記同様・・・ %>
-              <% latest_past_topic = character.past_topics.order(created_date: :DESC).order(id: :DESC)[0] %>
-              <%= form_with model:latest_past_topic, url: past_topic_path(latest_past_topic), class: "topic_form", data: latest_past_topic.id, local: true do |f| %>
-                <%= f.hidden_field :character_id, value: character.id %>
-                <%= f.date_field :created_date, class: "created_date past_topic_input past_topic_create_date", disabled: true %>
-                <%= f.text_area :past_topic, class: "topic_input past_topic_input past_topic_text", disabled: true %>
-                <div class="topic_type_past">
-                  Past
-                </div>
+          <div class="character_topic">
+            <div class="future_topic">
+              <% if character.future_topics[0] %><%# 何故かheroku上では[0]をつけないとエラーが出る・・・ %>
+                <% future_topic = character.future_topics[0] %>
+                <%= form_with model:future_topic, url: future_topic_path(future_topic), class: "topic_form", data: future_topic.id, local: true do |f| %>
+                  <%= f.hidden_field :character_id, value: character.id %>
+                  <%= f.text_area :future_topic, class: "topic_input future_topic_input" , disabled: true %>
+                  <div class="topic_type_future">
+                    Future
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
-            <div class="topic_btns">
-              <button type="button" class="index_new_topic_btn topic_btn" data-character_id="<%= character.id %>" disabled="disabled">新規</button>
-              <button type="button" class="index_delete_topic_btn topic_btn" data-character_id="<%= character.id %>" disabled="disabled">削除</button>
+            </div>
+            <div class="past_topic" id="past_topic_<%= character.id %>">
+              <% if character.past_topics[0] %><%# 上記同様・・・ %>
+                <% latest_past_topic = character.past_topics.order(created_date: :DESC).order(id: :DESC)[0] %>
+                <%= form_with model:latest_past_topic, url: past_topic_path(latest_past_topic), class: "topic_form", data: latest_past_topic.id, local: true do |f| %>
+                  <%= f.hidden_field :character_id, value: character.id %>
+                  <%= f.date_field :created_date, class: "created_date past_topic_input past_topic_create_date", disabled: true %>
+                  <%= f.text_area :past_topic, class: "topic_input past_topic_input past_topic_text", disabled: true %>
+                  <div class="topic_type_past">
+                    Past
+                  </div>
+                <% end %>
+              <% end %>
+              <div class="topic_btns">
+                <button type="button" class="index_new_topic_btn topic_btn" data-character_id="<%= character.id %>" disabled="disabled">新規</button>
+                <button type="button" class="index_delete_topic_btn topic_btn" data-character_id="<%= character.id %>" disabled="disabled">削除</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
