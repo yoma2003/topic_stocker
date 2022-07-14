@@ -1,13 +1,16 @@
 const categorySelect = () => {
   const categorySelectBox = document.querySelector(".category_select_box");
+  const categoryListOpenBtn = document.querySelector(".category_list_open_btn");
   let isOpen = false;
   window.addEventListener("click", function(e) {
-    if (isOpen == false && (e.target.closest('#category_list_open_btn'))) {
+    if (isOpen == false && (e.target.closest('.category_list_open_btn'))) {
       categorySelectBox.classList.add("visible");
+      categoryListOpenBtn.classList.add("clicked");
       isOpen = true;
     } else if (isOpen == true && (e.target.closest('.category_select_box') == null)) {
       reloadCheckedCategories();
       categorySelectBox.classList.remove("visible");
+      categoryListOpenBtn.classList.remove("clicked");
       isOpen = false;
     }
   });
