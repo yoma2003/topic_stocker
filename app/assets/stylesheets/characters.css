@@ -629,48 +629,93 @@
   position: relative;
 }
 
-
-/* .edit_character {
-  width: 1100px;
-  border: 2px solid #4A154B;
-  border-radius: 10px;
-  display: flex;
-}
-
-#selected_character_image {
-  width: 160px;
-  height: 160px;
-  object-fit:cover;
-  border-radius: 50%;
-}
-
-.edit_profile_form {
-  width: 550px;
-  padding: 30px;
-  border-right: 2px solid #4A154B;
-}
-
-.edit_topic_form {
-  width: calc(100% - 550px);
-}
-
-.edit_future_topic {
-  padding: 30px;
-  border-bottom: 2px solid #4A154B;
-}
-
-.edit_past_topic {
-  padding: 30px;
-} */
-
 /* カテゴリ編集ページ */
 
-.character_checkbox {
-  line-height: 50px;
+.category_input {
+  border: none;
+  background-color: #600077;
+  /* border-bottom: 1px solid #fff; */
+  color: #fff;
+  width: 500px;
 }
 
-.character_checkbox img {
-  height: 50px;
-  width: 50px;
+.category_input::placeholder {
+  color: #999;
+}
+
+.edit_category_name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.edit_category_description {
+  font-size: 12px;
+}
+
+.character_list {
+  width: 680px;
+  height: 100%;
+  border: 1px solid #770099;
+  border-radius: 3px;
+  background-color: #fff;
+  padding: 22px 40px 22px 22px;
+}
+
+.character_list_top {
+  height: 38px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.character_list_title {
+  font-size: 22px;
+  font-weight: bold;
+  color:#770099;
+}
+
+.new_category_btn {
+  padding: 5px 13px;
+  font-size: 18px;
+  background-color: #fff;
+  color: #770099;
+  border: 1px solid #770099;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.character_checkboxies {
+  height: calc(100% - 38px);
+  overflow: auto;
+}
+
+.character_checkbox {
+  border-bottom: 1px dashed #770099;
+}
+
+.character_label {
+  width: 100%;
+  height: 55px;
+  display: flex;
+  align-items: center;
+}
+
+.character_label:hover {
+  background-color: #f8e8ff;
+}
+
+.character_input {
+  margin-left: 20px;
+}
+
+.character_input_image {
+  margin-left: 15px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
+  border: 1px solid #f8e8ff;
+}
+
+.character_input_text {
+  margin-left: 20px;
+  font-weight: bold;
 }
