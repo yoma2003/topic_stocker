@@ -1,6 +1,6 @@
 const viewSelectedImage = () => {
   const selectedCharacterImage = document.getElementById("selected_character_image");
-  const selectImageBtn = document.getElementById('character_image');
+  const selectImageBtn = document.getElementById('edit_character_image');
 
   selectImageBtn.addEventListener('change', function (e) {
     console.log(e.target);
