@@ -29,7 +29,6 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     # @characters = @category.characters
-
     if params[:sort] == "updated_at"
       @characters = Character.category_order_updated_at(@category.id) #updated_at順
     else

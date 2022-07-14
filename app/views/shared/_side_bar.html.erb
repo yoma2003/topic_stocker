@@ -12,17 +12,17 @@
         <i class="fa-solid fa-user-plus fa-lg"></i>新規データ登録
       <% end %>
     </div>
-    <%= link_to root_path, id: "category_all" do %>
+    <%= link_to root_path, class:  "category_all category_btn", id: "#{ "active_category" if current_page?(root_path) }" do %>
       <i class="fa-solid fa-house fa-lg"></i>全てのデータ
     <% end %>
     <% @categories.each do |category| %>
       <div class="category">
-        <%= link_to category_path(category), class: "category_btn" do %>
+        <%= link_to category_path(category), class: "category_btn", id:"#{ "active_category" if category == @category }" do %>
           <i class="fa-solid fa-user-group"></i><%= category.name %>
         <% end %>
       </div>
     <% end %>
-    <%= link_to new_category_path, id: "new_category_btn", class: "category_btn" do %>
+    <%= link_to new_category_path, class: "category_btn new_category_btn", id: "#{ "active_category" if current_page?(new_category_path) }" do %>
       <i class="fa-solid fa-plus fa-lg"></i>カテゴリ追加
     <% end %>
   </div>

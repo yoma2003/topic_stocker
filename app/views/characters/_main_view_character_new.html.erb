@@ -44,7 +44,7 @@
             <%= f.text_field :name, autofocus: true, class: "edit_character_name" %>
           </div>
           <div class='character_submit_field'>
-            <%= f.submit "新規登録", class: 'character_submit_btn' %>
+            <%= f.submit "新規登録", class: 'character_submit_btn click_btn' %>
           </div>        
         </div>
 
@@ -53,7 +53,7 @@
             <p>Category</p>
             <div class="affiliation_category">
             </div>
-            <button type="button" id="category_list_open_btn">カテゴリ選択</button>
+            <button type="button" class="category_list_open_btn click_btn">カテゴリ選択</button>
             <div class="category_select_box">
               <% @categories.each do |category| %>
                 <div class="check_btn">
