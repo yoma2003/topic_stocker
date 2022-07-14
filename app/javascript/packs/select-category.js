@@ -26,7 +26,7 @@ const reloadCheckedCategories = () => {
   const affiliationCategory = document.querySelector(".affiliation_category");
   let html ="";
   for(const [key, value] of Object.entries(checkedCategories)) {
-    html += `<a href="/categories/${key}">${value}</a> `;
+    html += `<a href="/categories/${key}" class="selected_category">${value}</a> `;
   }
   affiliationCategory.innerHTML = html;
 };

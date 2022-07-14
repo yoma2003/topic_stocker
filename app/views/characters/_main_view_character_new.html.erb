@@ -56,7 +56,9 @@
               <% @categories.each do |category| %>
                 <div class="check_btn">
                   <input type="checkbox" name="character_topic[category_ids][]" class="category_checkbox" id="<%= category.id %>" value="<%= category.id %>" multiple>
-                  <label for="<%= category.id %>"><%= category.name %></label>
+                  <label for="<%= category.id %>" class="category_check_btn" >
+                      <%= category.name %>
+                    </label>
                 </div>
               <% end %>
             </div>
