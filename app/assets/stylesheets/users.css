@@ -65,9 +65,9 @@
   cursor: pointer;
 }
 
-.login_btn:active,
-.signin_btn:active,
-.user_update_btn:active {
+.login_btn:hover,
+.signin_btn:hover,
+.user_update_btn:hover {
   background-color: #5a0073;
 }
 

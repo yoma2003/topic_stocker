@@ -9,13 +9,15 @@
       </div>
     </div>
     <div class="main_top_user_data">
-      <%#= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
-      <%#= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
-      <div class="current_user_name">
-        <%= current_user.name %>
-      </div>
-      <%= image_tag "no_image.png", class: "current_user_image" %>
+    <div class="current_user_name">
+      <%= current_user.name %>
     </div>
+    <%= image_tag "no_image.png", class: "current_user_image" %>
+    <div class="user_operation">
+      <%= link_to("ログアウト", destroy_user_session_path, method: :delete, class: "user_operation_btn user_logout_btn") %>
+      <%= link_to("ユーザー情報編集", edit_user_path(current_user), class: "user_operation_btn user_edit_btn") %>
+    </div>
+  </div>
   </div>
 
   <div class="main_top_sub">
