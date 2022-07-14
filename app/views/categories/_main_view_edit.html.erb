@@ -1,40 +1,61 @@
 <%= form_with model: @category, local: true do |f| %>
   <div class="main_top">
-    <div class="main_top_left">
-      <div class="category_title">
-        <%= f.text_field :name %>
+    <div class="main_top_data">
+      <div class="top_title">
+        <%= f.text_field :name, class: "category_input edit_category_name", placeholder: "カテゴリ名 ※" %>
       </div>
-      <div class="category_describe">
-        <%= f.text_field :describe %>
+      <div class="top_subtitle">
+        <%= f.text_field :describe, class: "category_input edit_category_description", placeholder: "説明" %>
       </div>
-      <%= f.submit "更新" %>
-      <%= link_to 'カテゴリ削除', category_path(@category), method: :delete, data: {confirm: "#{@category.name} カテゴリを削除してもよろしいですか？"} %>
     </div>
-    <div class="main_top_right">
-      <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
-      <%= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
-      <%= current_user.name %>
+    <div class="main_top_user_data">
+      <%#= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
+      <%#= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
+      <div class="current_user_name">
+        <%= current_user.name %>
+      </div>
+      <%= image_tag "no_image.png", class: "current_user_image" %>
+    </div>
+  </div>
+
+  <div class="main_top_sub">
+    <div class="main_top_sub_left">
+      <p class="sort_btn active">50音順</p>
+    </div>
+    <div class="main_top_sub_right">
     </div>
   </div>
 
   <div class="main_contents">
     <div class="main_contents_wrapper">
       <div class="character_list">
-        <% @characters.each do |character| %>
-          <div class="character_checkbox">
-            <input type="checkbox" name="category[character_ids][]" id="<%= character.id %>" value="<%= character.id %>" multiple <%= "checked" if @category.character_ids.include?(character.id) %>>
-            <% if character.image.attached? %>
-              <%= image_tag character.image %>
-            <% else %>
-              <%= image_tag "no_image.png" %>
-            <% end %>
-            <label for="<%= character.id %>">
-              <%= character.name %>
-            </label>
+        <div class="character_list_top">
+          <div class="character_list_top_left">
+            <p class="character_list_title">Member</p>
           </div>
-        <% end %>
-        <%= f.submit "更新" %>
+          <div class="character_list_top_right">
+            <%= f.submit "カテゴリ更新", class: "category_operation_btn" %>
+            <%= link_to 'カテゴリ削除', category_path(@category), method: :delete, data: {confirm: "#{@category.name} カテゴリを削除してもよろしいですか？"}, class: "category_operation_btn" %>
+          </div>
+        </div>
+        <div class="character_checkboxies">
+          <% @characters.each do |character| %>
+            <div class="character_checkbox">
+              <label for="<%= character.id %>" class="character_label">
+                <input type="checkbox" name="category[character_ids][]" class="character_input" id="<%= character.id %>" value="<%= character.id %>" multiple <%= "checked" if @category.character_ids.include?(character.id) %>>
+                <% if character.image.attached? %>
+                  <%= image_tag character.image, class: "character_input_image" %>
+                <% else %>
+                  <%= image_tag "no_image.png", class: "character_input_image" %>
+                <% end %>
+                <p class="character_input_text"><%= character.name %></p>
+              </label>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 <% end %>
+
+
