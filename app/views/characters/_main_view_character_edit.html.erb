@@ -55,18 +55,20 @@
             <p>Category</p>
             <div class="affiliation_category">
               <% @character.categories.each do |category| %>
-                <%= link_to category.name, category_path(category) %>
+                <%= link_to category.name, category_path(category), class: "selected_category" %>
               <% end %>
             </div>
             <button type="button" id="category_list_open_btn">カテゴリ選択</button>
-            <div class="category_select_box">
-              <% @categories.each do |category| %>
-                <div class="check_btn">
-                  <input type="checkbox" name="character[category_ids][]" class="category_checkbox" id="<%= category.id %>" value="<%= category.id %>" multiple <%= "checked" if @character.category_ids.include?(category.id) %>>
-                  <label for="<%= category.id %>"><%= category.name %></label>
-                </div>
-              <% end %>
-            </div>
+              <div class="category_select_box">
+                <% @categories.each do |category| %>
+                  <div class="check_btn">
+                    <input type="checkbox" name="character[category_ids][]" class="category_checkbox" id="<%= category.id %>" value="<%= category.id %>" multiple <%= "checked" if @character.category_ids.include?(category.id) %>>
+                    <label for="<%= category.id %>" class="category_check_btn" >
+                      <%= category.name %>
+                    </label>
+                  </div>
+                <% end %>
+              </div>
           </div>
           <div class='character_sns_field'>
             <p>SNS / URL</p>
