@@ -2,7 +2,7 @@ const categorySelect = () => {
   const categorySelectBox = document.querySelector(".category_select_box");
   let isOpen = false;
   window.addEventListener("click", function(e) {
-    if (isOpen == false && (e.target.closest('#category_open_btn'))) {
+    if (isOpen == false && (e.target.closest('#category_list_open_btn'))) {
       categorySelectBox.classList.add("visible");
       isOpen = true;
     } else if (isOpen == true && (e.target.closest('.category_select_box') == null)) {
@@ -24,7 +24,7 @@ const reloadCheckedCategories = () => {
     }
   }
   const affiliationCategory = document.querySelector(".affiliation_category");
-  let html = "カテゴリ：";
+  let html ="";
   for(const [key, value] of Object.entries(checkedCategories)) {
     html += `<a href="/categories/${key}">${value}</a> `;
   }

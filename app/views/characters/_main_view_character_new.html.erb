@@ -1,69 +1,95 @@
-<%= javascript_pack_tag "select-category", "view-selected-image" %>
-
 <div class="main_top">
-  <div class="main_top_left">
-    <div class="category_title">
+  <div class="main_top_data">
+    <div class="top_title">
       データ登録
     </div>
-    <div class="category_describe">
-      人のデータを登録してください。人のデータを登録してください。人のデータを登録してください。
+    <div class="top_subtitle">
+      データと話題を入力し、新規登録して下さい。
     </div>
   </div>
-  <div class="main_top_right">
-    <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
-    <%= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
-    <%= current_user.name %>
+  <div class="main_top_user_data">
+    <%#= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
+    <%#= link_to("ユーザー情報編集", edit_user_path(current_user)) %>
+    <div class="current_user_name">
+      <%= current_user.name %>
+    </div>
+    <%= image_tag "no_image.png", class: "current_user_image" %>
   </div>
 </div>
+
+<div class="main_top_sub">
+  <div class="main_top_sub_left">
+    <%= link_to "入力ヘルプ", "#", class: "sort_btn" %>
+  </div>
+  <div class="main_top_sub_right">
+  </div>
+</div>
+
 <div class="main_contents">
   <div class="main_contents_wrapper">
-    <%= form_with model: @character_topic, url: characters_path, class: "edit_character", local: true do |f| %>
+
+    <%= form_with model: @character_topic, url: characters_path, class: "edit_character_form", local: true do |f| %>
+
       <div class="edit_profile_form">
-        <%= render "shared/error_messages", model: f.object %>
-        <div class='image'>
-          <%= image_tag "no_image.png", id: "selected_character_image" %>
-          <%= f.file_field :image, id:"character_image" %>
-        </div>
-        <div class='field'>
-          名前<br>
-          <%= f.text_field :name, autofocus: true %>
-        </div>
-        <div class='category'>
-          <div class="affiliation_category">
-            カテゴリ：
+        <div class="edit_profile_form_left">
+          <%= render "shared/error_messages", model: f.object %>
+          <div class='character_image_field'>
+            <%= image_tag "no_image.png", id: "selected_character_image" %>
+            <%= f.file_field :image, id:"edit_character_image" %>
           </div>
-          <button type="button" id="category_open_btn">カテゴリ選択</button>
-          <div class="category_select_box">
-            <% @categories.each do |category| %>
-              <div class="check_btn">
-                <input type="checkbox" name="character_topic[category_ids][]" class="category_checkbox" id="<%= category.id %>" value="<%= category.id %>" multiple>
-                <label for="<%= category.id %>"><%= category.name %></label>
-              </div>
-            <% end %>
+          <div class='character_name_field'>
+            <p>Name<span>※</span></p>
+            <%= f.text_field :name, autofocus: true, class: "edit_character_name" %>
+          </div>
+          <div class='character_submit_field'>
+            <%= f.submit "新規登録", class: 'character_submit_btn' %>
+          </div>        
+        </div>
+
+        <div class="edit_profile_form_right">
+          <div class='character_category_field'>
+            <p>Category</p>
+            <div class="affiliation_category">
+            </div>
+            <button type="button" id="category_list_open_btn">カテゴリ選択</button>
+            <div class="category_select_box">
+              <% @categories.each do |category| %>
+                <div class="check_btn">
+                  <input type="checkbox" name="character_topic[category_ids][]" class="category_checkbox" id="<%= category.id %>" value="<%= category.id %>" multiple>
+                  <label for="<%= category.id %>"><%= category.name %></label>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class='character_sns_field'>
+            <p>SNS / URL</p>
+            <p>■　■　■</p>
+            <%= f.url_field :url, class: "edit_character_sns" %>
+          </div>
+          <div class='character_description_field'>
+            <p>Description</p>
+            <%= f.text_area :describe, class: "edit_character_description" %>
           </div>
         </div>
-        <div class='field'>
-          URL<br>
-          <%= f.url_field :url %>
-        </div>
-        <div class='field'>
-          特徴、プロフィール<br>
-          <%= f.text_area :describe %>
-        </div>
-        <div class='actions'>
-          <%= f.submit "登録", class: 'btn'%>
-        </div>
+
       </div>
 
-      <div class="edit_topic_form">
-        <div class="edit_future_topic">
-          話したい事<br>
-          <%= f.text_area :future_topic, class: "topic_input future_topic_input" %>
+      <div class="new_character_topic_form">
+        <p>Topic</p>
+        <div class="edit_character_future_topic">
+          <div class="edit_character_topic_type">
+            Future
+          </div>
+          <div class="edit_character_topic">
+            <%= f.text_area :future_topic, class: "topic_input future_topic_input" %>
+          </div>
         </div>
-        <div class="edit_past_topic">
-          話した事<br>
-          <div id="past_topics">
-            <%= f.date_field :created_date %>              
+        <div id="past_topics">
+          <div class="edit_character_topic_type">
+            Past
+          </div>
+          <div class="edit_character_topic">
+            <%= f.date_field :created_date, class: "created_date" %>              
             <%= f.text_area :past_topic, class: "topic_input past_topic_input" %>
           </div>
         </div>
