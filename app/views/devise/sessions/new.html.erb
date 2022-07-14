@@ -6,12 +6,12 @@
     </div>
     <div class="login_field">
       <%= form_with model: resource, as: resource_name, url: session_path(resource_name), class: "login_form", local: true do |f|%>
-        <%= f.email_field :email, autofocus: true, class: "login_input" %>
-        <%= f.password_field :password, autocomplete: "off", class: "login_input" %>
+        <%= f.email_field :email, autofocus: true, class: "login_input", placeholder: "Email" %>
+        <%= f.password_field :password, autocomplete: "off", class: "login_input", placeholder: "Password" %>
         <%= f.submit "ログイン", class: 'login_btn'%>
       <% end %>
       <div class="other_link">
-        <%= link_to "アカウト作成", new_user_registration_path %>
+        <%= link_to "アカウト登録", new_user_registration_path %>
         <%= link_to "ゲストログイン", "#" %>
       </div>
     </div>
