@@ -1,3 +1,28 @@
+/* アイコン */
+
+svg {
+  margin-right: 16px;
+}
+
+.fa-user-plus {
+  margin-right: 10px;
+}
+
+.fa-plus {
+  margin-right: 18px;
+}
+
+.fa-angle-down {
+  margin: 0 0 0 10px;
+}
+
+.fa-pen-to-square {
+  margin: 0 0 0 10px;
+}
+
+
+/* ページ */
+
 .wrapper {
   display: flex;
 
@@ -40,7 +65,7 @@
 #new_character_btn {
   width: 270px;
   margin: 0 auto;
-  padding: 9px;
+  padding: 9px 9px 9px 18px;
   border-radius: 3px;
   background-color: #fff;
   color: #770099;
@@ -55,7 +80,7 @@
 
 #category_all {
   width: 100%;
-  padding: 7px 0 7px 24px;
+  padding: 7px 0 7px 33px;
   font-size: 14px;
   background-color: #f5f5f5;
   color: #770099;
@@ -64,7 +89,7 @@
 
 .category_btn {
   width: 100%;
-  padding: 7px 0 7px 24px;
+  padding: 7px 0 7px 35px;
   font-size: 14px;
   background-color: #770099;
   color: #fff;
@@ -428,7 +453,7 @@
 }
 
 .edit_category_btn {
-  font-size: 12px;
+  font-size: 14px;
   color: #fff;
 }
 
