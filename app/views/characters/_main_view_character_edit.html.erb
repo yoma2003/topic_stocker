@@ -36,9 +36,9 @@
           <%= render "shared/error_messages", model: f.object %>
           <div class='character_image_field'>
             <% if @character.image.attached? %>
-              <%= image_tag @character.image, id: "selected_character_image" %>
+              <%= image_tag @character.image, class: "selected_character_image", onClick:"document.getElementById('edit_character_image').click()" %>
             <% else %>
-              <%= image_tag "no_image.png", id: "selected_character_image" %>
+              <%= image_tag "no_image.png", class: "selected_character_image", onClick:"document.getElementById('edit_character_image').click()" %>
             <% end %>
             <%= f.file_field :image, id:"edit_character_image" %>
           </div>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="edit_profile_form_right">
-          <div class='character_category_field'>
+          <div class='character_category_field character_field'>
             <p>Category</p>
             <div class="affiliation_category">
               <% @character.categories.each do |category| %>
@@ -72,12 +72,12 @@
                 <% end %>
               </div>
           </div>
-          <div class='character_sns_field'>
+          <div class='character_sns_field character_field'>
             <p>SNS / URL</p>
             <p>■　■　■</p>
             <%= f.url_field :url, class: "edit_character_sns" %>
           </div>
-          <div class='character_description_field'>
+          <div class='character_description_field character_field'>
             <p>Description</p>
             <%= f.text_area :describe, class: "edit_character_description" %>
           </div>

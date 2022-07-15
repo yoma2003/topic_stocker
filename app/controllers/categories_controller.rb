@@ -18,11 +18,12 @@ class CategoriesController < ApplicationController
 
   def create
     @characters = current_user.characters
-    if @category = Category.create(category_params)
+    @category = Category.new(category_params)
+    if @category.save
       redirect_to category_path(@category)
     else
-      @characters = Character.includes(:past_topics)
-      render template: characters/index
+      @characters = Character.where(user_id: current_user.id).order(name: :asc)
+      render :new
     end
   end
 
