@@ -28,8 +28,8 @@
 
 <div class="main_top_sub">
   <div class="main_top_sub_left">
-    <%= link_to "会話日付順", category_path, class: "sort_btn #{'active' unless params[:sort]}" %>
-    <%= link_to "入力更新順", category_path(sort: "updated_at"), class: "sort_btn #{'active' if params[:sort] == "updated_at"}" %>
+    <%= link_to "会話日付順", category_path, class: "sort_btn click_btn #{'active' unless params[:sort]}" %>
+    <%= link_to "入力更新順", category_path(sort: "updated_at"), class: "sort_btn click_btn #{'active' if params[:sort] == "updated_at"}" %>
   </div>
   <div class="main_top_sub_right">
     <div class="update_time">

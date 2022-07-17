@@ -66,12 +66,12 @@ svg {
   padding: 15px;
 }
 
-#new_character_btn {
+.new_character_btn {
   width: 270px;
   margin: 0 auto;
-  padding: 9px 9px 9px 18px;
+  padding: 8px 9px 8px 18px;
+  border: 1px solid #fff;
   border-radius: 3px;
-  background-color: #fff;
   color: #770099;
   display: block;
   font-size: 16px;
@@ -771,8 +771,7 @@ svg {
   z-index: 1;
 }
 
-.delete_topic_btn,
-.delete_new_topic_btn {
+.delete_topic_btn {
   position: absolute;
   bottom: 3px;
   right: 8px;
@@ -902,4 +901,20 @@ svg {
 .clicked {
   background-color: #770099;
   color: #fff;
+}
+
+.click_btn_border {
+  background-color: #fff;
+}
+
+.click_btn_border:hover {
+  background-color: #770099;
+  color: #fff;
+  border: 1px solid #fff;
+  box-shadow: 0px 0px 5px #fff;
+  transition: .2s;
+}
+
+.click_btn_underline:hover {
+  text-decoration: underline;
 }
