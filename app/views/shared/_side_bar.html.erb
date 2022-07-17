@@ -1,6 +1,8 @@
 <div class="side_bar_top">
   <div class="main_logo_wrapper">
-    <%= image_tag "main_logo.png" %>
+    <%= link_to root_path do %>
+      <%= image_tag "main_logo.png" %>
+    <% end %>
   </div>
 </div>
 
@@ -8,7 +10,7 @@
 
   <div class="categories">
     <div class="new_character_btn_wrapper">
-      <%= link_to new_character_path, id: "new_character_btn" do %>
+      <%= link_to new_character_path, class: "new_character_btn click_btn_border" do %>
         <i class="fa-solid fa-user-plus fa-lg"></i>新規データ登録
       <% end %>
     </div>
@@ -28,7 +30,7 @@
   </div>
 
   <div class="footer">
-    <%= link_to "https://docs.google.com/forms/d/e/1FAIpQLSfIDgp729aN46vSjLe96s_iswtG5zf7_03AtfwCIfvY3lMvZA/viewform", class: "feedback_link" do %>
+    <%= link_to "https://docs.google.com/forms/d/e/1FAIpQLSfIDgp729aN46vSjLe96s_iswtG5zf7_03AtfwCIfvY3lMvZA/viewform", class: "feedback_link click_btn_underline" do %>
       <i class="fa-solid fa-lightbulb"></i>フィードバックを送信
     <% end %>
     <div class="copy_right">
