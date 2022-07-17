@@ -8,7 +8,7 @@ svg {
   margin-right: 10px;
 }
 
-.fa-plus {
+.category-plus-icon {
   margin-right: 18px;
 }
 
@@ -22,6 +22,14 @@ svg {
 
 .fa-lightbulb {
   margin-right: 5px;
+}
+
+.fa-trash-can {
+  margin: 0;
+}
+
+.topic-plus-icon {
+  margin: 0;
 }
 
 
@@ -430,22 +438,37 @@ svg {
   display: none;
 }
 
-.topic_btn_image {
-  width: 30px;
-  height: 30px;
-}
-
 .index_new_topic_btn {
+  padding: 1px 0 0 7px;
+  width: 32px;
+  height: 32px;
   position: absolute;
-  bottom: 70px;
-  right: 28px;
+  border: 1px solid #770099;
+  color: #770099;
+  background-color: #fff;
+  font-size: 18px;
+  border-radius: 50%;
+  bottom: 73px;
+  right: 29px;
 }
 
 .index_delete_topic_btn {
+  padding: 3px 0 0 8px;
+  width: 32px;
+  height: 32px;
   position: absolute;
-  bottom: 33px;
-  right: 28px;
-  /* margin-top: 10px; */
+  border: 1px solid #770099;
+  color: #770099;
+  background-color: #fff;
+  border-radius: 50%;
+  bottom: 36px;
+  right: 29px;
+}
+
+.index_new_topic_btn:hover,
+.index_delete_topic_btn:hover {
+  color:#fff;
+  background-color: #770099;
 }
 
 /* カテゴリページ */
@@ -765,16 +788,39 @@ svg {
 }
 
 #new_topic_btn {
+  padding: 1px 0 0 7px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #770099;
+  color: #770099;
+  background-color: #fff;
+  border-radius: 50%;
   position: absolute;
-  top: 75px;
+  font-size: 18px;
+  top: 77px;
   right: 8px;
   z-index: 1;
 }
 
 .delete_topic_btn {
+  padding: 2px 0 0 8px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #770099;
+  color: #770099;
+  background-color: #fff;
+  border-radius: 50%;
   position: absolute;
-  bottom: 3px;
+  font-size: 16px;
+  position: absolute;
+  bottom: 7px;
   right: 8px;
+}
+
+#new_topic_btn:hover,
+.delete_topic_btn:hover {
+  background-color: #770099;
+  color: #fff;
 }
 
 .edit_character_topic_past_topic {
