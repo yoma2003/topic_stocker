@@ -14,18 +14,36 @@
         <i class="fa-solid fa-user-plus fa-lg"></i>新規データ登録
       <% end %>
     </div>
-    <%= link_to root_path, class:  "category_all category_btn", id: "#{ "active_category" if current_page?(root_path) }" do %>
-      <i class="fa-solid fa-house fa-lg"></i>全てのデータ
+    <% if current_page?(root_path) %>
+      <div class="category_all category_btn" id="active_category">
+        <i class="fa-solid fa-house fa-lg"></i>全てのデータ
+      </div>
+    <% else %>
+      <%= link_to root_path, class:  "category_all category_btn" do %>
+        <i class="fa-solid fa-house fa-lg"></i>全てのデータ
+      <% end %>
     <% end %>
     <% @categories.each do |category| %>
       <div class="category">
-        <%= link_to category_path(category), class: "category_btn", id:"#{ "active_category" if category == @category }" do %>
-          <i class="fa-solid fa-user-group"></i><%= category.name %>
+        <% if category == @category %>
+          <div class="category_btn" id="active_category">
+            <i class="fa-solid fa-user-group"></i><%= category.name %>
+          </div>
+        <% else %>
+          <%= link_to category_path(category), class: "category_btn" do %>
+            <i class="fa-solid fa-user-group"></i><%= category.name %>
+          <% end %>
         <% end %>
       </div>
     <% end %>
-    <%= link_to new_category_path, class: "category_btn new_category_btn", id: "#{ "active_category" if current_page?(new_category_path) }" do %>
-      <i class="fa-solid fa-plus category-plus-icon fa-lg"></i>カテゴリ追加
+    <% if current_page?(new_category_path) %>
+      <div class="category_btn new_category_btn" id="active_category">
+        <i class="fa-solid fa-plus category-plus-icon fa-lg"></i>カテゴリ追加
+      </div> 
+    <% else %>
+      <%= link_to new_category_path, class: "category_btn new_category_btn" do %>
+        <i class="fa-solid fa-plus category-plus-icon fa-lg"></i>カテゴリ追加
+      <% end %>
     <% end %>
   </div>
 

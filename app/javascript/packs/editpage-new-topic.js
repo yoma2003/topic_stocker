@@ -31,7 +31,7 @@ const newData = (csrfToken, characterId) => {
         <input type="hidden" name="authenticity_token" value="${csrfToken}">
         <input value="${newTopic.created_date}" type="date" name="past_topic[created_date]" class="created_date past_topic_input_${newTopic.id} past_topic_create_date" id="past_topic_created_date">              
         <textarea name="past_topic[past_topic]" class="topic_input past_topic_input_${newTopic.id} past_topic_text"></textarea>
-        <a class="delete_topic_btn_${newTopic.id} delete_topic_btn"><img class="topic_btn_image" src="/images/delete_btn.png"></a>
+        <a class="delete_topic_btn_${newTopic.id} delete_topic_btn"><i class="fa-regular fa-trash-can"></i></a>
       </form>
     </div>
     `; // newTopic.id同じモノを繰り返しすぎ・・・
