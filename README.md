@@ -8,6 +8,8 @@
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 
+- image保存はActiveStorageを使用
+
 ### Association
 
 - has_many :characters, dependent: :destroy
