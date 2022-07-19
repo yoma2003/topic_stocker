@@ -533,8 +533,8 @@ svg {
   top: 22px;
 }
 
-.character_image_label {
-  display: inline-block;
+.character_image_field {
+  position: relative;
 }
 
 .selected_character_image {
@@ -542,6 +542,7 @@ svg {
   height: 145px;
   border-radius: 50%;
   border: 1px solid #f8e8ff;
+  cursor: pointer;
   object-fit: cover;
 }
 
@@ -551,6 +552,25 @@ svg {
 
 #edit_character_image {
   display: none;
+}
+
+.camera_btn {
+  width: 34px;
+  height: 34px;
+  padding: 1px 0 0 7px;
+  font-size: 18px;
+  background-color: #fff;
+  color: #770099;
+  border: 1px solid #f8e8ff;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  bottom: 12px;
+  right: 41px;
+}
+
+.camera_btn:hover {
+  color: #cd9bda;
 }
 
 .character_name_field {

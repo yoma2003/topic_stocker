@@ -41,6 +41,9 @@
               <%= image_tag "no_image.png", class: "selected_character_image", onClick:"document.getElementById('edit_character_image').click()" %>
             <% end %>
             <%= f.file_field :image, id:"edit_character_image" %>
+            <div class="camera_btn" onClick="document.getElementById('edit_character_image').click()">
+              <i class="fa-solid fa-camera"></i>
+            </div>
           </div>
           <div class='character_name_field'>
             <p>Name<span>※</span></p>
