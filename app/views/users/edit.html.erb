@@ -1,3 +1,5 @@
+<%= javascript_pack_tag "user-view-selected-image" %>
+
 <div class="user_contents_wrapper">
   <div class="user_contents">
     <div class="user_edit_logo">
@@ -7,7 +9,19 @@
     <%= form_with model: current_user, local: true do |f|%>
       <div class="user_edit_field">
         <div class="user_edit_field_left">
-          <%= image_tag "no_image.png", class: "edit_current_user_image" %>
+          <div class="user_image_field">
+            <div class="selected_user_image_wrapper", onClick="document.getElementById('edit_user_image').click()">
+              <% if current_user.image.attached? %>
+                <%= image_tag current_user.image, class: "selected_user_image" %>
+              <% else %>
+                <%= image_tag "no_image.png", class: "selected_user_image" %>
+              <% end %>
+            </div>
+            <%= f.file_field :image, id:"edit_user_image" %>
+            <div class="user_camera_btn" onClick="document.getElementById('edit_user_image').click()">
+              <i class="fa-solid fa-camera"></i>
+            </div>
+          </div>
         </div>
         <div class="user_edit_field_right">
             <%= f.text_field :name, autofocus: true, class: "login_input", placeholder: "Name" %>
