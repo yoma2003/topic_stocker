@@ -34,14 +34,16 @@
       <%= form_with model: @character, local: true, class: "edit_profile_form" do |f|%>
         <div class="edit_profile_form_left">
           <%= render "shared/error_messages", model: f.object %>
-          <div class='character_image_field'>
-            <% if @character.image.attached? %>
-              <%= image_tag @character.image, class: "selected_character_image", onClick:"document.getElementById('edit_character_image').click()" %>
-            <% else %>
-              <%= image_tag "no_image.png", class: "selected_character_image", onClick:"document.getElementById('edit_character_image').click()" %>
-            <% end %>
+          <div class="character_image_field">
+            <div class='selected_character_image_wrapper', onClick="document.getElementById('edit_character_image').click()">
+              <% if @character.image.attached? %>
+                <%= image_tag @character.image, class: "selected_character_image" %>
+              <% else %>
+                <%= image_tag "no_image.png", class: "selected_character_image" %>
+              <% end %>
+            </div>
             <%= f.file_field :image, id:"edit_character_image" %>
-            <div class="camera_btn" onClick="document.getElementById('edit_character_image').click()">
+            <div class="character_camera_btn" onClick="document.getElementById('edit_character_image').click()">
               <i class="fa-solid fa-camera"></i>
             </div>
           </div>
