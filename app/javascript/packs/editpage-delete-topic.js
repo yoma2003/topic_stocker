@@ -1,4 +1,4 @@
-import { deleteData } from "./delete-data";
+import { deleteData } from "./editpage-delete-data";
 
 const deleteTopic = () => {
   const csrfToken = document.querySelector("meta[name='csrf-token']").content;
@@ -8,8 +8,6 @@ const deleteTopic = () => {
       const topicId = this.getAttribute("data");
       if (window.confirm(`話した事データ${topicId}（1件）を削除しますか？`)) {
         deleteData(csrfToken, topicId);
-      } else {
-        return;
       }
     });
   });

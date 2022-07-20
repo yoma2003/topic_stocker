@@ -1,5 +1,6 @@
 import { updateData } from "./update-data";
 import { today } from "./today";
+import { updateTime } from "./update-time";
 
 const newTopic = () => {
   const csrfToken = document.querySelector("meta[name='csrf-token']").content;
@@ -23,9 +24,11 @@ const newData = (csrfToken, characterId) => {
   XHR.responseType = "json";
   XHR.send(formData); // 新規フォームデータの送信
   XHR.onload = () => {
-    const pastTopic = document.getElementById(`past_topic_${characterId}`);
-    pastTopic.querySelector(".topic_form").remove();
-    // 既存のtopic_formを削除
+    const pastTopic = document.getElementById(`past_topic_character_${characterId}`);
+    if (pastTopic.querySelector(".topic_form") != null) {
+      pastTopic.querySelector(".topic_form").remove();
+      // 既存のtopic_formを削除
+    }
     const newTopic = XHR.response.new_past_topic; // 新規フォームデータの取得
     console.log(newTopic);
     const html = `
@@ -45,11 +48,14 @@ const updateNewTopic = (newTopicId) => {
   const newPastTopicInput = document.getElementById(`new_past_topic_input_${newTopicId}`);
   newPastTopicInput.addEventListener("blur", function(e){
     updateData(newPastTopicInput, "past_topics");
+    updateTime();
   });
   newPastTopicInput.addEventListener("focus", function(){
-    console.log("OK");
     window.addEventListener("beforeunload", function(e){ // 削除やnewの後に更新するとエラーが出やすい。恐らくnullになるから。
-      updateData(newPastTopicInput, "past_topics");
+      if (document.activeElement == futureTopicInput) {
+        updateData(newPastTopicInput, "past_topics");
+        updateTime();
+      }
     });
   });
 };

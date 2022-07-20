@@ -73,12 +73,12 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="past_topic" id="past_topic_<%= character.id %>">
+            <div class="past_topic" id="past_topic_character_<%= character.id %>">
               <div class="topic_type_past">
                 Past
               </div>
               <% if character.past_topics[0] %><%# 上記同様・・・ %>
-                <% latest_past_topic = character.past_topics.order(created_date: :DESC).order(id: :DESC)[0] %>
+                <% latest_past_topic = character.past_topics.order(created_date: :DESC).order(id: :DESC)[0] %><%# モデルに移動させたい・・・ %>
                 <%= form_with model:latest_past_topic, url: past_topic_path(latest_past_topic), class: "topic_form", data: latest_past_topic.id, local: true do |f| %>
                   <%= f.hidden_field :character_id, value: character.id %>
                   <%= f.date_field :created_date, class: "created_date past_topic_input past_topic_create_date", disabled: true %>
