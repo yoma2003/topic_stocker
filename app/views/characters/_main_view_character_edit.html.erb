@@ -46,7 +46,7 @@
                 <%= image_tag "no_image.png", class: "selected_character_image" %>
               <% end %>
             </div>
-            <%= f.file_field :image, id:"edit_character_image" %>
+            <%= f.file_field :image, id:"edit_character_image", accept:"image/jpeg, image/png" %>
             <div class="character_camera_btn" onClick="document.getElementById('edit_character_image').click()">
               <i class="fa-solid fa-camera"></i>
             </div>
