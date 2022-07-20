@@ -1,4 +1,5 @@
 import { updateData } from "./update-data";
+import { updateTime } from "./update-time";
 
 const deleteTopic = () => {
   const csrfToken = document.querySelector("meta[name='csrf-token']").content;
@@ -26,7 +27,7 @@ const deleteData = (csrfToken, characterId, topicId) => {
   XHR.responseType = "json";
   XHR.send(formData); // 削除リクエストの送信
   XHR.onload = () => {
-    const pastTopic = document.getElementById(`past_topic_${characterId}`);
+    const pastTopic = document.getElementById(`past_topic_character_${characterId}`);
     pastTopic.querySelector(".topic_form").remove();
     console.log("OK");
     // 既存のtopic_formを削除
@@ -49,11 +50,14 @@ const updateLatestTopic = (latestTopicId) => {
   const latestPastTopicInput = document.getElementById(`latest_past_topic_input_${latestTopicId}`);
   latestPastTopicInput.addEventListener("blur", function(e){
     updateData(latestPastTopicInput, "past_topics");
+    updateTime();
   });
   latestPastTopicInput.addEventListener("focus", function(){
-    console.log("OK");
     window.addEventListener("beforeunload", function(e){ // 削除やnewの後に更新するとエラーが出やすい。恐らくnullになるから。
-      updateData(latestPastTopicInput, "past_topics");
+      if (document.activeElement == latestPastTopicInput) {
+        updateData(latestPastTopicInput, "past_topics");
+        updateTime();
+      }
     });
   });
 };

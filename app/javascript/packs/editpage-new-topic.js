@@ -1,6 +1,7 @@
 import { updateData } from "./update-data";
-import { deleteData } from "./delete-data";
+import { deleteData } from "./editpage-delete-data";
 import { today } from "./today";
+import { updateTime } from "./update-time";
 
 const newTopic = () => {
   const newTopicButton = document.getElementById("new_topic_btn");
@@ -25,7 +26,7 @@ const newData = (csrfToken, characterId) => {
   XHR.onload = () => {
     const newTopic = XHR.response.new_past_topic; // 新規フォームデータの取得
     const html = `
-    <div id="past_topic_${newTopic.id}">
+    <div class="past_topic_box" id="past_topic_${newTopic.id}">
       <form class="edit_character_topic_past_topic" data="${newTopic.id}" action="/past_topics/${newTopic.id}" accept-charset="UTF-8" method="post">
         <input type="hidden" name="_method" value="patch">
         <input type="hidden" name="authenticity_token" value="${csrfToken}">
@@ -35,8 +36,8 @@ const newData = (csrfToken, characterId) => {
       </form>
     </div>
     `; // newTopic.id同じモノを繰り返しすぎ・・・
-    const pastTopics = document.getElementById("past_topics");
-    pastTopics.insertAdjacentHTML("afterbegin", html); // 新規フォームをHTMLに挿入
+    const editCharacterPastTopic = document.getElementById("edit_character_past_topic");
+    editCharacterPastTopic.insertAdjacentHTML("afterbegin", html); // 新規フォームをHTMLに挿入
     updateNewTopic(newTopic.id); //処理を外に出したい・・・（async/awaitあたり？）
     deleteNewTopic(newTopic.id);
   };
@@ -44,14 +45,17 @@ const newData = (csrfToken, characterId) => {
 
 const updateNewTopic = (newTopicId) => {
   const newPastTopicInputs = document.querySelectorAll(`.past_topic_input_${newTopicId}`);
-  console.log(newPastTopicInputs);
   newPastTopicInputs.forEach(function(newPastTopicInput){
     newPastTopicInput.addEventListener("blur", function(e){
       updateData(newPastTopicInput, "past_topics");
+      updateTime();
     });
     newPastTopicInput.addEventListener("focus", function(){
       window.addEventListener("beforeunload", function(e){
-        updateData(newPastTopicInput, "past_topics");
+        if (document.activeElement == newPastTopicInput) {
+          updateData(newPastTopicInput, "past_topics");
+          updateTime();
+        }
       });
     });
   });
@@ -63,8 +67,6 @@ const deleteNewTopic = (newTopicId) => {
   delete_new_topic_btn.addEventListener("click", function(){
     if (window.confirm(`話した事データ${newTopicId}（1件）を削除しますか？`)) {
       deleteData(csrfToken, newTopicId);
-    } else {
-      return;
     }
   });
 };

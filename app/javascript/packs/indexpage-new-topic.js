@@ -1,5 +1,6 @@
 import { updateData } from "./update-data";
 import { today } from "./today";
+import { updateTime } from "./update-time";
 
 const newTopic = () => {
   const csrfToken = document.querySelector("meta[name='csrf-token']").content;
@@ -45,11 +46,14 @@ const updateNewTopic = (newTopicId) => {
   const newPastTopicInput = document.getElementById(`new_past_topic_input_${newTopicId}`);
   newPastTopicInput.addEventListener("blur", function(e){
     updateData(newPastTopicInput, "past_topics");
+    updateTime();
   });
   newPastTopicInput.addEventListener("focus", function(){
-    console.log("OK");
     window.addEventListener("beforeunload", function(e){ // 削除やnewの後に更新するとエラーが出やすい。恐らくnullになるから。
-      updateData(newPastTopicInput, "past_topics");
+      if (document.activeElement == futureTopicInput) {
+        updateData(newPastTopicInput, "past_topics");
+        updateTime();
+      }
     });
   });
 };

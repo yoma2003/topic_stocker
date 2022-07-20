@@ -1,4 +1,5 @@
 import { updateData } from "./update-data";
+import { updateTime } from "./update-time";
 
 const updateTopic = () => {
   const pastTopicInputs = document.querySelectorAll(".past_topic_input");
@@ -10,8 +11,10 @@ const updateTopic = () => {
     });
     pastTopicInput.addEventListener("focus", function(){
       window.addEventListener("beforeunload", function(e){
-        updateData(pastTopicInput, "past_topics");
-        updateTime();
+        if (document.activeElement == pastTopicInput) {
+          updateData(pastTopicInput, "past_topics");
+          updateTime();
+        }
       });
     });
   });
@@ -22,22 +25,13 @@ const updateTopic = () => {
     });
     futureTopicInput.addEventListener("focus", function(){
       window.addEventListener("beforeunload", function(e){
-        updateData(futureTopicInput, "future_topics");
-        updateTime();
+        if (document.activeElement == futureTopicInput) {
+          updateData(futureTopicInput, "future_topics");
+          updateTime();
+        }
       });
     });
   });
 };
-
-const updateTime = () => {
-  const updateTime = document.getElementById("update_time");
-  const todayData = new Date();
-  const html = `${todayData.getFullYear()}/${todayData.getMonth() + 1}/${todayData.getDate()} ${twoDigitsNum(todayData.getHours())}:${twoDigitsNum(todayData.getMinutes())} Topic自動保存`;
-  updateTime.innerHTML = html;
-};
-
-const twoDigitsNum = (num) => {
-  return ( '00' + num ).slice( -2 );
-}
 
 window.addEventListener("load", updateTopic);
