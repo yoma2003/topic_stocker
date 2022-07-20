@@ -3,4 +3,4 @@ const today = () => {
   return `${todayData.getFullYear()}-${todayData.getMonth() + 1}-${todayData.getDate()}`;
 };
 
-export { today }
+export { today };
