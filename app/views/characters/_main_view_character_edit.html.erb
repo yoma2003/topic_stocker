@@ -105,14 +105,14 @@
           <% end %>
         </div>
 
-        <div id="past_topics">
+        <div id="edit_character_past_topic">
           <div class="edit_character_topic_type">
             Past
           </div>
           
           <a id="new_topic_btn" data-character_id="<%= @character.id %>"><i class="fa-solid fa-plus topic-plus-icon"></i></a>
           <% @past_topics.each do |past_topic| %>
-            <div id="past_topic_<%= past_topic.id %>">
+            <div class="past_topic_box" id="past_topic_<%= past_topic.id %>">
               <%= form_with model: past_topic, class: "edit_character_topic_past_topic", data: past_topic.id, local: true do |f| %>
                 <%= f.date_field :created_date, class: "created_date past_topic_input past_topic_create_date" %>              
                 <%= f.text_area :past_topic, class: "topic_input past_topic_input past_topic_text" %>
