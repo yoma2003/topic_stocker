@@ -24,9 +24,11 @@ const newData = (csrfToken, characterId) => {
   XHR.responseType = "json";
   XHR.send(formData); // 新規フォームデータの送信
   XHR.onload = () => {
-    const pastTopic = document.getElementById(`past_topic_${characterId}`);
-    pastTopic.querySelector(".topic_form").remove();
-    // 既存のtopic_formを削除
+    const pastTopic = document.getElementById(`past_topic_character_${characterId}`);
+    if (pastTopic.querySelector(".topic_form") != null) {
+      pastTopic.querySelector(".topic_form").remove();
+      // 既存のtopic_formを削除
+    }
     const newTopic = XHR.response.new_past_topic; // 新規フォームデータの取得
     console.log(newTopic);
     const html = `
