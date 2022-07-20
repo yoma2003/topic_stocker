@@ -262,9 +262,9 @@ svg {
   color: #fff;
 }
 
-.update_time {
+#update_time {
   margin-top: 6px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 
