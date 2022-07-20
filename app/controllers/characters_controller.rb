@@ -6,7 +6,7 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @character_topic = CharacterTopic.new(character_topic_params)
+    @character_topic = CharacterTopic.new(image_resize(character_topic_params))
     if @character_topic.valid?
       @character_topic.save
       redirect_to root_path
@@ -23,7 +23,7 @@ class CharactersController < ApplicationController
 
   def update
     @character = Character.find(params[:id])
-    if @character.update(character_params)
+    if @character.update(image_resize(character_params))
       redirect_to root_path
     else
       @latest_future_topic = @character.future_topics[0]
@@ -50,5 +50,12 @@ class CharactersController < ApplicationController
 
   def set_categories
     @categories = current_user.categories
+  end
+
+  def image_resize(params)
+    if params[:image]
+      params[:image].tempfile = ImageProcessing::MiniMagick.source(params[:image].tempfile).resize_to_limit(500, 500).call
+    end
+    params
   end
 end
