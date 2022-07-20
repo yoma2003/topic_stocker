@@ -10,4 +10,14 @@ class User < ApplicationRecord
   has_many :categories, dependent: :destroy
 
   validates :name, presence: true
+
+  validate :image_type_validation
+
+  private
+
+  def image_type_validation
+    if !self.image.content_type.in?(%('image/jpeg image/png'))
+      self.errors.add(:image, 'は JPEG 形式または PNG 形式のみ選択してください')
+    end
+  end
 end
