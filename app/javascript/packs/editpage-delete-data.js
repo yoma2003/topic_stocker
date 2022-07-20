@@ -7,6 +7,9 @@ const deleteData = (csrfToken, topicId) => {
   XHR.send(formData); // 削除リクエストの送信
   XHR.onload = () => {
     deleteTopicElement.remove();
+    if (document.querySelectorAll(".past_topic_box").length == 0) {
+      document.getElementById("new_topic_btn").click();
+    }
   };
 };
 
