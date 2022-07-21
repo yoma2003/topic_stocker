@@ -75,9 +75,31 @@
             </div>
           </div>
           <div class='character_sns_field character_field'>
-            <p>SNS / URL</p>
-            <p>■　■　■</p>
-            <%= f.url_field :url, class: "edit_character_sns" %>
+            <p>SNS</p>
+            <div class="edited_character_sns_links">
+              <p class="twitter_link"><i class="fa-brands fa-twitter-square"></i></p>
+              <p class="facebook_link"><i class="fa-brands fa-facebook-square"></i></p>
+              <p class="instagram_link"><i class="fa-brands fa-instagram-square"></i></p>
+            </div>
+            <button type="button" class="edit_sns_btn click_btn">SNS編集</button>
+
+            <div class="edit_sns_box">
+              <p>twitter ID</p>
+              <div class="character_sns_form_box">
+                <div class="edit_character_sns_before">https://twitter.com/</div>
+                <%= f.text_field :twitter_id, class: "edit_character_sns edit_character_twitter_id" %>
+              </div>
+              <p>facebook ID</p>
+              <div class="character_sns_form_box">
+                <div class="edit_character_sns_before">https://www.facebook.com/</div>
+                <%= f.text_field :facebook_id, class: "edit_character_sns edit_character_facebook_id" %>
+              </div>
+              <p>instagram ID</p>
+              <div class="character_sns_form_box">
+                <div class="edit_character_sns_before">https://www.instagram.com/</div>
+                <%= f.text_field :instagram_id, class: "edit_character_sns edit_character_instagram_id" %>
+              </div>
+            </div>
           </div>
           <div class='character_description_field character_field'>
             <p>Description</p>
@@ -96,7 +118,7 @@
             <%= f.text_area :future_topic, class: "topic_input future_topic_input" %>
           </div>
         </div>
-        <div id="past_topics">
+        <div id="edit_character_past_topic">
           <div class="edit_character_topic_type">
             Past
           </div>

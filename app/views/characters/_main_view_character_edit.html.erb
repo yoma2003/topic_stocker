@@ -83,9 +83,52 @@
               </div>
           </div>
           <div class='character_sns_field character_field'>
-            <p>SNS / URL</p>
-            <p>■　■　■</p>
-            <%= f.url_field :url, class: "edit_character_sns" %>
+            <p>SNS</p>
+            <div class="edited_character_sns_links">
+              <% if @character.twitter_id.present? %>
+                <%= link_to "https://twitter.com/#{@character.twitter_id}", class: "twitter_link twitter_active", target: "_blank" do %>
+                  <i class="fa-brands fa-twitter-square"></i>
+                <% end %>
+              <% else %>
+                <p class="twitter_link"><i class="fa-brands fa-twitter-square"></i></p>
+              <% end %>
+
+              <% if @character.facebook_id.present? %>
+                <%= link_to "https://www.facebook.com/#{@character.facebook_id}", class: "facebook_link facebook_active", target: "_blank" do %>
+                  <i class="fa-brands fa-facebook-square"></i>
+                <% end %>
+              <% else %>
+                <p class="facebook_link"><i class="fa-brands fa-facebook-square"></i></p>
+              <% end %>
+
+              <% if @character.instagram_id.present? %>
+                <%= link_to "https://www.instagram.com/#{@character.instagram_id}", class: "instagram_link instagram_active", target: "_blank" do %>
+                  <i class="fa-brands fa-instagram-square"></i>
+                <% end %>
+              <% else %>
+                <p class="instagram_link"><i class="fa-brands fa-instagram-square"></i></p>
+              <% end %>              
+            </div>
+
+            <button type="button" class="edit_sns_btn click_btn">SNS編集</button>
+
+            <div class="edit_sns_box">
+              <p>twitter ID</p>
+              <div class="character_sns_form_box">
+                <div class="edit_character_sns_before">https://twitter.com/</div>
+                <%= f.text_field :twitter_id, class: "edit_character_sns edit_character_twitter_id" %>
+              </div>
+              <p>facebook ID</p>
+              <div class="character_sns_form_box">
+                <div class="edit_character_sns_before">https://www.facebook.com/</div>
+                <%= f.text_field :facebook_id, class: "edit_character_sns edit_character_facebook_id" %>
+              </div>
+              <p>instagram ID</p>
+              <div class="character_sns_form_box">
+                <div class="edit_character_sns_before">https://www.instagram.com/</div>
+                <%= f.text_field :instagram_id, class: "edit_character_sns edit_character_instagram_id" %>
+              </div>
+            </div>
           </div>
           <div class='character_description_field character_field'>
             <p>Description</p>
