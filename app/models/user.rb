@@ -16,7 +16,7 @@ class User < ApplicationRecord
   private
 
   def image_type_validation
-    if !self.image.content_type.in?(%('image/jpeg image/png'))
+    if self.image.attached? && !self.image.content_type.in?(%('image/jpeg image/png'))
       self.errors.add(:image, 'は JPEG 形式または PNG 形式のみ選択してください')
     end
   end
