@@ -1,6 +1,6 @@
 class CharacterTopic
   include ActiveModel::Model
-  attr_accessor :name, :image, :url, :describe, :past_topic, :created_date, :future_topic, :user_id, :category_ids
+  attr_accessor :name, :image, :twitter_id, :facebook_id, :instagram_id, :describe, :past_topic, :created_date, :future_topic, :user_id, :category_ids
 
   with_options presence: true do
     validates :name
@@ -10,7 +10,7 @@ class CharacterTopic
   validate :image_type_validation
 
   def save
-    character = Character.create(name: name, url: url, describe: describe, image: image, user_id: user_id, category_ids: category_ids)
+    character = Character.create(name: name, twitter_id: twitter_id, facebook_id: facebook_id , instagram_id: instagram_id , describe: describe, image: image, user_id: user_id, category_ids: category_ids)
     PastTopic.create(past_topic: past_topic, created_date: created_date, character_id: character.id)
     FutureTopic.create(future_topic: future_topic, character_id: character.id)
   end

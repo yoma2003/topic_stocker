@@ -62,6 +62,31 @@
               <% end %>
             </div>
             <div class="character_name"><%= character.name %></div>
+            <div class="character_sns_links">
+              <% if character.twitter_id.present? %>
+                <%= link_to "https://twitter.com/#{character.twitter_id}", class: "twitter_link twitter_active", target: "_blank" do %>
+                  <i class="fa-brands fa-twitter-square"></i>
+                <% end %>
+              <% else %>
+                <p class="twitter_link"><i class="fa-brands fa-twitter-square"></i></p>
+              <% end %>
+
+              <% if character.facebook_id.present? %>
+                <%= link_to "https://www.facebook.com/#{character.facebook_id}", class: "facebook_link facebook_active", target: "_blank" do %>
+                  <i class="fa-brands fa-facebook-square"></i>
+                <% end %>
+              <% else %>
+                <p class="facebook_link"><i class="fa-brands fa-facebook-square"></i></p>
+              <% end %>
+
+              <% if character.instagram_id.present? %>
+                <%= link_to "https://www.instagram.com/#{character.instagram_id}", class: "instagram_link instagram_active", target: "_blank" do %>
+                  <i class="fa-brands fa-instagram-square"></i>
+                <% end %>
+              <% else %>
+                <p class="instagram_link"><i class="fa-brands fa-instagram-square"></i></p>
+              <% end %>              
+            </div>
             <div class="detail">
               <%= link_to("詳細編集", edit_character_path(character), class: "edit_character_btn character_btn click_btn") %><br>
               <%= link_to("データ削除", character_path(character), method: :delete, data: {confirm: "「#{character.name}」のデータを削除してもよろしいですか？"}, class: "delete_character_btn character_btn click_btn") %>

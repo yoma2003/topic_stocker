@@ -17,12 +17,14 @@
 
 ## characters テーブル
 
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| name     | string     | null: false                    |
-| url      | string     |                                |
-| describe | text       |                                |
-| user_id  | references | null: false, foreign_key: true |
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| name      | string     | null: false                    |
+| twitter   | string     |                                |
+| facebook  | string     |                                |
+| instagram | string     |                                |
+| describe  | text       |                                |
+| user_id   | references | null: false, foreign_key: true |
 
 - image保存はActiveStorageを使用
 

@@ -41,11 +41,11 @@ class CharactersController < ApplicationController
   private
   
   def character_params
-    params.require(:character).permit(:name, :image, :url, :describe, category_ids: []).merge(user_id: current_user.id)
+    params.require(:character).permit(:name, :image, :twitter_id, :facebook_id, :instagram_id, :describe, category_ids: []).merge(user_id: current_user.id)
   end
 
   def character_topic_params
-    params.require(:character_topic).permit(:name, :image, :url, :describe, :past_topic, :created_date, :future_topic, category_ids: []).merge(user_id: current_user.id)
+    params.require(:character_topic).permit(:name, :image, :twitter_id, :facebook_id, :instagram_id, :describe, :past_topic, :created_date, :future_topic, category_ids: []).merge(user_id: current_user.id)
   end
 
   def set_categories

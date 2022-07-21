@@ -1,4 +1,4 @@
-const categorySelect = () => {
+const selectCategory = () => {
   const categorySelectBox = document.querySelector(".category_select_box");
   const categoryListOpenBtn = document.querySelector(".category_list_open_btn");
   let isOpen = false;
@@ -34,4 +34,4 @@ const reloadCheckedCategories = () => {
   affiliationCategory.innerHTML = html;
 };
 
-window.addEventListener("load", categorySelect);
+window.addEventListener("load", selectCategory);
