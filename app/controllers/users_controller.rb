@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :ensure_normal_user, only: [:edit, :update]
+
   def edit
   end
 
@@ -21,5 +23,11 @@ class UsersController < ApplicationController
       params[:image].tempfile = ImageProcessing::MiniMagick.source(params[:image].tempfile).resize_to_limit(500, 500).call
     end
     params
+  end
+
+  def ensure_normal_user
+    if current_user.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません。'
+    end
   end
 end
