@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def ensure_normal_user
     if current_user.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません。'
+      redirect_to root_path, alert: 'ゲストユーザーの編集はできません。'
     end
   end
 end

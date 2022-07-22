@@ -53,7 +53,8 @@
                 <% else %>
                   <%= image_tag "no_image.png", class: "character_input_image" %>
                 <% end %>
-                <p class="character_input_text"><%= character.name %></p>
+                <p class="character_input_name"><%= character.name %></p>
+                <p class="character_input_description"><%= character.describe[0, 30] %>...</p>
               </label>
             </div>
           <% end %>
