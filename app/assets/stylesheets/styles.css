@@ -1057,9 +1057,18 @@ svg {
   border: 1px solid #f8e8ff;
 }
 
-.character_input_text {
+.character_input_name {
   margin-left: 20px;
+  width: 140px;
   font-weight: bold;
+}
+
+.character_input_description {
+  margin-left: 10px;
+  flex-shrink: 1;
+  font-size: 12px;
+  color: #888;
+  overflow: hidden;
 }
 
 /* カテゴリ編集ページ */
