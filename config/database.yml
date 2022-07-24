@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: topic_stocker_production
-  username: topic_stocker
-  password: <%= ENV['topic_stocker_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
