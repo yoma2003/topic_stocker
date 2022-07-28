@@ -10,7 +10,9 @@ threads min_threads_count, max_threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port        ENV.fetch("PORT") { 3000 }
+# port        ENV.fetch("PORT") { 3000 } ←コメントアウトした
+
+bind "unix:///var/www/topic_stocker/tmp/sockets/puma.sock" # ←追加した
 
 # Specifies the `environment` that Puma will run in.
 #
