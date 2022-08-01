@@ -1,3 +1,11 @@
+server "ElatsticIP", user: "yoma2003", roles: %w{app db web}
+
+set :ssh_options, {
+  keys: %w(~/.ssh/topicstocker-prod-app.pem),
+  forward_agent: true,
+  auth_methods: %w(publickey),
+}
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
@@ -59,5 +67,3 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
-
-server '35.78.137.25', user: 'ec2-user', roles: %w{app db web}
