@@ -49,7 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: topicstocker_prod_ec2
+  database: topic_stocker_production
   username: root
   password: <%= Rails.application.credentials.db[:password] %>
-  host: <%= Rails.application.credentials.db[:hostname] %>
+  socket: <%= Rails.application.credentials.db[:hostname] %>
