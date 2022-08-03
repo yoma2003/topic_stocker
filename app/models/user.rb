@@ -17,7 +17,7 @@ class User < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.name = "ゲストユーザー"
       user.password = SecureRandom.urlsafe_base64
-      user.image.attach(io: File.open('public/images/test_image.jpg'), filename: 'test_image.jpg')
+      user.image.attach(io: File.open('app/assets/images/guest_image.jpg'), filename: 'test_image.jpg')
     end
   end
 
