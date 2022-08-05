@@ -120,4 +120,14 @@
       <% end %>
     </div>
   </div>
+  <% if current_user.email == 'guest@example.com' %> <%# ボトムインフォ %>
+    <%= render partial: "shared/guest_user_notice" %>
+  <% end %>
 </div>
+
+<% if flash[:guest_user_error] %> <%# センターメッセージ %>
+  <div class="guest_user_error">
+    <p class="guest_user_error_x-mark"><i class="fa-solid fa-xmark"></i></p>
+    <p><%= flash[:guest_user_error] %></p>
+  </div>
+<% end %>

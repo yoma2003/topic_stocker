@@ -14,11 +14,12 @@ class User < ApplicationRecord
   validate :image_type_validation
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
-      user.name = "ゲストユーザー"
-      user.password = SecureRandom.urlsafe_base64
-      user.image.attach(io: File.open('app/assets/images/guest_image.jpg'), filename: 'test_image.jpg')
-    end
+    find_by!(email: 'guest@example.com')
+    # find_or_create_by!(email: 'guest@example.com') do |user|
+    #   user.name = "ゲストユーザー"
+    #   user.password = SecureRandom.urlsafe_base64
+    #   user.image.attach(io: File.open('app/assets/images/guest_image.jpg'), filename: 'test_image.jpg')
+    # end
   end
 
   private

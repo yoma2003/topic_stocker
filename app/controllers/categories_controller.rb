@@ -3,7 +3,6 @@ class CategoriesController < ApplicationController
 
   def index
     # @characters = current_user.characters
-    
     if params[:sort] == "updated_at"
       @characters = Character.order_updated_at(current_user.id) #updated_at順
     else
