@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def ensure_normal_user
     if current_user.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーの編集はできません。'
+      redirect_to root_path, flash: { guest_user_error: 'ゲストユーザーの情報編集はできません。' }
     end
   end
 end
