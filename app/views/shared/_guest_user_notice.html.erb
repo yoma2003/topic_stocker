@@ -1,7 +1,9 @@
-<div class="guest_user_notice">
-  <p>ゲストユーザーでログインしています。　※データは定期的に初期化されますが、投稿は公開されますので投稿内容にはご注意下さい。</p>  
-  <div class="guest_user_info_btns">
-    <%= link_to "ログインページ", destroy_user_session_path, method: :delete, class: "guest_user_info_btn" %>
-    <%= link_to "Topic Stockerとは", "#", class: "guest_user_info_btn" %>
+<% if current_user.email == 'guest@example.com' %>  
+  <div class="guest_user_notice">
+    <p>ゲストユーザーでログインしています。　※データは定期的に初期化されますが、投稿は公開されますので投稿内容にはご注意下さい。</p>  
+    <div class="guest_user_info_btns">
+      <%= link_to "ログインページ", destroy_user_session_path, method: :delete, class: "guest_user_info_btn" %>
+      <%= link_to "Topic Stockerとは", "#", class: "guest_user_info_btn" %>
+    </div>
   </div>
-</div>
+<% end %>
