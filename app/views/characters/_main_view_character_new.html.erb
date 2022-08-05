@@ -33,9 +33,7 @@
 
 <div class="main_contents">
   <div class="main_contents_wrapper">
-
     <%= form_with model: @character_topic, url: characters_path, class: "edit_character_form", local: true do |f| %>
-
       <div class="edit_profile_form">
         <div class="edit_profile_form_left">
           <%= render "shared/error_messages", model: f.object %>
@@ -130,4 +128,7 @@
       </div>
     <% end %>
   </div>
+  <% if current_user.email == 'guest@example.com' %> <%# ボトムインフォ %>
+    <%= render partial: "shared/guest_user_notice" %>
+  <% end %>
 </div>
