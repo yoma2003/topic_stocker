@@ -33,11 +33,11 @@
 </div>
 
 <div class="main_contents">
+  <%= render "shared/error_messages", model: @character %> <%# バリデーションエラーメッセージ %>
   <div class="main_contents_wrapper">
     <div class="edit_character_form">
       <%= form_with model: @character, local: true, class: "edit_profile_form" do |f|%>
         <div class="edit_profile_form_left">
-          <%= render "shared/error_messages", model: f.object %>
           <div class="character_image_field">
             <div class='selected_character_image_wrapper', onClick="document.getElementById('edit_character_image').click()">
               <% if @character.image.attached? %>

@@ -33,6 +33,7 @@
   </div>
 
   <div class="main_contents">
+    <%= render "shared/error_messages", model: f.object %> <%# バリデーションエラーメッセージ %>
     <div class="main_contents_wrapper">
       <div class="character_list">
         <div class="character_list_top">
