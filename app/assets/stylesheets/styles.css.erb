@@ -32,6 +32,28 @@ svg {
   margin: 0;
 }
 
+/* エラー表示（共通） */
+
+.field_with_errors > input {
+  border: 1px solid red;
+}
+
+.field_with_errors > input:focus {
+  outline: 2px solid red;
+  outline-offset: -2px;
+}
+
+/* エラーインフォ */
+
+.error_info {
+  padding: 5px 47px;
+  background-color: rgba(255, 0, 0, 0.08);
+  color: red;
+}
+
+.error_info li {
+  list-style: inside;
+}
 
 /* ページ */
 
