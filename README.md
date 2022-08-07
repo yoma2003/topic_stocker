@@ -3,7 +3,8 @@
 （ロゴ画像挿入）
 
 # 概要
-「誰」と「いつ」「何を話したか」「次に何を話したいか」を記録できる、話題管理アプリ。
+ビジネス、プライベートで、多くの人と話す機会がある人のための、話題管理アプリ。<br>
+「誰と」「いつ」「何を話したか」「次に何を話したいか」を記録しカテゴリ毎に管理できる。
 
 # URL
 https://topicstocker.com/
@@ -32,28 +33,69 @@ https://topicstocker.com/
 既存するアプリの中でも、メモアプリでは管理自体が煩雑になり、名刺管理アプリでは話題などのフランクな管理は難しい。<br>
 そこで「話題を管理する事」に特化したアプリ制作を行った。
 
+# 要件定義書
+https://docs.google.com/spreadsheets/d/1PHPF3jtXuHywOdnAqtzP8D0dRn7q1djGeHJsFu35wSs/edit#gid=1217619759
 
 
-# 使用イメージ
+# 機能
 
 
 # 工夫したポイント
-### ページ遷移の少ないアプリ設計
-- Ajax通信を用いた非同期処理（JavaScript）<br>
-  話題を「管理」するというアプリの目的を考え、ページ遷移をせずにトップページで主要な操作（話題を追加し記録）を完結できるように設計した。
+### トップページのみで主要な操作が完結するアプリ設計
+- Ajax通信を用いた非同期通信（JavaScript）<br>
+非同期通信を用いページ遷移をせず、トップページで主要な操作（話題を追加し記録する）を完結できるように設計を行った。
+
+### ユーザー操作の少ないアプリ設計
+- イベント発火によるデータ自動更新（JavaScript）<br>
+トップページのデータ更新を自動化（フォーム以外をクリックすると更新）し、ユーザー操作を極力減らす設計を行った。
 
 ### アプリの表示スピード
 - AWSへのデプロイ<br>
-  実際にユーザーのフィードバックを頂く為に、アクセススピードの早いAWSでのインフラ環境構築を行った。
+ユーザー獲得を目指し、ユーザーストレスを減らすため、アクセススピードの早いAWSのインフラ環境を構築した。
 - JavaScriptによるブラウザ処理<br>
-  処理の重さから使用が下火になっているjQueryなどのフレームワークを使わず、学習も兼ねて生のJavaScriptでのブラウザ処理にこだわった。
+処理の重さが指摘されるjQueryなどのフレームワークを使わず、生のJavaScriptでブラウザ処理を実装した。
 
 ### アプリデザイン
 - Figmaを用いたデザインカンプの作成<br>
-  「使ってもらえるアプリ」を考えアプリデザインにこだわる為にフロントエンドの制作で使われるFigmaを用いてデザインカンプを作成してからフロントの実装を行った。
+「データ管理のしやすい」アプリデザインを考え、Figmaでデザインカンプを作成してからフロントを実装した。
 
-# 要件定義書
-https://docs.google.com/spreadsheets/d/1PHPF3jtXuHywOdnAqtzP8D0dRn7q1djGeHJsFu35wSs/edit#gid=1217619759
+### フィードバックを受けながらの開発
+- Google Formsを用いたフィードバック<br>
+ユーザー目線のアプリ開発を意識するため、Google Formsのリンクを設置し、フィードバックを受けながら開発を行った。
+
+処理の重さから使用が下火になっているjQueryなどのフレームワークを使わず、学習も兼ねて生のJavaScriptで
+
+# 開発環境
+- フロントエンド<br>
+HTML / CSS / JavaScript
+
+- バックエンド<br>
+Ruby 2.6.5 / Ruby on Rails 6.0.5
+
+- データベース<br>
+MySQL 5.7.36
+
+- テスト<br>
+Rspec-rails 5.1.2
+
+- ソースコード管理<br>
+Git / GitHub
+
+- 本番環境<br>
+AWS ( VPC / EC2 / RDS / S3 / Route53 / ELB / ACM / IAM )<br>
+Webサーバー：Nginx 1.20.0<br>
+Applicationサーバー：Puma 3.12.6<br>
+
+- 開発ツール<br>
+テキストエディタ：VScode<br>
+フロントデザイン：Figma<br>
+Git管理：GitHub Desktop<br>
+
+- ユーザーフィードバック<br>
+Google forms
+
+- タスク管理<br>
+GitHubプロジェクトボード
 
 # データベース設計
 
@@ -61,9 +103,10 @@ https://docs.google.com/spreadsheets/d/1PHPF3jtXuHywOdnAqtzP8D0dRn7q1djGeHJsFu35
 
 # 画面遷移図
 
-# 開発環境
-
+![diagram](https://user-images.githubusercontent.com/102401730/183306649-c636a7e2-579e-4ff5-8a9d-33ee39dd7da9.png)
 
 
 # AWSインフラ構成
+
+![infra](https://user-images.githubusercontent.com/102401730/183302923-b0266f12-13d9-40b5-bf6e-3c21a5687d5b.png)
 
