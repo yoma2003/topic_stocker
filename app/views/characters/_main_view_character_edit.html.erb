@@ -34,7 +34,7 @@
 
 <div class="main_contents">
   <%= render "shared/error_messages", model: @character %> <%# バリデーションエラーメッセージ %>
-  <div class="main_contents_wrapper">
+  <div class="main_contents_wrapper height_lock">
     <div class="edit_character_form">
       <%= form_with model: @character, local: true, class: "edit_profile_form" do |f|%>
         <div class="edit_profile_form_left">
