@@ -127,7 +127,5 @@
       <% end %>
     </div>
   </div>
-  <% if current_user.email == 'guest@example.com' %> <%# ボトムインフォ %>
-    <%= render partial: "shared/guest_user_notice" %>
-  <% end %>
+  <%= render partial: "shared/guest_user_notice" %> <%# ボトムインフォ %>
 </div>
