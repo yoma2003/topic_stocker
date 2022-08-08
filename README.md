@@ -63,7 +63,6 @@ https://docs.google.com/spreadsheets/d/1PHPF3jtXuHywOdnAqtzP8D0dRn7q1djGeHJsFu35
 - Google Formsを用いたフィードバック<br>
 ユーザー目線のアプリ開発を意識するため、Google Formsのリンクを設置し、フィードバックを受けながら開発を行った。
 
-処理の重さから使用が下火になっているjQueryなどのフレームワークを使わず、学習も兼ねて生のJavaScriptで
 
 # 開発環境
 - フロントエンド<br>
