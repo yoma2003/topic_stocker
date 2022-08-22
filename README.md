@@ -1,3 +1,4 @@
+![github_logo](https://user-images.githubusercontent.com/102401730/185775306-d0248145-5160-47bd-8280-afb445fab89e.jpg)
 # アプリケーション名
 「Topic Stocker」
 
@@ -7,6 +8,10 @@
 
 # URL
 https://topicstocker.com/
+
+# 利用イメージ
+
+![sample_1](https://user-images.githubusercontent.com/102401730/185894751-59ff3c05-ef5e-40ce-b62c-4585e11d3d53.gif)
 
 # 利用方法
 ### ユーザー登録、編集
@@ -30,18 +35,48 @@ https://topicstocker.com/
 # アプリケーションを作成した背景
 
 前職の薬剤師において、イベントを多数主催する友人にヒアリングをした際、「話しをした人の情報を管理しにくい」という課題を発見した。
-私はイベントに参加していて、「何を話したか」ということを記録できればより人の情報を管理しやすいのではないかと考えた。
-メモアプリでは管理が煩雑になり、名刺管理アプリでは蓄積する情報を管理しにくい。
-そこで、「いつ」「誰と」「何を話したか」「次に何を話したいか」、人とのつながりを話題で管理できるアプリを開発した。
+私はイベントに参加していて、人と「何を話したか」を記録できれば、より人の情報を管理しやすいのではないかと考えた。
+また、「何を話したか」ば次のコミュニケーションのきっかけにもなるのではないかと考えた。
+「話題」は、メモアプリでは管理が煩雑になり、名刺管理アプリでは蓄積する情報を管理しにくい。
+そこで、「いつ」「誰と」「何を話したか」「次に何を話したいか」を記録できる、話題管理アプリを開発した。
 
 # 要件定義書
 https://docs.google.com/spreadsheets/d/1PHPF3jtXuHywOdnAqtzP8D0dRn7q1djGeHJsFu35wSs/edit#gid=1217619759
 
-# 機能
+# 機能一覧
+### メイン機能
+- ユーザーログイン機能
+- ユーザー管理機能（登録・編集・削除）
+- 画像アップロード機能（AWS S3）
+- 人データ管理機能（CRUD / Formオブジェクトパターン / Ajax非同期通信）
+- 話したことデータ管理機能（CRUD / Formオブジェクトパターン / Ajax非同期通信）
+- 話したいことデータ管理機能（CRUD / Formオブジェクトパターン / Ajax非同期通信）
+- カテゴリ管理機能（CRUD / 多対多のアソシエーション）
 
+### その他
+- ゲストログイン機能
+- データソート機能
+- アコーディオンパネル（JavaScript）
+- 画像データサンプル表示機能（JavaScript）
+- 画像投稿バリデーション・リサイズ
+- ユーザーフィードバック機能（Google Forms）
+- モデル単体テスト（Rspec）
+
+### インフラ
+- 独自ドメインの設定（AWS Route53）
+- 常時SSL化（AWS ACM × ELB）
+
+### 実装予定
+- レスポンシブ対応
+- カテゴリ並べ替え機能
+- SNS連携ログイン機能（SNS API）
+- SNS画像取得機能（SNS API）
+- カレンダーピッカー（JavaScriptライブラリ）
+- 統合テスト（Rspec）
+- クエリ回数の削減
 
 # 工夫したポイント
-### トップページで主要ななデータ編集が行えるするアプリ設計
+### トップページで主要なデータ編集が行えるするアプリ設計
 - Ajax通信を用いた非同期通信（JavaScript）<br>
 非同期通信を用いて入力内容の自動更新、フォームの追加、削除処理を導入しし、トップページで主要なのデータ編集が行えるようアプリ設計を行った。
 
@@ -49,7 +84,7 @@ https://docs.google.com/spreadsheets/d/1PHPF3jtXuHywOdnAqtzP8D0dRn7q1djGeHJsFu35
 - 動きのあるインターフェース（JavaScript）<br>
 「視覚的にデータを管理しやすく」するため、JavaScriptを用いてクリックすると詳細が開く様なインターフェースを実装した。
 - Figmaを用いたデザインカンプの作成<br>
-
+デザインの完成度を意識して、デザインカンプを作成し、それを元にフロントを実装した。
 
 ### アプリの動作スピード
 - AWSへのデプロイ<br>
@@ -57,6 +92,9 @@ https://docs.google.com/spreadsheets/d/1PHPF3jtXuHywOdnAqtzP8D0dRn7q1djGeHJsFu35
 - （JavaScriptによるブラウザ処理）<br>
 処理の重さなどが指摘されるjQueryなどのフレームワークを使わず、生のJavaScriptでブラウザ処理を実装した。
 
+# 苦労したポイント
+非同期通信によるフォームの追加
+AWSでのインフラ構築
 
 # 開発環境
 - フロントエンド<br>
@@ -74,8 +112,8 @@ Rspec-rails 5.1.2
 - ソースコード管理<br>
 Git / GitHub
 
-- 本番環境<br>
-AWS ( VPC / EC2 / RDS / S3 / Route53 / ELB / ACM / IAM )<br>
+- インフラ環境<br>
+AWS：VPC / EC2 / RDS/ S3 / Route53 / ELB / ACM / IAM<br>
 Webサーバー：Nginx 1.20.0<br>
 Applicationサーバー：Puma 3.12.6<br>
 
@@ -85,7 +123,7 @@ Applicationサーバー：Puma 3.12.6<br>
 Git管理：GitHub Desktop<br>
 
 - ユーザーフィードバック<br>
-Google forms
+Google Forms
 
 - タスク管理<br>
 GitHubプロジェクトボード
@@ -98,22 +136,25 @@ GitHubプロジェクトボード
 
 ![diagram](https://user-images.githubusercontent.com/102401730/183306649-c636a7e2-579e-4ff5-8a9d-33ee39dd7da9.png)
 
-
 # AWSインフラ構成
 
-![infra](https://user-images.githubusercontent.com/102401730/183302923-b0266f12-13d9-40b5-bf6e-3c21a5687d5b.png)
+![infra_1](https://user-images.githubusercontent.com/102401730/185748367-f32dad58-a6a1-49c0-9e8e-42e864595995.png)
 
 # ローカルでの動作方法
-% git clone https://github.com/yoma2003/topic_stocker.git
-% cd topic_stocker
-% bundle install
-% rails db:create
-% rails db:migrate
-？？
+% git clone https://github.com/yoma2003/topic_stocker.git<br>
+% cd topic_stocker<br>
+% bundle install<br>
+% rails db:create<br>
+% rails db:migrate<br>
+
+# 開発期間
+約6週間（1日平均作業時間：約10時間）
 
 # 作成者
 
-* 作成者：増田陽介（ますたようすけ）
-* twitter：[@yoma_2003](https://twitter.com/yoma_2003)
-* Qiita：[@yoma2003](https://qiita.com/yoma2003)
-* GitHub：[@yoma2003](https://github.com/yoma2003) 
+- 作成者：yoma2003
+- twitter：[@yoma_2003](https://twitter.com/yoma_2003)
+- Qiita：[@yoma2003](https://qiita.com/yoma2003)
+
+# 関連記事
+
