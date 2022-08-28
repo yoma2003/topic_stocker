@@ -1,16 +1,20 @@
 /* ログインページ */
 
-.user_contents_wrapper {
+.user_wrapper {
   height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
+  /* background-color: skyblue; */
   background: url("<%= asset_path('main_back.jpg') %>") center/cover;
 }
 
-.user_contents {
+.user_login {
   margin: 0 auto;
-  padding-top: 30px;
+  width: 1050px;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
   text-align: center;
 }
 
@@ -38,6 +42,12 @@
   margin: 0 auto;
 }
 
+.login_alert {
+  margin-bottom: 30px;
+  color: red;
+  font-size: 18px;
+}
+
 .login_input {
   margin-bottom: 15px;
   padding: 10px 20px;
@@ -57,13 +67,14 @@
   border-radius: 5px;
   letter-spacing: 1px;
   font-size: 20px;
+  /* font-weight: bold; */
   display: block;
   color: #fff;
   cursor: pointer;
 }
 
 .login_btn:hover,
-.signin_btn:hover,
+.signup_btn:hover,
 .user_update_btn:hover {
   background-color: #5a0073;
 }
@@ -74,23 +85,40 @@
   justify-content: space-between;
 }
 
-.other_link a {
+.other_link_center {
+  margin-top: 30px;
+}
+
+.other_link a,
+.other_link_center a {
   font-size: 20px;
+  font-weight: bold;
   color: #770099;
 }
 
-.other_link a:hover {
+.other_link a:hover,
+.other_link_center a:hover {
   text-decoration: underline;
 }
 
-/* サインインページ */
+/* サインアップページ */
 
-.signin_logo {
-  width: 360px;
-  height: 68px;
+.user_contents {
+  margin: 0 auto;
+  width: 800px;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  text-align: center;
 }
 
-.signin_logo img {
+.signup_logo {
+  width: 360px;
+  height: 68px;
+  margin: 0 auto;
+}
+
+.signup_logo img {
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -104,14 +132,13 @@
   font-weight: bold;
 }
 
-.signin_field {
+.signup_field {
   margin-top: 30px;
   width: 360px;
   margin: 0 auto;
 }
 
-.signin_btn,
-.user_update_btn {
+.signup_btn {
   margin-top: 35px;
   padding: 10px 20px;
   width: 100%;
@@ -131,6 +158,7 @@
 
 .login_link a {
   font-size: 20px;
+  font-weight: bold;
   color: #770099;
 }
 
@@ -143,6 +171,7 @@
 .user_edit_logo {
   width: 600px;
   height: 68px;
+  margin: 0 auto;
   border-radius: 5px;
   background-color: #770099;
 }
@@ -250,6 +279,20 @@
   padding-top: 20px;
 }
 
+.user_update_btn {
+  margin: 35px auto 0;
+  padding: 10px 20px;
+  width: 600px;
+  background-color: #770099;
+  border: none;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  font-size: 20px;
+  display: block;
+  color: #fff;
+  cursor: pointer;
+}
+
 .user_delete_link {
   margin-top: 30px;
 }
@@ -272,4 +315,191 @@
 
 #error_explanation li {
   list-style: inside;
+}
+
+/* アプリ紹介ページ */
+
+.about_wrapper {
+  padding-bottom: 80px;
+  background: url("<%= asset_path('main_back.jpg') %>") center/cover;
+  background-attachment: fixed;
+  /* background-color: aquamarine; */
+  color: #770099;
+}
+
+.about_contents_wrapper {
+  margin: 0 auto;
+  width: 1050px;
+}
+
+.about_header {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about_header_logo {
+  height: 60px;
+}
+
+.about_header_logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.about_user_nav {
+  width: 360px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about_user_nav_btn {
+  height: 40px;
+  width: 175px;
+  line-height: 38px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 1px solid #770099;
+}
+
+.about_user_login_btn {
+  background-color: #fff;
+  color: #770099;
+}
+
+.about_user_signup_btn {
+  background-color: #770099;
+  color: #fff;
+}
+
+.about_main_view {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  text-align: center;
+  padding: 60px;
+}
+
+.about_slogan {
+  margin-bottom: 40px;
+}
+
+.about_user_guest_login_btn {
+  height: 40px;
+  width: 360px;
+  margin: 0 auto;
+  line-height: 38px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #770099;
+  background-color: #fff;
+  color: #770099;
+  font-weight: bold;
+  display: block;
+}
+
+.about_user_signup_btn:hover {
+  background-color: #5a0073;
+}
+
+.about_user_login_btn:hover,
+.about_user_guest_login_btn:hover {
+  background-color: #F5F5F5;
+}
+
+.about_image {
+  width: 100%;
+  height: 100%;
+}
+
+.about_main_sample_image {
+  width: 840px;
+  margin: 60px auto 0;
+  /* margin-top: 60px; */
+}
+
+.about_functions {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 40px;
+  padding: 60px;
+}
+
+.about_function {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+}
+
+.about_function:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.about_function:last-child {
+  margin-bottom: 0;
+}
+
+.about_function_image {
+  width: 525px;
+}
+
+.about_function_text {
+  text-align: left;
+  width: 360px;
+}
+
+.about_function:nth-child(even) > .about_function_text {
+  text-align: right;
+}
+
+.about_function_title {
+  font-size: 28px;
+}
+
+.about_function_text p {
+  margin-top: 25px;
+  font-size:20px;
+  font-weight: bold;
+}
+
+.about_message {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 40px;
+  padding: 60px;
+}
+
+.about_main_slogan {
+  font-size: 40px;
+}
+
+.about_main_login {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 40px;
+  padding: 60px;
+}
+
+.about_main_login_logo {
+  width: 360px;
+  margin: 30px auto 20px;
+}
+
+.about_main_login_logo img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.about_main_login_nav {
+  width: 360px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-between;
 }
