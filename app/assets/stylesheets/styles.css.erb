@@ -277,13 +277,22 @@ svg {
   justify-content: space-between;
 }
 
-.sort_btn {
+.main_top_sub_btn {
   padding: 2px 12px;
   margin-right: 4px;
   display: inline-block;
   background-color: #fff;
   color: #770099;
   border-radius: 3px;
+}
+
+.main_top_sub_partition {
+  width: 14px;
+  height: 27px;
+  margin-right: 15px;
+  border-right: 1px dotted #770099;
+  display: inline-block;
+  vertical-align: bottom;
 }
 
 .active {
@@ -307,7 +316,7 @@ svg {
   color: #fff;
   position: sticky;
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
   overflow: hidden;
 }
 
@@ -330,7 +339,7 @@ svg {
   color: rgba(0, 0, 0, 0.45);
 }
 
-/* センターメッセージ */
+/* ゲストエラーメッセージ */
 
 .guest_user_error {
   padding: 60px;
@@ -338,6 +347,7 @@ svg {
   text-align: center;
   color: #fff;
   position: fixed;
+  z-index: 2;
   top: 50vh;
   left: calc(50vw + 150px);
   transform: translate(-50%, -50%);
@@ -981,12 +991,6 @@ svg {
   border-radius: 0 3px 3px 0;
 }
 
-/* ボックス表示 */
-
-.visible {
-  display: block;
-}
-
 /* 詳細データ編集ページ */
 
 .edit_character_topic_form {
@@ -1203,4 +1207,62 @@ svg {
 
 .click_btn_underline:hover {
   text-decoration: underline;
+}
+
+/* ヘルプページ */
+
+.help_view {
+  width: calc(100vw - 300px);
+  height: calc(100vh - 90px);
+  padding: 85px;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: none;
+}
+
+.help_image_wrapper {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.help_image_wide {
+  max-width: 1100px;
+  max-height: 610px;
+}
+
+.help_image_tall {
+  max-width: 700px;
+  max-height: 750px;
+}
+
+.help_image_big {
+  max-width: 1100px;
+  max-height: 840px;
+}
+
+.help_view_x-mark {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.help_image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ボックス表示 */
+
+.visible {
+  display: block;
 }

@@ -33,15 +33,17 @@
 <div class="main_top_sub">
   <div class="main_top_sub_left">
     <% unless params[:sort] %>
-      <div class="sort_btn active">会話日付順</div>
+      <div class="main_top_sub_btn active">会話日付順</div>
     <% else %>
-      <%= link_to "会話日付順", category_path, class: "sort_btn click_btn" %>
+      <%= link_to "会話日付順", category_path, class: "main_top_sub_btn click_btn" %>
     <% end %>
     <% if params[:sort] == "updated_at" %>
-      <div class="sort_btn active">入力更新順</div>
+      <div class="main_top_sub_btn active">入力更新順</div>
     <% else %>
-      <%= link_to "入力更新順", category_path(sort: "updated_at"), class: "sort_btn click_btn" %>
+      <%= link_to "入力更新順", category_path(sort: "updated_at"), class: "main_top_sub_btn click_btn" %>
     <% end %>
+    <div class="main_top_sub_partition"></div>
+    <div class="main_top_sub_btn click_btn help_btn">入力ヘルプ</div>
   </div>
   <div class="main_top_sub_right">
     <div id="update_time"></div>
@@ -128,4 +130,11 @@
     </div>
   </div>
   <%#= render partial: "shared/guest_user_notice" %> <%# ボトムインフォ %>
+</div>
+
+<div class="help_view"> <%# ヘルプ表示 %>
+  <div class="help_image_wrapper help_image_wide">
+    <p class="help_view_x-mark"><i class="fa-solid fa-xmark"></i></p>
+    <%= image_tag 'help/edit_data.png', class: "help_image" %>
+  </div>
 </div>
