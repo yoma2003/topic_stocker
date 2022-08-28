@@ -1,10 +1,9 @@
 const closeGuestUserError = () => {
   const xMark = document.querySelector(".guest_user_error_x-mark");
-  const errorBox = document.querySelector(".guest_user_error");
+  const popup = document.querySelector(".guest_user_error");
   xMark.addEventListener("click", function(e) {
-    errorBox.remove();
+    popup.remove();
   });
-
 };
 
 window.addEventListener("load", closeGuestUserError);
