@@ -1,0 +1,69 @@
+<div class="about_wrapper">
+  <div class="about_contents_wrapper">
+    <div class="about_header">
+      <div class="about_header_logo">
+        <%= image_tag "main_logo.png" %>
+      </div>
+      <div class="about_user_nav">
+        <%= link_to "ログイン", new_user_session_path, class: "about_user_nav_btn about_user_login_btn" %>
+        <%= link_to "ユーザー登録", new_user_registration_path, class: "about_user_nav_btn about_user_signup_btn" %>
+      </div>
+    </div>
+
+    <div class="about_main_view">
+      <h1 class="about_slogan">「誰と」「いつ」「何を話したか」「次に何を話したいか」<br>話題を管理することができます</h1>
+      <%= link_to "ゲストログインで体験する", users_guest_sign_in_path, method: :post, class: "about_user_guest_login_btn" %>
+      <div class="about_main_sample_image">
+        <%= image_tag 'about/main_sample.gif', class: "about_image" %>
+      </div>
+    </div>
+
+    <div class="about_functions">
+      <div class="about_top about_function">
+        <div class="about_function_image">
+          <%= image_tag 'about/top_sample.gif', class: "about_top_sample_image about_image" %>
+        </div>
+        <div class="about_function_text">
+          <h2 class="about_function_title">トップページ</h2>
+          <p>話題の追加・削除・更新ができます</p>
+        </div>
+      </div>
+
+      <div class="about_detail about_function">
+        <div class="about_function_image">
+          <%= image_tag 'about/detail_sample.gif', class: "about_detail_sample_image about_image" %>
+        </div>
+        <div class="about_function_text">
+          <h2 class="about_function_title">詳細編集ページ</h2>
+          <p>人の情報・過去の話題を編集できます</p>
+        </div>
+      </div>
+
+      <div class="about_category about_function">
+        <div class="about_function_image">
+          <%= image_tag 'about/category_sample.png', class: "about_category_sample_imgage about_image" %>
+        </div>
+        <div class="about_function_text">
+          <h2 class="about_function_title">カテゴリ追加・編集ページ</h2>
+          <p>カテゴリ毎にまとめることができます</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about_message">
+      <h2>以前の「話題」はコミュニケーションのきっかけになると思いませんか？</h3>
+    </div>
+
+    <div class="about_main_login">
+      <h1 class="about_main_slogan">人とのつながりを話題で管理するアプリ</h1>
+      <div class="about_main_login_logo">
+        <%= image_tag "main_logo.png" %>
+      </div>
+      <div class="about_main_login_nav">
+        <%= link_to "ログイン", new_user_session_path, class: "about_user_nav_btn about_user_login_btn" %>
+        <%= link_to "ユーザー登録", new_user_registration_path, class: "about_user_nav_btn about_user_signup_btn" %>
+      </div>
+      <%= link_to "ゲストログインで体験する", users_guest_sign_in_path, method: :post, class: "about_user_guest_login_btn" %>
+    </div>
+  </div>
+</div>
