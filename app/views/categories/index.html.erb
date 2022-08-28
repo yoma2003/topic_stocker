@@ -1,4 +1,7 @@
-<%= javascript_pack_tag "indexpage-delete-topic", "indexpage-new-topic", "select-character", "update-topic", "open-operation-btn", "close-guest-user-error" %>
+<%= javascript_pack_tag "indexpage-delete-topic", "indexpage-new-topic", "select-character", "update-topic", "open-operation-btn", "open-popup", "close-popup" %>
+<% if flash[:guest_user_error] %> <%# ゲスト編集エラーメッセージ %>
+  <%= javascript_pack_tag "close-guest-user-error" %>
+<% end %>
 
 <div class="wrapper">
   <div class="side_bar">
