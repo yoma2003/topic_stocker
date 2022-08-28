@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate
   before_action :set_categories
 
   def index
@@ -60,6 +61,10 @@ class CategoriesController < ApplicationController
   
   def category_params
     params.require(:category).permit(:name, :describe, character_ids: []).merge(user_id: current_user.id)
+  end
+
+  def authenticate
+    redirect_to about_users_path unless user_signed_in?
   end
 
   def set_categories

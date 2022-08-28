@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :ensure_normal_user, only: [:edit, :update]
+  before_action :authenticate, except: [:about]
+  before_action :ensure_normal_user, only: [:edit, :update,]
 
   def edit
   end
@@ -10,6 +11,9 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def about
   end
 
   private
@@ -23,6 +27,10 @@ class UsersController < ApplicationController
       params[:image].tempfile = ImageProcessing::MiniMagick.source(params[:image].tempfile).resize_to_limit(500, 500).call
     end
     params
+  end
+
+  def authenticate
+    redirect_to about_users_path unless user_signed_in?
   end
 
   def ensure_normal_user
