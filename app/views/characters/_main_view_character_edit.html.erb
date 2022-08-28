@@ -25,7 +25,7 @@
 
 <div class="main_top_sub">
   <div class="main_top_sub_left">
-    <%= link_to "入力ヘルプ", "#", class: "sort_btn click_btn" %>
+    <div class="main_top_sub_btn click_btn help_btn">入力ヘルプ</div>
   </div>
   <div class="main_top_sub_right">
     <div id="update_time"></div>
@@ -167,4 +167,11 @@
     </div>
   </div>
   <%#= render partial: "shared/guest_user_notice" %> <%# ボトムインフォ %>
+</div>
+
+<div class="help_view"> <%# ヘルプ表示 %>
+  <div class="help_image_wrapper help_image_big">
+    <p class="help_view_x-mark"><i class="fa-solid fa-xmark"></i></p>
+    <%= image_tag 'help/edit_detail_data.png', class: "help_image" %>
+  </div>
 </div>
