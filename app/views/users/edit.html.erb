@@ -1,38 +1,38 @@
 <%= javascript_pack_tag "user-view-selected-image" %>
 
-<div class="user_contents_wrapper">
+<div class="user_wrapper">
   <div class="user_contents">
-    <div class="user_edit_logo">
-      <%= image_tag "main_logo.png" %><%# 大きいロゴを用意 %>
-    </div>
-    <h2 class="user_page_title">ユーザー編集</h2>
-    <%= form_with model: current_user, local: true do |f|%>
-      <%= render "shared/users_edit_error_messages", model: f.object %>
-      <div class="user_edit_field">
-        <div class="user_edit_field_left">
-          <div class="user_image_field">
-            <div class="selected_user_image_wrapper", onClick="document.getElementById('edit_user_image').click()">
-              <% if current_user.image.attached? %>
-                <%= image_tag current_user.image, class: "selected_user_image" %>
-              <% else %>
-                <%= image_tag "no_image.png", class: "selected_user_image" %>
-              <% end %>
-            </div>
-            <%= f.file_field :image, id:"edit_user_image", accept:"image/jpeg, image/png" %>
-            <div class="user_camera_btn" onClick="document.getElementById('edit_user_image').click()">
-              <i class="fa-solid fa-camera"></i>
+      <div class="user_edit_logo">
+        <%= image_tag "main_logo.png" %><%# 大きいロゴを用意 %>
+      </div>
+      <h2 class="user_page_title">ユーザー編集</h2>
+      <%= form_with model: current_user, local: true do |f|%>
+        <%= render "shared/users_edit_error_messages", model: f.object %>
+        <div class="user_edit_field">
+          <div class="user_edit_field_left">
+            <div class="user_image_field">
+              <div class="selected_user_image_wrapper", onClick="document.getElementById('edit_user_image').click()">
+                <% if current_user.image.attached? %>
+                  <%= image_tag current_user.image, class: "selected_user_image" %>
+                <% else %>
+                  <%= image_tag "no_image.png", class: "selected_user_image" %>
+                <% end %>
+              </div>
+              <%= f.file_field :image, id:"edit_user_image", accept:"image/jpeg, image/png" %>
+              <div class="user_camera_btn" onClick="document.getElementById('edit_user_image').click()">
+                <i class="fa-solid fa-camera"></i>
+              </div>
             </div>
           </div>
+          <div class="user_edit_field_right">
+              <%= f.text_field :name, autofocus: true, class: "login_input", placeholder: "Name" %>
+              <%= f.email_field :email, class: "login_input", placeholder: "Email" %>
+          </div>
         </div>
-        <div class="user_edit_field_right">
-            <%= f.text_field :name, autofocus: true, class: "login_input", placeholder: "Name" %>
-            <%= f.email_field :email, class: "login_input", placeholder: "Email" %>
-        </div>
+        <%= f.submit "更新", class: 'user_update_btn'%>
+      <% end %>
+      <div class="user_delete_link">
+        <%= link_to "ユーザー削除", user_registration_path(current_user), method: :delete, data: {confirm: "ユーザーを削除してもよろしいですか？"} %>
       </div>
-      <%= f.submit "更新", class: 'user_update_btn'%>
-    <% end %>
-    <div class="user_delete_link">
-      <%= link_to "ユーザー削除", user_registration_path(current_user), method: :delete, data: {confirm: "ユーザーを削除してもよろしいですか？"} %>
-    </div>
   </div>
 </div>

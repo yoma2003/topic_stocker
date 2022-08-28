@@ -1,19 +1,23 @@
-<div class="user_contents_wrapper">
-  <div class="user_contents">
-    <h1 class="main_slogan">人とのつながりを話題で管理するアプリ</h1>
-    <div class="login_logo">
-      <%= image_tag "main_logo.png" %><%# 大きいロゴを用意 %>
-    </div>
-    <div class="login_field">
-      <%= form_with model: resource, as: resource_name, url: session_path(resource_name), class: "login_form", local: true do |f|%>
-        <%= f.email_field :email, autofocus: true, class: "login_input", placeholder: "Email" %>
-        <%= f.password_field :password, autocomplete: "off", class: "login_input", placeholder: "Password" %>
-        <%= f.submit "ログイン", class: 'login_btn'%>
-      <% end %>
-      <div class="other_link">
-        <%= link_to "アカウト登録", new_user_registration_path %>
-        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
+<div class="user_wrapper">
+  <div class="user_login">
+      <h1 class="main_slogan">人とのつながりを話題で管理するアプリ</h1>
+      <div class="login_logo">
+        <%= image_tag "main_logo.png" %>
       </div>
-    </div>
+      <div class="login_field">
+        <%= form_with model: resource, as: resource_name, url: session_path(resource_name), class: "login_form", local: true do |f|%>
+          <div class="login_alert"><%= flash[:alert] %></div>
+          <%= f.email_field :email, autofocus: true, class: "login_input", placeholder: "Email" %>
+          <%= f.password_field :password, autocomplete: "off", class: "login_input", placeholder: "Password" %>
+          <%= f.submit "ログイン", class: 'login_btn'%>
+        <% end %>
+        <div class="other_link">
+          <%= link_to "ユーザー登録", new_user_registration_path %>
+          <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
+        </div>
+        <div class="other_link_center">
+          <%= link_to "Topic Stockerとは", about_users_path %>
+        </div>
+      </div>
   </div>
 </div>

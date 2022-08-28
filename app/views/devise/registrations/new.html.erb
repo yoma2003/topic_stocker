@@ -1,21 +1,21 @@
-<div class="user_contents_wrapper">
+<div class="user_wrapper">
   <div class="user_contents">
-    <div class="signin_logo">
-      <%= image_tag "main_logo.png" %><%# 大きいロゴを用意 %>
-    </div>
-    <h2 class="user_page_title">新規アカウント</h2>
-    <div class="signin_field">
-      <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), local: true do |f|%>
-        <%= render "devise/shared/error_messages", resource: resource %>
-        <%= f.text_field :name, autofocus: true, class: "login_input", placeholder: "Name" %>
-        <%= f.email_field :email, class: "login_input", placeholder: "Email" %>
-        <%= f.password_field :password, autocomplete: "off", class: "login_input", placeholder: "Password" %>
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "login_input", placeholder: "Password confirmation" %>
-        <%= f.submit "登録", class: 'signin_btn'%>
-      <% end %>
-      <div class="login_link">
-        <%= link_to "ログイン", new_user_session_path %>
+      <div class="signup_logo">
+        <%= image_tag "main_logo.png" %>
       </div>
-    </div>
+      <h2 class="user_page_title">新規ユーザー</h2>
+      <div class="signup_field">
+        <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), local: true do |f|%>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <%= f.text_field :name, autofocus: true, class: "login_input", placeholder: "Name" %>
+          <%= f.email_field :email, class: "login_input", placeholder: "Email" %>
+          <%= f.password_field :password, autocomplete: "off", class: "login_input", placeholder: "Password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "login_input", placeholder: "Password confirmation" %>
+          <%= f.submit "登録", class: 'signup_btn'%>
+        <% end %>
+        <div class="login_link">
+          <%= link_to "ログイン", new_user_session_path %>
+        </div>
+      </div>
   </div>
 </div>
