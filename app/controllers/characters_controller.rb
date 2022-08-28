@@ -1,4 +1,5 @@
 class CharactersController < ApplicationController
+  before_action :authenticate
   before_action :set_categories
 
   def new
@@ -46,6 +47,10 @@ class CharactersController < ApplicationController
 
   def character_topic_params
     params.require(:character_topic).permit(:name, :image, :twitter_id, :facebook_id, :instagram_id, :describe, :past_topic, :created_date, :future_topic, category_ids: []).merge(user_id: current_user.id)
+  end
+
+  def authenticate
+    redirect_to about_users_path unless user_signed_in?
   end
 
   def set_categories
