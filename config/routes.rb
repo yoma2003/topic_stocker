@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   end
   
   root to: "categories#index"
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update] do
+    collection do
+      get 'about'
+    end
+  end
+
   resources :categories, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :characters
   resources :future_topics, only: :update
