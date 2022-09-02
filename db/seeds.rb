@@ -9,20 +9,20 @@ guest_user_id = guest_user.id
 
 # 人データ作成
 characters_info = [
-  {name: "ヨマさん", twitter_id: "yoma_2003", facebook_id: "", instagram_id: "", describe: "大阪市在住\r\n89年生まれ\r\nRuby、Ruby on Railsを中心に学習\r\nエンジニア転職活動中\r\n元薬剤師\r\n元バンドマン\r\n元ヒッチハイカー\r\n筋トレ好き"},
-  {name: "イッシー", twitter_id: "yoma_2003", facebook_id: "", instagram_id: "", describe: "東京都在住\r\n87年生まれ\r\n元ファーマス\r\n薬剤師イベント主催\r\nサッカー好き"},
-  {name: "高橋くん", twitter_id: "yoma_2003", facebook_id: "", instagram_id: "", describe: "大阪市在住\r\n93年生まれ\r\nファーマス\r\n名古屋出身\r\nバンド好き\r\n坂本店引き継ぎ\r\nペット：ルーシー"},
-  {name: "田中さん", twitter_id: "", facebook_id: "", instagram_id: "", describe: "京都府在住\r\nファーマス\r\n人事採用担当（22年〜）"},
-  {name: "ユウキさん", twitter_id: "yoma_2003", facebook_id: "", instagram_id: "", describe: "大阪府在住\r\n95年生まれ\r\nサウナ好き→ほぼ毎日行っている\r\nPHP、Laravel自己学習\r\nペット：ミミ"},
-  {name: "三上さん", twitter_id: "yoma_2003", facebook_id: "", instagram_id: "", describe: "京都府在住\r\n株式会社ネックス（受託開発企業）（22.1〜）\r\nPHPフルスクラッチ自己学習\r\n前職製造業\r\nサキガケ勉強会"},
-  {name: "堀さん", twitter_id: "", facebook_id: "", instagram_id: "", describe: "大阪市在住\r\n83年生まれ\r\nサキガケ勉強会\r\nスマホアプリ開発メイン"},
-  {name: "橋下さん", twitter_id: "", facebook_id: "", instagram_id: "", describe: "大阪市在住\r\n74年生まれ\r\nファーマス\r\n尼崎店\r\nバンド、ボーカル活動"},
-  {name: "斎藤さん", twitter_id: "", facebook_id: "", instagram_id: "", describe: "三重県在住\r\nメディカルボンド（卸）\r\n92年生まれ"},
-  {name: "川本くん", twitter_id: "yoma_2003", facebook_id: "", instagram_id: "", describe: "徳島県在住\r\n93年生まれ\r\n元銀行員\r\nサウナ好き\r\nPython学習中"}
+  {name: "ヨマさん", image_id: 1, twitter_id: "yoma_2003", facebook_id: "", instagram_id: "", describe: "大阪市在住\r\n89年生まれ\r\nRuby、Ruby on Railsを中心に学習\r\nエンジニア転職活動中\r\n元薬剤師\r\n元バンドマン\r\n元ヒッチハイカー\r\n筋トレ好き"},
+  {name: "イッシー", image_id: 2,twitter_id: "yoma_2003", facebook_id: "", instagram_id: "", describe: "東京都在住\r\n87年生まれ\r\n元ファーマス\r\n薬剤師イベント主催\r\nサッカー好き"},
+  {name: "高橋くん", image_id: 3,twitter_id: "yoma_2003", facebook_id: "", instagram_id: "", describe: "大阪市在住\r\n93年生まれ\r\nファーマス\r\n名古屋出身\r\nバンド好き\r\n坂本店引き継ぎ\r\nペット：ルーシー"},
+  {name: "田中さん", image_id: 4,twitter_id: "", facebook_id: "", instagram_id: "", describe: "京都府在住\r\nファーマス\r\n人事採用担当（22年〜）"},
+  {name: "ユウキさん", image_id: 5, twitter_id: "yoma_2003", facebook_id: "", instagram_id: "", describe: "大阪府在住\r\n95年生まれ\r\nサウナ好き→ほぼ毎日行っている\r\nPHP、Laravel自己学習\r\nペット：ミミ"},
+  {name: "三上さん", image_id: 6, twitter_id: "yoma_2003", facebook_id: "", instagram_id: "", describe: "京都府在住\r\n株式会社ネックス（受託開発企業）（22.1〜）\r\nPHPフルスクラッチ自己学習\r\n前職製造業\r\nサキガケ勉強会"},
+  {name: "堀さん", image_id: 7, twitter_id: "", facebook_id: "", instagram_id: "", describe: "大阪市在住\r\n83年生まれ\r\nサキガケ勉強会\r\nスマホアプリ開発メイン"},
+  {name: "橋下さん", image_id: 8, twitter_id: "", facebook_id: "", instagram_id: "", describe: "大阪市在住\r\n74年生まれ\r\nファーマス\r\n尼崎店\r\nバンド、ボーカル活動"},
+  {name: "斎藤さん", image_id: 9, twitter_id: "", facebook_id: "", instagram_id: "", describe: "三重県在住\r\nメディカルボンド（卸）\r\n92年生まれ"},
+  {name: "川本くん", image_id: 10, twitter_id: "yoma_2003", facebook_id: "", instagram_id: "", describe: "徳島県在住\r\n93年生まれ\r\n元銀行員\r\nサウナ好き\r\nPython学習中"}
 ]
 created_character_ids = []
 characters_info.each do |character_info| # future_topicは1対1なのでここで登録したい。けど、imageがFormオブジェクト経由でアタッチできるか？
-  character = Character.create!(
+  character = Character.new(
     name: character_info[:name],
     twitter_id: character_info[:twitter_id],
     facebook_id: character_info[:facebook_id],
@@ -30,6 +30,8 @@ characters_info.each do |character_info| # future_topicは1対1なのでここ�
     describe: character_info[:describe],
     user_id: guest_user_id
   )
+  character.image.attach(io: File.open("./app/assets/images/sample_data/sample_data_#{character_info[:image_id]}.jpeg"), filename: "sample_data_#{character_info[:image_id]}.jpeg")
+  character.save!
   created_character_ids << character.id
 end
 
