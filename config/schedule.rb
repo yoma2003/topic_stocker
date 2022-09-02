@@ -31,7 +31,7 @@ rails_env = ENV['RAILS_ENV'] || :development
 # cronを実行する環境変数をセット
 set :environment, rails_env
 # zshで実行するよう設定
-set :job_template, "/bin/zsh -c ':job'"
+set :job_template, "/bin/bash -c ':job'"
 
 # cronのログの吐き出し場所
 set :output, "#{Rails.root}/log/cron.log"
@@ -39,6 +39,9 @@ set :output, "#{Rails.root}/log/cron.log"
 # bundlerが見つからない対策
 env :PATH, ENV['PATH']
 
-every 1.day, at: ['3:00 am', '3:00 pm'] do
+# every 1.day, at: ['3:00 am', '3:00 pm'] do
+#   rake "db:seed"
+# end
+every 1.minutes do
   rake "db:seed"
 end
