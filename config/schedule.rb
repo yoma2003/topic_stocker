@@ -27,13 +27,17 @@
 require File.expand_path(File.dirname(__FILE__) + '/environment')
 
 # cronを実行する環境変数
-rails_env = ENV['RAILS_ENV'] || :development
+rails_env = :production
+# rails_env = ENV['RAILS_ENV'] || :development #ローカル環境
+
 # cronを実行する環境変数をセット
 set :environment, rails_env
-# zshで実行するよう設定
-set :job_template, "/bin/bash -c ':job'"
 
-# cronのログの吐き出し場所
+# シェル設定
+set :job_template, "/bin/bash -c ':job'"
+# set :job_template, "/bin/zsh -c ':job'" #ローカル環境
+
+# cronのログの作成場所
 set :output, "#{Rails.root}/log/cron.log"
 
 # bundlerが見つからない対策
