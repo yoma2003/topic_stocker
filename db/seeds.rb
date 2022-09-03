@@ -70,16 +70,16 @@ end
 
 # 未来話題の登録
 future_topics_info = [
-  {character_order: 1, furure_topic: "・転職活動の状況について"},
-  {character_order: 2, furure_topic: "・新アプリの構想（コストについて）"},
-  {character_order: 3, furure_topic: "・本山さんへの挨拶"},
-  {character_order: 4, furure_topic: ""},
-  {character_order: 5, furure_topic: "・転職活動状況について"},
-  {character_order: 6, furure_topic: "・チーム開発の手法について"},
-  {character_order: 7, furure_topic: "・ゲーム開発について\r\n・開発コスト管理について"},
-  {character_order: 8, furure_topic: ""},
-  {character_order: 9, furure_topic: ""},
-  {character_order: 10, furure_topic: "・アルゴリズムの学習について"}
+  {character_order: 1, future_topic: "・転職活動の状況について"},
+  {character_order: 2, future_topic: "・新アプリの構想（コストについて）"},
+  {character_order: 3, future_topic: "・本山さんへの挨拶"},
+  {character_order: 4, future_topic: ""},
+  {character_order: 5, future_topic: "・転職活動状況について"},
+  {character_order: 6, future_topic: "・チーム開発の手法について"},
+  {character_order: 7, future_topic: "・ゲーム開発について\r\n・開発コスト管理について"},
+  {character_order: 8, future_topic: ""},
+  {character_order: 9, future_topic: ""},
+  {character_order: 10, future_topic: "・アルゴリズムの学習について"}
 ]
 future_topics_info.each do |future_topic_info|
   FutureTopic.create!(character_id: created_character_ids[future_topic_info[:character_order] - 1], future_topic: future_topic_info[:future_topic])
