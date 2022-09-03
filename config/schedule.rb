@@ -30,7 +30,7 @@ require File.expand_path(File.dirname(__FILE__) + '/environment')
 rails_env = :production
 # rails_env = ENV['RAILS_ENV'] || :development #ローカル環境
 
-# cronを実行する環境変数をセット
+# cronを実行する環境変数のセット
 set :environment, rails_env
 
 # シェル設定
@@ -43,9 +43,6 @@ set :output, "#{Rails.root}/log/cron.log"
 # bundlerが見つからない対策
 env :PATH, ENV['PATH']
 
-# every 1.day, at: ['3:00 am', '3:00 pm'] do
-#   rake "db:seed"
-# end
-every 1.minutes do
+every :hour do
   rake "db:seed"
 end
