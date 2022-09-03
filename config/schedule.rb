@@ -43,6 +43,6 @@ set :output, "#{Rails.root}/log/cron.log"
 # bundlerが見つからない対策
 env :PATH, ENV['PATH']
 
-every 1.day at: ['0:00 am', '6:00 am', '0:00 pm', '6:00 pm'] do
+every 1.day, at: ['0:00 am', '6:00 am', '0:00 pm', '6:00 pm'] do
   rake "db:seed"
 end
