@@ -71,6 +71,7 @@
             </div>
             <button type="button" class="category_list_open_btn click_btn">カテゴリ選択</button>
               <div class="category_select_box">
+                <%= "カテゴリ欄から「カテゴリ追加」をして下さい。" if @categories.count == 0 %>
                 <% @categories.each do |category| %>
                   <div class="check_btn">
                     <input type="checkbox" name="character[category_ids][]" class="category_checkbox" id="<%= category.id %>" value="<%= category.id %>" multiple <%= "checked" if @character.category_ids.include?(category.id) %>>
