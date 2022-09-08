@@ -99,7 +99,7 @@ HTML / CSS / JavaScript
 Ruby 2.6.5 / Ruby on Rails 6.0.5
 
 - データベース<br>
-MySQL 5.7.36
+MySQL 8.0.28
 
 - テスト<br>
 Rspec-rails 5.1.2
