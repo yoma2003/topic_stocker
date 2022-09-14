@@ -5,9 +5,9 @@ class CategoriesController < ApplicationController
   def index
     # @characters = current_user.characters
     if params[:sort] == "updated_at"
-      @characters = Character.order_updated_at(current_user.id) #updated_at順
+      @characters = Character.order_updated_at(current_user.id).includes([:future_topics, :past_topics]).with_attached_image #updated_at順
     else
-      @characters = Character.order_past_topic(current_user.id) #past_topic順（デフォルト）
+      @characters = Character.order_past_topic(current_user.id).includes([:future_topics, :past_topics]).with_attached_image #past_topic順（デフォルト）
     end
   end
 
@@ -31,9 +31,9 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     # @characters = @category.characters
     if params[:sort] == "updated_at"
-      @characters = Character.category_order_updated_at(@category.id) #updated_at順
+      @characters = Character.category_order_updated_at(@category.id).includes([:future_topics, :past_topics]).with_attached_image #updated_at順
     else
-      @characters = Character.category_order_past_topic(@category.id) #past_topic順（デフォルト）
+      @characters = Character.category_order_past_topic(@category.id).includes([:future_topics, :past_topics]).with_attached_image #past_topic順（デフォルト）
     end
   end
 
