@@ -12,17 +12,17 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @characters = Character.where(user_id: current_user.id).order(name: :asc)
+    @characters = Character.where(user_id: current_user.id).order(name: :asc).with_attached_image
     @category = Category.new
   end
 
   def create
-    @characters = current_user.characters
+    # @characters = current_user.characters
     @category = Category.new(category_params)
     if @category.save
       redirect_to category_path(@category)
     else
-      @characters = Character.where(user_id: current_user.id).order(name: :asc)
+      @characters = Character.where(user_id: current_user.id).order(name: :asc).with_attached_image
       render :new
     end
   end
@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
 
   def edit
     @category = Category.find(params[:id])
-    @characters = Character.where(user_id: current_user.id).order(name: :asc)
+    @characters = Character.where(user_id: current_user.id).order(name: :asc).with_attached_image
   end
 
   def update
