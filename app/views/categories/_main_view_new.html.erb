@@ -10,7 +10,7 @@
     </div>
     <div class="main_top_user_data">
       <div class="current_user_name">
-      <%= current_user.name %><i class="fa-solid fa-angle-down"></i>
+        <%= current_user.name %><i class="fa-solid fa-angle-down"></i>
       </div>
       <% if current_user.image.attached? %>
         <%= image_tag current_user.image, class: "current_user_image" %>

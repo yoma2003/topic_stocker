@@ -9,19 +9,19 @@
       </div>
     </div>
     <div class="main_top_user_data">
-    <div class="current_user_name">
-      <%= current_user.name %><i class="fa-solid fa-angle-down"></i>
+      <div class="current_user_name">
+        <%= current_user.name %><i class="fa-solid fa-angle-down"></i>
+      </div>
+      <% if current_user.image.attached? %>
+        <%= image_tag current_user.image, class: "current_user_image" %>
+      <% else %>
+        <%= image_tag "no_image.png", class: "current_user_image" %>
+      <% end %>
+      <div class="user_operation">
+        <%= link_to("ログアウト", destroy_user_session_path, method: :delete, class: "user_operation_btn user_logout_btn") %>
+        <%= link_to("ユーザー情報編集", edit_user_path(current_user), class: "user_operation_btn user_edit_btn") %>
+      </div>
     </div>
-    <% if current_user.image.attached? %>
-      <%= image_tag current_user.image, class: "current_user_image" %>
-    <% else %>
-      <%= image_tag "no_image.png", class: "current_user_image" %>
-    <% end %>
-    <div class="user_operation">
-      <%= link_to("ログアウト", destroy_user_session_path, method: :delete, class: "user_operation_btn user_logout_btn") %>
-      <%= link_to("ユーザー情報編集", edit_user_path(current_user), class: "user_operation_btn user_edit_btn") %>
-    </div>
-  </div>
   </div>
 
   <div class="main_top_sub">
@@ -36,7 +36,7 @@
 
   <div class="main_contents">
     <%= render "shared/error_messages", model: f.object %> <%# バリデーションエラーメッセージ %>
-    <div class="main_contents_wrapper">
+    <div class="main_contents_wrapper height_lock">
       <div class="character_list">
         <div class="character_list_top">
           <div class="character_list_top_left">
