@@ -10,6 +10,10 @@
           <%= f.email_field :email, autofocus: true, class: "login_input", placeholder: "Email" %>
           <%= f.password_field :password, autocomplete: "off", class: "login_input", placeholder: "Password" %>
           <%= f.submit "ログイン", class: 'login_btn'%>
+          <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "google_login_btn" do %>
+            <%= image_tag "g_logo.webp" %>
+            <p>Googleアカウントでログイン</p>
+          <% end %>
         <% end %>
         <div class="other_link">
           <%= link_to "ユーザー登録", new_user_registration_path %>
