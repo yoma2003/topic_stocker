@@ -26,7 +26,11 @@
           </div>
           <div class="user_edit_field_right">
               <%= f.text_field :name, autofocus: true, class: "login_input", placeholder: "Name" %>
-              <%= f.email_field :email, class: "login_input", placeholder: "Email" %>
+              <% if current_user.provider %>
+                <div class="login_input account_provider"><%= "#{current_user.provider}アカウントでログイン中" %></div>
+              <% else %>
+                <%= f.email_field :email, class: "login_input", placeholder: "Email" %>
+              <% end %>
           </div>
         </div>
         <%= f.submit "更新", class: 'user_update_btn'%>
