@@ -36,7 +36,7 @@
         <%= f.submit "更新", class: 'user_update_btn'%>
       <% end %>
       <div class="user_delete_link">
-        <%= link_to "ユーザー削除", user_registration_path(current_user), method: :delete, data: {confirm: "ユーザーを削除してもよろしいですか？"} %>
+        <%= link_to "ユーザー削除", user_registration_path, method: :delete, data: {confirm: "ユーザーを削除してもよろしいですか？"} %>
       </div>
   </div>
 </div>
