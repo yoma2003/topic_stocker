@@ -124,7 +124,7 @@ GitHubプロジェクトボード
 
 # データベース設計
 
-![tables](https://user-images.githubusercontent.com/102401730/183283768-cb9daabf-98c4-434f-94bb-3769d1a66bfd.jpg)
+![tables](https://user-images.githubusercontent.com/102401730/195368705-a8aecbdd-8b1b-4b7c-8142-1f479d7dad63.png)
 
 # 画面遷移図
 
