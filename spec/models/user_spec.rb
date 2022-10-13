@@ -9,7 +9,17 @@ RSpec.describe User, type: :model do
       it '全ての値が存在すれば登録できる' do
         expect(@user).to be_valid
       end
+      it 'uid、providerがなくても登録できる' do
+        @user.uid = ''
+        @user.provider = ''
+        expect(@user).to be_valid
+      end
+      it 'imageがなくても登録できる' do
+        @user.image = nil
+        expect(@user).to be_valid
+      end
     end
+
     context '新規登録できない場合' do
       it 'nameがなければ登録できない' do
         @user.name = ''
@@ -25,6 +35,12 @@ RSpec.describe User, type: :model do
         @user.email = 'testmail'
         @user.valid?
         expect(@user.errors.full_messages).to include('Email is invalid')
+      end
+      it '重複したemailが存在すると登録できない' do
+        @user.save
+        @user2 = FactoryBot.build(:user, email: @user.email)
+        @user2.valid?
+        expect(@user2.errors.full_messages).to include('Email has already been taken')
       end
       it 'passwordがなければ登録できない' do
         @user.password = @user.password_confirmation = ''
