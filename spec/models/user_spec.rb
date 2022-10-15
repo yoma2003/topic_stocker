@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
+    sleep 0.1
   end
+
   describe 'ユーザー新規登録' do
     context '新規登録できる場合' do
       it '全ての値が存在すれば登録できる' do
@@ -62,6 +64,11 @@ RSpec.describe User, type: :model do
         @user.password = @user.password_confirmation = '0' * 129
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too long (maximum is 128 characters)')
+      end
+      it 'imageがJPEGまたはPNG形式以外の場合は登録できない' do
+        @user.image = fixture_file_upload('app/assets/images/g_logo.webp', 'image/webp')
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Image は JPEG 形式または PNG 形式のみ選択してください")
       end
     end
   end
