@@ -9,6 +9,7 @@ FactoryBot.define do
     image                 { fixture_file_upload('app/assets/images/guest_image.jpg', 'image/jpeg') }
   end
   
+  # userインスタンスを作成後、関連するカテゴリを5つ作成する
   # trait :categories do
   #   after(:create) do |user|
   #     user.categories = create_list(:category, 5, user: user)
