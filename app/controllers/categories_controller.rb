@@ -3,7 +3,6 @@ class CategoriesController < ApplicationController
   before_action :set_categories
 
   def index
-    # @characters = current_user.characters
     if params[:sort] == "updated_at"
       @characters = Character.order_updated_at(current_user.id).includes([:future_topics, :past_topics]).with_attached_image #updated_at順
     else
@@ -17,7 +16,6 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    # @characters = current_user.characters
     @category = Category.new(category_params)
     if @category.save
       redirect_to category_path(@category)
@@ -29,7 +27,6 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    # @characters = @category.characters
     if params[:sort] == "updated_at"
       @characters = Character.category_order_updated_at(@category.id).includes([:future_topics, :past_topics]).with_attached_image #updated_at順
     else

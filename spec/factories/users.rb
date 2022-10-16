@@ -4,11 +4,15 @@ FactoryBot.define do
     email                 { Faker::Internet.free_email }
     password              { Faker::Internet.password(min_length: 6) }
     password_confirmation { password }
+    uid                   { "123456878901234567890" }
+    provider              { "google" }
+    image                 { fixture_file_upload('app/assets/images/guest_image.jpg', 'image/jpeg') }
   end
-
-  trait :categories do
-    after(:create) do |user|
-      user.categories = create_list(:category, 5, user: user)
-    end
-  end
+  
+  # userインスタンスを作成後、関連するカテゴリを5つ作成する
+  # trait :categories do
+  #   after(:create) do |user|
+  #     user.categories = create_list(:category, 5, user: user)
+  #   end
+  # end
 end
